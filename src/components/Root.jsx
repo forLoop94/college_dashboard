@@ -46,8 +46,6 @@ export const Root = () => {
       <>
         <h1>Root</h1>
         <nav>
-          <Link to='/login'>Log in</Link>
-          <Link to='/signup'>Sign up</Link>
           <button onClick={handleSignOut}>Log out</button>
         </nav>
       </>

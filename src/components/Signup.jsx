@@ -1,7 +1,10 @@
 // import React from 'react'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Signup = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     "username": '',
     "role": '',
@@ -30,6 +33,7 @@ export const Signup = () => {
         const responseData = await response.json();
         console.log(responseData);
         const authorization = response.headers.get('authorization');
+        navigate("/login");
         console.log(authorization);
       }
 
@@ -85,6 +89,7 @@ export const Signup = () => {
         onChange={handleChange}
       />
       <button type='submit'>Submit</button>
+      <Link to='/login'>Log in</Link>
     </form>
   )
 }

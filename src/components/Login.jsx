@@ -1,6 +1,6 @@
 // import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -65,6 +65,7 @@ export const Login = () => {
         onChange={handleChange}
       />
       <button type='submit'>Submit</button>
+      <Link to='/signup'>Sign up</Link>
     </form>
   )
 }
