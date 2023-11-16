@@ -1,8 +1,8 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Root } from './components/Root';
-import { Login } from './components/Login';
-import { Signup } from './components/Signup';
+import { Login } from './components/auth/Login';
+import { Signup } from './components/auth/Signup';
 import { Teacher } from './components/Teacher';
 
 function App() {

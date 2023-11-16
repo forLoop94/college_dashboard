@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from '../styles/root.module.css';
+import { Students } from './Students';
 
 export const Root = () => {
 
@@ -45,6 +46,7 @@ export const Root = () => {
     return (
       <>
         <h1>Root</h1>
+        <Students />
         <nav>
           <button onClick={handleSignOut}>Log out</button>
         </nav>
