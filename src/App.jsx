@@ -5,6 +5,7 @@ import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
 import { Lecturers } from './components/Lecturers';
 import { Students } from './components/Students';
+import { StudentForm } from './components/StudentForm';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/lecturers' element={<Lecturers />} />
         <Route path='/students' element={<Students />} />
+        <Route path='/add_student' element={<StudentForm /> } />
       </Routes>
     </>
   )
