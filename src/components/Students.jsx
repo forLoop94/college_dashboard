@@ -13,14 +13,18 @@ export const Students = () => {
     dispatch(getStudents());
   }, [])
 
-  return (
-    <div>
-      {students.map((student) => (
-        <div key={student.id}>
-          <h1>{student.first_name}</h1>
-          <div>{student.last_name}</div>
-        </div>
-      ))}
-    </div>
-  )
+  if (students.length === 0) {
+    return "No students yet!"
+  } else {
+    return (
+      <div>
+        {students.map((student) => (
+          <div key={student.id}>
+            <h1>{student.first_name}</h1>
+            <div>{student.last_name}</div>
+          </div>
+        ))}
+      </div>
+    )
+  }
 }
