@@ -30,13 +30,7 @@ export const Login = () => {
         localStorage.setItem('token', authorization);
         console.log(authorization);
         console.log(resData.status.message);
-        if(resData.data.role === 'teacher') {
-          navigate("/teacher");
-          return `You are a ${resData.data.role}`;
-        } else {
-          navigate("/");
-          return resData.status.message
-        }
+        navigate("/");
       }
     } catch(error) {
       return error;

@@ -1,9 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from '../styles/root.module.css';
+import { Lecturers } from './Lecturers';
 import { Students } from './Students';
 
 export const Root = () => {
+  const [role, setRole] = useState('');
 
   const navigate = useNavigate()
   const baseURL = 'http://localhost:4000';
@@ -37,16 +39,39 @@ export const Root = () => {
     }
   }
 
+  const getCurrentUser = async() => {
+    try {
+      const response = await fetch(`${baseURL}/current_user`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `${token}`,
+        }
+      })
+
+      if (response.ok) {
+        const curUserData = await response.json();
+        console.log(curUserData);
+        setRole(curUserData.role);
+      }
+    } catch(error) {
+      throw new error(error.message)
+    }
+  }
+
   useEffect(() => {
+    getCurrentUser();
     if (!token) {
       navigate('/login');
     }
   }, [token, navigate]);
 
+  console.log(role);
+
     return (
       <>
         <h1>Root</h1>
-        <Students />
+        {(role === 'student') ? <Students /> : <Lecturers />}
         <nav>
           <button onClick={handleSignOut}>Log out</button>
         </nav>
