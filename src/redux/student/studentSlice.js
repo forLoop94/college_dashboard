@@ -15,6 +15,7 @@ export const addStudents = createAsyncThunk('students/addStudents', async(data) 
     })
     if(response.ok) {
       const data = await response.json();
+      console.log(response.message);
       console.log(data);
       return data;
     }
