@@ -1,6 +1,44 @@
 import React from 'react'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addLecturer } from '../redux/lecturer/lecturerSlice';
 
 export const LecturerForm = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    gender: '',
+    core_discipline: '',
+    number_of_publications: '',
+    highest_academic_qualification: '',
+    photo: '',
+    rank: '',
+    bio: '',
+    department_id: '',
+    age: '',
+    phone_number: '',
+    lga_of_origin: '',
+    user_id: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    dispatch(addLecturer(formData));
+    navigate("/");
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
   return (
     <>
       <h1>Lecturers Form</h1>
@@ -28,23 +66,23 @@ export const LecturerForm = () => {
         />
         <input
           type='text'
-          placeholder='Major'
+          placeholder='core_discipline'
           name='core_discipline'
           value={formData.core_discipline}
           onChange={handleChange}
         />
         <input
-          type='text'
+          type='number'
           placeholder='Number of Publications'
-          name='nop'
-          value={formData.nop}
+          name='number_of_publications'
+          value={formData.number_of_publications}
           onChange={handleChange}
         />
         <input
           type='text'
           placeholder='Highest Academic Qualification'
-          name='haq'
-          value={formData.haq}
+          name='highest_academic_qualification'
+          value={formData.highest_academic_qualification}
           onChange={handleChange}
         />
          <input
@@ -66,7 +104,8 @@ export const LecturerForm = () => {
           id="bio"
           cols="30"
           rows="10"
-          placeholder='Short Bio'>
+          placeholder='Short Bio'
+          onChange={handleChange}>
         </textarea>
          <input
           type='number'

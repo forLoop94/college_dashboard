@@ -6,6 +6,7 @@ import { Signup } from './components/auth/Signup';
 import { Lecturers } from './components/Lecturers';
 import { Students } from './components/Students';
 import { StudentForm } from './components/StudentForm';
+import { LecturerForm } from './components/LecturerForm';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/lecturers' element={<Lecturers />} />
         <Route path='/students' element={<Students />} />
         <Route path='/add_student' element={<StudentForm /> } />
+        <Route path='/add_lecturer' element={<LecturerForm /> } />
       </Routes>
     </>
   )
