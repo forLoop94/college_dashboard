@@ -1,10 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom';
 import { addStudents } from '../redux/student/studentSlice';
 
 export const StudentForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -25,6 +27,7 @@ export const StudentForm = () => {
     console.log(formData);
 
     dispatch(addStudents(formData));
+    navigate("/");
   }
 
   const handleChange = (e) => {
@@ -117,6 +120,7 @@ export const StudentForm = () => {
           onChange={handleChange}
         />
         <button type='submit'>Create Student</button>
+        <Link to="/students">Home</Link>
       </form>
     </>
   )

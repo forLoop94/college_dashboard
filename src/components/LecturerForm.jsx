@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { addLecturer } from '../redux/lecturer/lecturerSlice';
 
 export const LecturerForm = () => {
@@ -143,6 +143,7 @@ export const LecturerForm = () => {
           onChange={handleChange}
         />
         <button type='submit'>Create Student</button>
+        <Link to='/'>Home</Link>
       </form>
     </>
   )
