@@ -7,6 +7,7 @@ import { Lecturers } from './components/Lecturers';
 import { Students } from './components/Students';
 import { StudentForm } from './components/StudentForm';
 import { LecturerForm } from './components/LecturerForm';
+import { LecturerEligibleCourses } from './components/LecturerEligibleCourses';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/students' element={<Students />} />
         <Route path='/add_student' element={<StudentForm /> } />
         <Route path='/add_lecturer' element={<LecturerForm /> } />
+        <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
       </Routes>
     </>
   )

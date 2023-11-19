@@ -39,8 +39,19 @@ export const getLecturers = createAsyncThunk("lecturers/getLecturers", async() =
   }
 })
 
+export const getLecturerEligibleCourses = createAsyncThunk("lecturers/getLecturerEligibleCourses", async() => {
+  const response = await fetch(`${baseURL}/course_list`, {
+    headers: {
+      authorization: `${token}`
+    }
+  })
+  const data = await response.json();
+  return data;
+})
+
 const initialState = {
   lecturers: [],
+  eligibleCourses: [],
 }
 
 const lecturerSlice = createSlice({
@@ -50,6 +61,9 @@ const lecturerSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getLecturers.fulfilled, (state, action) => {
       state.lecturers = action.payload;
+    })
+    builder.addCase(getLecturerEligibleCourses.fulfilled, (state, action) => {
+      state.eligibleCourses = action.payload;
     })
   }
 })
