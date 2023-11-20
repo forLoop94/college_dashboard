@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const baseURL = "http://localhost:4000/api/v1";
-const token = localStorage.getItem('token');
 
 export const addLecturer = createAsyncThunk("lecturer/addlecturer", async(body) => {
+  const token = localStorage.getItem('token');
   try {
     const response = await fetch(`${baseURL}/lecturers`, {
       method: "POST",
@@ -24,6 +24,7 @@ export const addLecturer = createAsyncThunk("lecturer/addlecturer", async(body) 
 })
 
 export const getLecturers = createAsyncThunk("lecturers/getLecturers", async() => {
+  const token = localStorage.getItem('token');
   try {
     const response = await fetch(`${baseURL}/lecturers`, {
       method: "GET",
@@ -39,13 +40,15 @@ export const getLecturers = createAsyncThunk("lecturers/getLecturers", async() =
   }
 })
 
-export const getLecturerEligibleCourses = createAsyncThunk("lecturers/getLecturerEligibleCourses", async() => {
-  const response = await fetch(`${baseURL}/course_list`, {
+export const getLecturerEligibleCourses = createAsyncThunk("lecturers/getLecturerEligibleCourses", async(id) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/course_list/${id}`, {
     headers: {
       authorization: `${token}`
     }
   })
   const data = await response.json();
+  console.log(id);
   return data;
 })
 

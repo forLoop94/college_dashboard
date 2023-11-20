@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const baseURL = "http://localhost:4000/api/v1";
-const token = localStorage.getItem('token');
+
 
 export const addStudents = createAsyncThunk('students/addStudents', async(data) => {
+  const token = localStorage.getItem('token');
+
   try {
     const response = await fetch(`${baseURL}/students`, {
       method: 'POST',
@@ -25,6 +27,8 @@ export const addStudents = createAsyncThunk('students/addStudents', async(data) 
 })
 
 export const getStudents = createAsyncThunk('students/getStudents', async () => {
+  const token = localStorage.getItem('token');
+  
   try {
     const response = await fetch(`${baseURL}/students`, {
       method: 'GET',

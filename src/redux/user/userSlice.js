@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const baseURL = "http://localhost:4000";
-const token = localStorage.getItem('token');
 
 export const getCurrentUser = createAsyncThunk("users/getCurrentUser", async() => {
+  const token = localStorage.getItem('token');
+
   const response = await fetch(`${baseURL}/current_user`, {
     headers: {
       authorization: `${token}`
