@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom';
 import { Root } from './components/Root';
 import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
@@ -9,22 +9,22 @@ import { StudentForm } from './components/StudentForm';
 import { LecturerForm } from './components/LecturerForm';
 import { LecturerEligibleCourses } from './components/LecturerEligibleCourses';
 
-function App() {
-
-  return (
-    <>
-      <Routes>
-        <Route path='/' element={<Root />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route path='/' element={<Root />}>
         <Route path='/lecturers' element={<Lecturers />} />
         <Route path='/students' element={<Students />} />
         <Route path='/add_student' element={<StudentForm /> } />
         <Route path='/add_lecturer' element={<LecturerForm /> } />
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
-      </Routes>
-    </>
+      </Route>
+      <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<Signup />} />
+    </Route>
   )
-}
+)
+
+const App = () => <RouterProvider router={router} />;
 
 export default App
