@@ -18,7 +18,6 @@ export const addStudents = createAsyncThunk('students/addStudents', async(data) 
     if(response.ok) {
       const data = await response.json();
       console.log(response.message);
-      console.log(data);
       return data;
     }
   } catch(error) {
@@ -28,7 +27,7 @@ export const addStudents = createAsyncThunk('students/addStudents', async(data) 
 
 export const getStudents = createAsyncThunk('students/getStudents', async () => {
   const token = localStorage.getItem('token');
-  
+
   try {
     const response = await fetch(`${baseURL}/students`, {
       method: 'GET',

@@ -6,7 +6,6 @@ import { getCurrentUser } from '../redux/user/userSlice';
 export const LecturerEligibleCourses = () => {
   const dispatch = useDispatch();
   const { profile_id } = useSelector((state) => state.user.currentUser);
-  console.log(profile_id);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -18,7 +17,6 @@ export const LecturerEligibleCourses = () => {
   }, [dispatch, profile_id, token]);
 
   const courses = useSelector((state) => state.Lecturers.eligibleCourses);
-  console.log(courses);
 
   return (
     <section>

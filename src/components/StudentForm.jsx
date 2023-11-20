@@ -23,8 +23,6 @@ export const StudentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-
     dispatch(addStudents(formData));
     navigate("/");
   }

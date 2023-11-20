@@ -25,7 +25,6 @@ export const LecturerForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(addLecturer(formData));
     navigate("/");
   }

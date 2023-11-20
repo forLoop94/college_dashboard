@@ -5,7 +5,6 @@ import { getLecturers } from '../redux/lecturer/lecturerSlice';
 export const Lecturers = () => {
   const dispatch = useDispatch();
   const lecturers = useSelector((state) => state.Lecturers.lecturers);
-  console.log(lecturers);
 
   useEffect(() => {
     dispatch(getLecturers());

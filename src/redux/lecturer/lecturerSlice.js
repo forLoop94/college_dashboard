@@ -15,7 +15,6 @@ export const addLecturer = createAsyncThunk("lecturer/addlecturer", async(body) 
     })
     if(response.ok) {
       const lecturer = await response.json();
-      console.log(lecturer);
       return lecturer;
     }
   } catch(error) {
@@ -32,7 +31,6 @@ export const getLecturers = createAsyncThunk("lecturers/getLecturers", async() =
     });
     if(response.ok) {
       const lecturerData = await response.json();
-      console.log(lecturerData);
       return lecturerData;
     }
   } catch(error) {
@@ -48,7 +46,6 @@ export const getLecturerEligibleCourses = createAsyncThunk("lecturers/getLecture
     }
   })
   const data = await response.json();
-  console.log(id);
   return data;
 })
 

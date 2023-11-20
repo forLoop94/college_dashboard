@@ -5,7 +5,6 @@ import { getStudents } from '../redux/student/studentSlice';
 export const Students = () => {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.Students.students);
-  console.log(students);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
