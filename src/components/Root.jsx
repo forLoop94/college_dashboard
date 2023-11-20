@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { getCurrentUser } from '../redux/user/userSlice';
@@ -94,7 +94,7 @@ export const Root = () => {
       <h1>Root</h1>
       {(role === 'student') ? <Students /> : <Lecturers />}
       <nav>
-        <button onClick={handleSignOut}>Log out</button>
+        <button className={styles.btn} onClick={handleSignOut}>Log out</button>
       </nav>
     </>
   );
