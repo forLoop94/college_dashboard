@@ -13,6 +13,12 @@ export const StudentUser = ({ setNavPanelBackground }) => {
       <li style={setNavPanelBackground("/add_student")}>
         <Link to="add_student">Student Profile</Link>
       </li>
+      {/* <li style={setNavPanelBackground("/students")}>
+        <Link to="/student_user/students">Students</Link>
+      </li>
+      <li style={setNavPanelBackground("/add_student")}>
+        <Link to="/student_user/add_student">Student Profile</Link>
+      </li> */}
     </ul>
   );
 };

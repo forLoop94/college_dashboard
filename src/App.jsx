@@ -19,6 +19,17 @@ const router = createBrowserRouter(
         <Route path='/add_lecturer' element={<LecturerForm /> } />
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
       </Route>
+      {/* <Route path='/' element={<Root />}>
+        <Route path='student_user' element={<StudentUser />}>
+          <Route index element={<Students />} />
+          <Route path='add_student' element={<StudentForm /> } />
+        </Route>
+        <Route path='lecturer_user' element={<LecturerUser />}>
+          <Route index element={<Lecturers />} />
+          <Route path='add_lecturer' element={<LecturerForm /> } />
+          <Route path='lecturer_eligible' element={<LecturerEligibleCourses /> } />
+        </Route>
+      </Route> */}
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
     </Route>

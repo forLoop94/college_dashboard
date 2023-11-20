@@ -1,49 +1,49 @@
-import React from 'react'
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router'
-import { Link } from 'react-router-dom';
-import '../styles/nav_panel.css';
-import { LecturerUser } from './role_partitions/LecturerUser';
-import { StudentUser } from './role_partitions/StudentUser';
+import React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import "../styles/nav_panel.css";
+import { LecturerUser } from "./role_partitions/LecturerUser";
+import { StudentUser } from "./role_partitions/StudentUser";
 
 export const NavPanel = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [panel, setPanel] = useState(true);
-  const baseURL = 'http://localhost:4000';
+  const baseURL = "http://localhost:4000";
   const { role } = useSelector((state) => state.user.currentUser);
 
   const setNavPanelBackground = (targetLocation) => {
-    if (location.pathname === targetLocation) return { backgroundColor: 'var(--orange)', color: "white"};
+    if (location.pathname === targetLocation)
+      return { backgroundColor: "var(--orange)", color: "white" };
     return {};
-  }
+  };
 
-  const handleSignOut = async() => {
-    const token = localStorage.getItem('token');
+  const handleSignOut = async () => {
+    const token = localStorage.getItem("token");
     try {
       const response = await fetch(`${baseURL}/logout`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `${token}`,
-        }
-      })
+        },
+      });
 
-      if(response.ok) {
+      if (response.ok) {
         const resData = await response.json();
         console.log(resData.message);
-        localStorage.removeItem('token');
-        navigate("/login")
+        localStorage.removeItem("token");
+        navigate("/login");
       } else {
-        const resData = await response.json()
+        const resData = await response.json();
         console.log(resData.message);
       }
-
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
@@ -60,7 +60,7 @@ export const NavPanel = () => {
         </span>
       </div>
       <div
-        className={!panel ? 'show' : 'hide'}
+        className={!panel ? "show" : "hide"}
         id="header"
         role="button"
         onClick={() => setPanel(!panel)}
@@ -68,11 +68,16 @@ export const NavPanel = () => {
         tabIndex={0}
       >
         <div className="nav-panel">
-          {(role === 'student') ? <StudentUser setNavPanelBackground={setNavPanelBackground} /> : (role === 'lecturer') ?
-          <LecturerUser setNavPanelBackground={setNavPanelBackground} /> : ''}
+          {role === "student" ? (
+            <StudentUser setNavPanelBackground={setNavPanelBackground} />
+          ) : role === "lecturer" ? (
+            <LecturerUser setNavPanelBackground={setNavPanelBackground} />
+          ) : (
+            ""
+          )}
           <div>
             <button type="button" onClick={handleSignOut} className="sign-out">
-            SIGN OUT
+              SIGN OUT
             </button>
           </div>
         </div>
@@ -88,5 +93,5 @@ export const NavPanel = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
