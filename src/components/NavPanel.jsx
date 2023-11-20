@@ -1,14 +1,18 @@
 import React from 'react'
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom';
 import '../styles/nav_panel.css';
+import { LecturerUser } from './role_partitions/LecturerUser';
+import { StudentUser } from './role_partitions/StudentUser';
 
 export const NavPanel = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [panel, setPanel] = useState(true);
   const baseURL = 'http://localhost:4000';
+  const { role } = useSelector((state) => state.user.currentUser);
 
   const setNavPanelBackground = (targetLocation) => {
     if (location.pathname === targetLocation) return { backgroundColor: 'var(--orange)', color: "white"};
@@ -64,37 +68,13 @@ export const NavPanel = () => {
         tabIndex={0}
       >
         <div className="nav-panel">
-          <ul>
-            <li style={setNavPanelBackground('/students')}>
-              <Link to="/students">
-                Students
-              </Link>
-            </li>
-            <li style={setNavPanelBackground('/lecturers')}>
-              <Link to="lecturers">
-                Lecturer
-              </Link>
-            </li>
-            <li style={setNavPanelBackground('/lecturer_eligible')}>
-              <Link to="lecturer_eligible">
-                Lecturer Eligible
-              </Link>
-            </li>
-            <li style={setNavPanelBackground('/add_student')}>
-              <Link to="add_student">
-                Student Profile
-              </Link>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={handleSignOut}
-                className="sign-out"
-              >
-                SIGN OUT
-              </button>
-            </li>
-          </ul>
+          {(role === 'student') ? <StudentUser setNavPanelBackground={setNavPanelBackground} /> : (role === 'lecturer') ?
+          <LecturerUser setNavPanelBackground={setNavPanelBackground} /> : ''}
+          <div>
+            <button type="button" onClick={handleSignOut} className="sign-out">
+            SIGN OUT
+            </button>
+          </div>
         </div>
         <div
           className="mobile close"
