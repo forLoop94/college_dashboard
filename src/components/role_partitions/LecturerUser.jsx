@@ -10,9 +10,9 @@ export const LecturerUser = ({ setNavPanelBackground }) => {
       <li style={setNavPanelBackground("/lecturer_eligible")}>
         <Link to="lecturer_eligible">Lecturer Eligible</Link>
       </li>
-      <li style={setNavPanelBackground("/add_lecturer")}>
+      {/* <li style={setNavPanelBackground("/add_lecturer")}>
         <Link to="add_student">Lecturer Profile</Link>
-      </li>
+      </li> */}
       {/* <li style={setNavPanelBackground("/lecturers")}>
         <Link to="/lecturer_user/lecturers">Lecturer</Link>
       </li>
