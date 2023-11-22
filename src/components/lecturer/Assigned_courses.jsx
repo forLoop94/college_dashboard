@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { getAssignedCourses } from '../../redux/lecturer/lecturerSlice';
+import { Course_students } from './Course_students';
 
 export const Assigned_courses = () => {
   const dispatch = useDispatch();
   const assignedCourses = useSelector((state) => state.Lecturers.assignedCourses);
+  const [selectedCourseId, setSelectedCourseId] = useState(null);
 
   useEffect(() => {
     dispatch(getAssignedCourses());
   }, [])
+
+  const showStudents = (courseId) => {
+    console.log(courseId)
+    setSelectedCourseId(courseId);
+  }
 
   return (
     <section>
@@ -21,11 +28,17 @@ export const Assigned_courses = () => {
           <h3>{course.title}</h3>
           <div>{course.code}</div>
           <div>{course.level}</div>
-          <div>{course.department.name}</div>
+          <div>{course.department_id}</div>
           {/* <Link to={}></Link> */}
-          <button type='button'>students offering</button>
+          <button
+            type='button'
+            onClick={() => showStudents(course.id)}
+          >
+            students offering
+          </button>
         </article>
       ))}
+      {selectedCourseId && <Course_students key={selectedCourseId} courseId={selectedCourseId} />}
     </section>
   )
 }

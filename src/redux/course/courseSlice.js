@@ -15,9 +15,9 @@ export const getCourses = createAsyncThunk('courses/getCourses', async() => {
   }
 })
 
-export const getCourseStudents = createAsyncThunk('courses/getCourseStudents', async() => {
+export const getCourseStudents = createAsyncThunk('courses/getCourseStudents', async(id) => {
   const token = localStorage.getItem('token')
-  const response = await fetch(`${baseURL}/course_students`, {
+  const response = await fetch(`${baseURL}/course_students/${id}`, {
     headers: {
       Authorization: `${token}`
     }
