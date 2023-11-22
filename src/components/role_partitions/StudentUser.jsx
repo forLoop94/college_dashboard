@@ -7,9 +7,6 @@ export const StudentUser = ({ setNavPanelBackground }) => {
       <li style={setNavPanelBackground("/students")}>
         <Link to="/students">Students</Link>
       </li>
-      <li style={setNavPanelBackground("/lecturers")}>
-        <Link to="lecturers">Lecturer</Link>
-      </li>
       {/* <li style={setNavPanelBackground("/students")}>
         <Link to="/student_user/students">Students</Link>
       </li>

@@ -27,7 +27,9 @@ export const getLecturers = createAsyncThunk("lecturers/getLecturers", async() =
   try {
     const response = await fetch(`${baseURL}/lecturers`, {
       method: "GET",
-      authorization: `${token}`
+      headers: {
+        authorization: `${token}`
+      }
     });
     if(response.ok) {
       const lecturerData = await response.json();
