@@ -1,0 +1,48 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+const baseURL = 'http://localhost/api/v1';
+
+export const addGrades = createAsyncThunk('grades/addGrades', async(data) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/grades`, {
+    method: 'POST',
+    headers: {
+      authorization: token,
+    },
+    body: JSON.stringify(data)
+  })
+  if(response.ok) {
+    const data = await response.json()
+    return data;
+  }
+})
+
+export const getGrades = createAsyncThunk('grades/getGrades', async() => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/grades`, {
+    headers: {
+      authorization: token,
+    }
+  })
+  if(response) {
+    const data = await response.json();
+    return data;
+  }
+})
+
+const initialState = {
+  grades: [],
+}
+
+const gradeSlice = createSlice({
+  name: 'grades',
+  initialState,
+  extraReducers: (builder) => {
+    builder.addCase(getGrades.fulfilled, (state, action) => {
+      state.grades = action.payload;
+    })
+  }
+})
+
+export default gradeSlice.reducer
+
