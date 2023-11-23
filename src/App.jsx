@@ -12,6 +12,7 @@ import { Recommended_courses } from './components/student/Recommended_courses';
 import { Assigned_courses } from './components/lecturer/Assigned_courses';
 import { Course_students } from './components/lecturer/Course_students';
 import { GradesForm } from './components/grade/GradesForm';
+import { Grades } from './components/student/Grades';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
         <Route path='/assigned_courses' element={<Assigned_courses />} />
         {/* <Route path='/course_students' element={<Course_students />} /> */}
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
+        <Route path='/course_grades' element={<Grades /> } />
       </Route>
       {/* <Route path='/' element={<Root />}>
         <Route path='student_user' element={<StudentUser />}>

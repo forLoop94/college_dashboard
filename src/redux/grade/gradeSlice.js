@@ -19,6 +19,20 @@ export const addGrades = createAsyncThunk('grades/addGrades', async(data) => {
   }
 })
 
+export const getCourseGrades = createAsyncThunk('grades/getCourseGrades', async() => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/course_grade`, {
+    headers: {
+      Authorization: `${token}`
+    }
+  })
+  if(response.ok) {
+    const data = await response.json()
+    // console.log(data.message);
+    return data;
+  }
+})
+
 export const getGrades = createAsyncThunk('grades/getGrades', async() => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${baseURL}/grades`, {
@@ -34,6 +48,7 @@ export const getGrades = createAsyncThunk('grades/getGrades', async() => {
 
 const initialState = {
   grades: [],
+  courseGrades: []
 }
 
 const gradeSlice = createSlice({
@@ -42,6 +57,9 @@ const gradeSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getGrades.fulfilled, (state, action) => {
       state.grades = action.payload;
+    })
+    builder.addCase(getCourseGrades.fulfilled, (state, action) => {
+      state.courseGrades = action.payload;
     })
   }
 })
