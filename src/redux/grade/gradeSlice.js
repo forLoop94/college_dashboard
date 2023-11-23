@@ -1,18 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const baseURL = 'http://localhost/api/v1';
+const baseURL = 'http://localhost:4000/api/v1';
 
 export const addGrades = createAsyncThunk('grades/addGrades', async(data) => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${baseURL}/grades`, {
     method: 'POST',
     headers: {
-      authorization: token,
+      'Content-Type': 'application/json',
+      Authorization: `${token}`
     },
     body: JSON.stringify(data)
   })
   if(response.ok) {
     const data = await response.json()
+    // console.log(data.message);
     return data;
   }
 })
