@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addGrades } from '../../redux/grade/gradeSlice'
 
-export const GradesForm = () => {
+export const GradesForm = ({ studentId, courseId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     value: '',
-    student_id: '',
-    course_id: ''
+    student_id: studentId,
+    course_id: courseId
   })
 
   const handleSubmit = (e) => {
@@ -40,15 +40,13 @@ export const GradesForm = () => {
           onChange={handleChange}
         />
         <input
-          type='number'
-          placeholder='Student'
+          type='hidden'
           name='student_id'
           value={formData.student_id}
           onChange={handleChange}
         />
         <input
-          type='number'
-          placeholder='Course'
+          type='hidden'
           name='course_id'
           value={formData.course_id}
           onChange={handleChange}

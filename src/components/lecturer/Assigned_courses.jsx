@@ -15,7 +15,6 @@ export const Assigned_courses = () => {
   }, [])
 
   const showStudents = (courseId) => {
-    console.log(courseId)
     setSelectedCourseId(courseId);
   }
 
