@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom'
 import { getCurrentUser } from '../redux/user/userSlice';
-import styles from '../styles/root.module.css';
 import { NavPanel } from './NavPanel';
 
 export const Root = () => {

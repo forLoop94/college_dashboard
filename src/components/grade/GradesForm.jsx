@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,6 +8,7 @@ export const GradesForm = ({ studentId, courseId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { targetGrade } = useSelector((state) => state.Grades);
+  console.log(targetGrade)
 
   useEffect(() => {
     console.log(`student id:${studentId} course_id: ${courseId}`)
@@ -34,6 +34,10 @@ export const GradesForm = ({ studentId, courseId }) => {
       ...formData,
       [name]: value,
     })
+  }
+
+  if(!targetGrade) {
+    return null;
   }
 
   return (

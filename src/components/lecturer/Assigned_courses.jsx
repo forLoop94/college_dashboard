@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAssignedCourses } from '../../redux/lecturer/lecturerSlice';
 import { Course_students } from './Course_students';
 
@@ -28,7 +27,6 @@ export const Assigned_courses = () => {
           <div>{course.code}</div>
           <div>{course.level}</div>
           <div>{course.department_id}</div>
-          {/* <Link to={}></Link> */}
           <button
             type='button'
             onClick={() => showStudents(course.id)}
