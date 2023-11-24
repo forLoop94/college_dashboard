@@ -40,15 +40,31 @@ export const getGrades = createAsyncThunk('grades/getGrades', async() => {
       authorization: token,
     }
   })
-  if(response) {
+  if(response.ok) {
     const data = await response.json();
     return data;
   }
 })
 
+export const getTargetGrade = createAsyncThunk('grades/getTargetGrade', async({ student_id, id }) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/target_grade/${student_id}/${id}`, {
+    headers: {
+      authorization: token,
+    }
+  })
+  if(response.ok) {
+    const data = await response.json();
+    return data;
+  } else {
+    console.log(`${baseURL}/target_grade/${student_id}/${id}`)
+  }
+})
+
 const initialState = {
   grades: [],
-  courseGrades: []
+  courseGrades: [],
+  targetGrade: '',
 }
 
 const gradeSlice = createSlice({
@@ -60,6 +76,9 @@ const gradeSlice = createSlice({
     })
     builder.addCase(getCourseGrades.fulfilled, (state, action) => {
       state.courseGrades = action.payload;
+    })
+    builder.addCase(getTargetGrade.fulfilled, (state, action) => {
+      state.targetGrade = action.payload;
     })
   }
 })

@@ -1,12 +1,20 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { addGrades } from '../../redux/grade/gradeSlice'
+import { addGrades, getTargetGrade } from '../../redux/grade/gradeSlice'
 
 export const GradesForm = ({ studentId, courseId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { targetGrade } = useSelector((state) => state.Grades);
+
+  useEffect(() => {
+    console.log(`student id:${studentId} course_id: ${courseId}`)
+    dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
+  }, [])
+
   const [formData, setFormData] = useState({
     value: '',
     student_id: studentId,
@@ -31,6 +39,11 @@ export const GradesForm = ({ studentId, courseId }) => {
   return (
     <section>
       <h1>Grade Form</h1>
+      <div>
+        <span>Current Grade: {targetGrade.value}</span>
+        <span>Name: {targetGrade.student.first_name}</span>
+        <span>Course: {targetGrade.course.title}</span>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           type='number'

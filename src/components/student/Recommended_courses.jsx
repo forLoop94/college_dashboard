@@ -6,7 +6,6 @@ import { getRecommendedCourses } from '../../redux/student/studentSlice'
 export const Recommended_courses = () => {
   const dispatch = useDispatch();
   const recCourses = useSelector((state) => state.Students.recommended)
-  console.log(recCourses);
 
   useEffect(() => {
     dispatch(getRecommendedCourses())
