@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { addGrades, getTargetGrade } from '../../redux/grade/gradeSlice';
 
 export const NewGrade = ({ studentId, courseId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [warning, setWarning] = useState('');
 
   const [formData, setFormData] = useState({
     value: '',
@@ -14,8 +16,17 @@ export const NewGrade = ({ studentId, courseId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(!formData.value) {
+      setWarning("Score cannot be empty");
+      return;
+    }
     dispatch(addGrades(formData));
-    navigate("/")
+    navigate("/assigned_courses");
+    setFormData({
+      value: ''
+    })
+    setWarning("");
+    dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
   }
 
   const handleChange = (e) => {
@@ -28,7 +39,8 @@ export const NewGrade = ({ studentId, courseId }) => {
 
   return (
     <section>
-      <h1>Grade Form</h1>
+      <h1>New Grade</h1>
+      <small>{warning}</small>
       <form onSubmit={handleSubmit}>
         <input
           type='number'
@@ -49,7 +61,7 @@ export const NewGrade = ({ studentId, courseId }) => {
           value={formData.course_id}
           onChange={handleChange}
         />
-        <button type='submit'>Create</button>
+        <button type='submit'>Add</button>
       </form>
     </section>
   )

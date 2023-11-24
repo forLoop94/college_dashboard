@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { getTargetGrade, updateGrade } from '../../redux/grade/gradeSlice';
 
 export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [warning, setWarning] = useState('');
 
   const [formData, setFormData] = useState({
     value: '',
@@ -14,9 +16,17 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(targetGrade.value)
-    // dispatch(addGrades(formData));
-    // navigate("/")
+    if(!formData.value) {
+      setWarning("Enter score to update");
+      return;
+    }
+    dispatch(updateGrade({ body: formData, id: targetGrade.id  }));
+    navigate("/assigned_courses");
+    setFormData({
+      value: ''
+    });
+    setWarning("");
+    dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
   }
 
   const handleChange = (e) => {
@@ -29,7 +39,8 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
 
   return (
     <section>
-      <h1>Grade Form</h1>
+      <h1>Update Grade</h1>
+      <small>{warning}</small>
       <form onSubmit={handleSubmit}>
         <input
           type='number'
@@ -50,7 +61,7 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
           value={formData.course_id}
           onChange={handleChange}
         />
-        <button type='submit'>Create</button>
+        <button type='submit'>Update</button>
       </form>
     </section>
   )

@@ -61,6 +61,22 @@ export const getTargetGrade = createAsyncThunk('grades/getTargetGrade', async({ 
   }
 })
 
+export const updateGrade = createAsyncThunk('grades/updateGrade', async({ body, id }) => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(`${baseURL}/grades/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: token,
+    },
+    body: JSON.stringify(body)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    return data;
+  }
+})
+
 const initialState = {
   grades: [],
   courseGrades: [],
