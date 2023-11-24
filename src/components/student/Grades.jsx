@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourseGrades } from '../../redux/grade/gradeSlice';
+import { gradeAlphabet } from '../../utils/gradeAlphabet';
 
 export const Grades = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export const Grades = () => {
         <div>{course.title}</div>
         <div>{course.code}</div>
         <div>{course.grade}</div>
+        <div>{gradeAlphabet(course.grade)}</div>
       </article>
     ))}
    </section>
