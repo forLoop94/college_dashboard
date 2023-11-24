@@ -2,19 +2,18 @@ import { useState } from 'react';
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourseStudents } from '../../redux/course/courseSlice';
-import { GradesForm } from '../grade/GradesForm';
+import { Grade } from './Grade';
 
 export const Course_students = ({ courseId }) => {
   const dispatch = useDispatch();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
-  const students = useSelector((state) => state.Courses.students)
+  const students = useSelector((state) => state.Courses.students);
 
   useEffect(() => {
     dispatch(getCourseStudents(courseId));
   }, [])
 
   const createGrade = (studentId) => {
-    console.log(studentId);
     setSelectedStudentId(studentId);
   }
 
@@ -30,10 +29,10 @@ export const Course_students = ({ courseId }) => {
           <div>{student.photo}</div>
           <div>{student.gender}</div>
           <div>{student.level}</div>
-          <button onClick={() => createGrade(student.id)}>Create Grade</button>
+          <button onClick={() => createGrade(student.id)}>Grade</button>
         </article>
       ))}
-      {selectedStudentId && <GradesForm key={selectedStudentId} studentId={selectedStudentId} courseId={courseId} />}
+      {selectedStudentId && <Grade key={selectedStudentId} studentId={selectedStudentId} courseId={courseId} />}
     </section>
   )
 }

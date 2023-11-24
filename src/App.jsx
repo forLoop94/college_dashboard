@@ -11,8 +11,8 @@ import { LecturerEligibleCourses } from './components/LecturerEligibleCourses';
 import { Recommended_courses } from './components/student/Recommended_courses';
 import { Assigned_courses } from './components/lecturer/Assigned_courses';
 // import { Course_students } from './components/lecturer/Course_students';
-import { GradesForm } from './components/grade/GradesForm';
 import { Grades } from './components/student/Grades';
+import { NewGrade } from './components/grade/NewGrade';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,7 +38,7 @@ const router = createBrowserRouter(
         </Route>
       </Route> */}
       {/* <Route path='/course_students' element={<Course_students />} /> */}
-      <Route path='/add_grade' element={<GradesForm /> } />
+      <Route path='/add_grade' element={<NewGrade /> } />
       <Route path='/add_student' element={<StudentForm /> } />
       <Route path='/add_lecturer' element={<LecturerForm /> } />
       <Route path='/login' element={<Login />} />
