@@ -1,15 +1,18 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourseGrades } from '../../redux/grade/gradeSlice';
+import { getRecommendedCourses } from '../../redux/student/studentSlice';
 import { gradeAlphabet } from '../../utils/gradeAlphabet';
 import { gradePoint } from '../../utils/gradePoint';
 
 export const Grades = () => {
   const dispatch = useDispatch();
   const gradesInfo = useSelector((state) => state.Grades.courseGrades);
+  const recCourses = useSelector((state) => state.Students.recommended)
 
   useEffect(() => {
     dispatch(getCourseGrades());
+    dispatch(getRecommendedCourses());
   }, [])
 
   const gradePointCalculator = () => {
@@ -22,6 +25,7 @@ export const Grades = () => {
   return (
    <section>
     <h1>Course and Grade Information</h1>
+    <small>Note: {`Grades are available for ${gradesInfo.length} of ${recCourses.length} recommended courses`}</small>
     {gradesInfo.map((course) => (
       <article key={course.id}>
         <div>Title: {course.title}</div>

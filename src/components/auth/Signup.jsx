@@ -32,8 +32,8 @@ export const Signup = () => {
         const responseData = await response.json();
         console.log(responseData);
         const authorization = response.headers.get('authorization');
+        localStorage.setItem('token', authorization);
         navigate("/login");
-        console.log(authorization);
       }
 
     } catch(error) {

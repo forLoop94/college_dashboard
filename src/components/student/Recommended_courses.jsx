@@ -18,7 +18,7 @@ export const Recommended_courses = () => {
           <h3>{course.title}</h3>
           <div>{course.code}</div>
           <div>{course.level}</div>
-          <div>{course.department_id}</div>
+          <div>{course.department.name}</div>
         </article>
       ))}
     </section>

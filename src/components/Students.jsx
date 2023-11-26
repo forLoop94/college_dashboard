@@ -20,6 +20,7 @@ export const Students = () => {
           <div key={student.id}>
             <h1>{student.first_name}</h1>
             <div>{student.last_name}</div>
+            <div>{student.department.name}</div>
           </div>
         ))}
       </div>
