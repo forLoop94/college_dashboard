@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getLecturerEligibleCourses } from '../redux/lecturer/lecturerSlice';
-import { getCurrentUser } from '../redux/user/userSlice';
+import { getLecturerEligibleCourses } from '../../redux/lecturer/lecturerSlice';
+import { getCurrentUser } from '../../redux/user/userSlice';
 
 export const LecturerEligibleCourses = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { addLecturer } from '../redux/lecturer/lecturerSlice';
+import { addLecturer } from '../../redux/lecturer/lecturerSlice';
 
 export const LecturerForm = () => {
   const dispatch = useDispatch()

@@ -73,7 +73,7 @@ export const NavPanel = () => {
             <StudentUser setNavPanelBackground={setNavPanelBackground} />
           ) : role === "lecturer" ? (
             <LecturerUser setNavPanelBackground={setNavPanelBackground} />
-          ) : role === "Head of Department" ? (
+          ) : role === "hod" ? (
             <HodUser setNavPanelBackground={setNavPanelBackground} />
           ) : role === "dean" ? (
             <DeanUser setNavPanelBackground={setNavPanelBackground} />

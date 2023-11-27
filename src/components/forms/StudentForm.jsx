@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
-import { addStudents } from '../redux/student/studentSlice';
+import { addStudents } from '../../redux/student/studentSlice';
 
 export const StudentForm = () => {
   const dispatch = useDispatch();

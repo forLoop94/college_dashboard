@@ -3,18 +3,19 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { Root } from './components/Root';
 import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
-import { Lecturers } from './components/Lecturers';
-import { Students } from './components/Students';
-import { StudentForm } from './components/StudentForm';
-import { LecturerForm } from './components/LecturerForm';
-import { LecturerEligibleCourses } from './components/LecturerEligibleCourses';
+import { Lecturers } from './components/hod/Lecturers';
+import { Students } from './components/hod/Students';
+import { StudentForm } from './components/forms/StudentForm';
+import { LecturerForm } from './components/forms/LecturerForm';
+import { LecturerEligibleCourses } from './components/lecturer/LecturerEligibleCourses';
 import { Recommended_courses } from './components/student/Recommended_courses';
 import { Assigned_courses } from './components/lecturer/Assigned_courses';
 // import { Course_students } from './components/lecturer/Course_students';
 import { Grades } from './components/student/Grades';
 import { NewGrade } from './components/grade/NewGrade';
-import { DepartmentForm } from './components/department/DepartmentForm';
-import { Departments } from './components/department/Departments';
+import { DepartmentForm } from './components/hod/DepartmentForm';
+import { Departments } from './components/hod/Departments';
+import { HodForm } from './components/forms/HodForm';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
       </Route> */}
       {/* <Route path='/course_students' element={<Course_students />} /> */}
       <Route path='/add_grade' element={<NewGrade /> } />
+      <Route path='/add_hod' element={<HodForm /> } />
       <Route path='/add_student' element={<StudentForm /> } />
       <Route path='/add_lecturer' element={<LecturerForm /> } />
       <Route path='/login' element={<Login />} />

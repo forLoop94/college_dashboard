@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getStudents } from '../redux/student/studentSlice';
+import { getStudents } from '../../redux/student/studentSlice';
 
 export const Students = () => {
   const dispatch = useDispatch();
