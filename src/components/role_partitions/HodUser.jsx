@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom'
 export const HodUser = ({ setNavPanelBackground }) => {
   return (
     <ul>
-      <li style={setNavPanelBackground("/lecturers")}>
-        <Link to="lecturers">Lecturer</Link>
+      <list>Lists</list>
+      <li style={setNavPanelBackground("/department_lecturers")}>
+        <Link to="department_lecturers">Lecturers</Link>
       </li>
-      <li style={setNavPanelBackground("/departments")}>
-        <Link to="departments">Departments</Link>
+      <li style={setNavPanelBackground("/department_students")}>
+        <Link to="/department_students">Students</Link>
       </li>
-      <li style={setNavPanelBackground("/add_departments")}>
-        <Link to="add_departments">New Department</Link>
+      <li style={setNavPanelBackground("/department_courses")}>
+        <Link to="department_courses">Courses</Link>
       </li>
     </ul>
   )

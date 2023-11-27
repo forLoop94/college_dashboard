@@ -3,8 +3,8 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { Root } from './components/Root';
 import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
-import { Lecturers } from './components/hod/Lecturers';
-import { Students } from './components/hod/Students';
+import { Lecturers } from './components/lecturer/Lecturers';
+import { Students } from './components/student/Students';
 import { StudentForm } from './components/forms/StudentForm';
 import { LecturerForm } from './components/forms/LecturerForm';
 import { LecturerEligibleCourses } from './components/lecturer/LecturerEligibleCourses';
@@ -13,9 +13,12 @@ import { Assigned_courses } from './components/lecturer/Assigned_courses';
 // import { Course_students } from './components/lecturer/Course_students';
 import { Grades } from './components/student/Grades';
 import { NewGrade } from './components/grade/NewGrade';
-import { DepartmentForm } from './components/hod/DepartmentForm';
-import { Departments } from './components/hod/Departments';
+import { DepartmentForm } from './components/dean/DepartmentForm';
+import { Departments } from './components/dean/Departments';
 import { HodForm } from './components/forms/HodForm';
+import { DepartmentStudents } from './components/hod/DepartmentStudents';
+import { DepartmentLecturers } from './components/hod/DepartmentLecturers';
+import { DepartmentCourses } from './components/hod/DepartmentCourses';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +33,9 @@ const router = createBrowserRouter(
         <Route path='/course_grades' element={<Grades /> } />
         <Route path='/add_departments' element={<DepartmentForm /> } />
         <Route path='/departments' element={<Departments /> } />
+        <Route path='/department_students' element={<DepartmentStudents /> } />
+        <Route path='/department_lecturers' element={<DepartmentLecturers /> } />
+        <Route path='/department_courses' element={<DepartmentCourses /> } />
       </Route>
       {/* <Route path='/' element={<Root />}>
         <Route path='student_user' element={<StudentUser />}>
