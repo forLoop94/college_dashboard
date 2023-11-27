@@ -13,6 +13,9 @@ export const HodUser = ({ setNavPanelBackground }) => {
       <li style={setNavPanelBackground("/department_courses")}>
         <Link to="department_courses">Courses</Link>
       </li>
+      <li style={setNavPanelBackground("/add_course")}>
+        <Link to="add_course">New Course</Link>
+      </li>
     </ul>
   )
 }

@@ -19,6 +19,7 @@ import { HodForm } from './components/forms/HodForm';
 import { DepartmentStudents } from './components/hod/DepartmentStudents';
 import { DepartmentLecturers } from './components/hod/DepartmentLecturers';
 import { DepartmentCourses } from './components/hod/DepartmentCourses';
+import { CourseForm } from './components/hod/CourseForm';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
         <Route path='/course_grades' element={<Grades /> } />
         <Route path='/add_departments' element={<DepartmentForm /> } />
         <Route path='/departments' element={<Departments /> } />
+        <Route path='/add_course' element={<CourseForm /> } />
         <Route path='/department_students' element={<DepartmentStudents /> } />
         <Route path='/department_lecturers' element={<DepartmentLecturers /> } />
         <Route path='/department_courses' element={<DepartmentCourses /> } />
