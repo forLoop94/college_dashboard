@@ -13,6 +13,8 @@ import { Assigned_courses } from './components/lecturer/Assigned_courses';
 // import { Course_students } from './components/lecturer/Course_students';
 import { Grades } from './components/student/Grades';
 import { NewGrade } from './components/grade/NewGrade';
+import { DepartmentForm } from './components/department/DepartmentForm';
+import { Departments } from './components/department/Departments';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +27,8 @@ const router = createBrowserRouter(
         {/* <Route path='/course_students' element={<Course_students />} /> */}
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
         <Route path='/course_grades' element={<Grades /> } />
+        <Route path='/add_departments' element={<DepartmentForm /> } />
+        <Route path='/departments' element={<Departments /> } />
       </Route>
       {/* <Route path='/' element={<Root />}>
         <Route path='student_user' element={<StudentUser />}>
