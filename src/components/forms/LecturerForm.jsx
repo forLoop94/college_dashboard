@@ -1,11 +1,18 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { getDepartments } from '../../redux/department/departmentSlice';
 import { addLecturer } from '../../redux/lecturer/lecturerSlice';
 
 export const LecturerForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  const departments = useSelector((state) => state.Departments.departments);
+
+  useEffect(() => {
+    dispatch(getDepartments());
+  }, []);
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -105,13 +112,18 @@ export const LecturerForm = () => {
           placeholder='Short Bio'
           onChange={handleChange}>
         </textarea>
-         <input
-          type='number'
-          placeholder='Department'
-          name='department_id'
+        <select
           value={formData.department_id}
+          name="department_id"
           onChange={handleChange}
-        />
+        >
+          <option>Department</option>
+          {departments.map((dept) => (
+            <option key={dept.id} value={dept.id}>
+              {dept.name}
+            </option>
+          ))}
+        </select>
          <input
           type='number'
           placeholder='Age'

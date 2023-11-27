@@ -19,10 +19,11 @@ export const DepartmentCourses = () => {
       <h1>Courses in {courses[0].department.name} department</h1>
       {courses.map((course) => (
         <article key={course.id}>
-          <h3>{course.title}</h3>
-          <div>{course.code}</div>
-          <div>{course.level}</div>
-          <div>{course.department.name}</div>
+          <h3>Course title: {course.title}</h3>
+          <div>Course code: {course.code}</div>
+          <div>Level offering: {course.level}</div>
+          <div>Credit Hours: {course.credit_load}</div>
+          <div>Department domiciled: {course.department.name}</div>
         </article>
       ))}
     </section>
