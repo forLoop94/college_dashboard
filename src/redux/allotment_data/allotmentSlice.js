@@ -16,9 +16,9 @@ export const addAllotmentData = createAsyncThunk('lecturerCourses/addAllotmentDa
   return result;
 })
 
-export const getAllotmentData = createAsyncThunk('lecturerCourses/getAllotmentData', async() => {
+export const getAllotmentData = createAsyncThunk('lecturerCourses/getAllotmentData', async(id) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${baseURL}/lecturer_courses`, {
+  const response = await fetch(`${baseURL}/lecturer_courses/${id}`, {
     header: {
       authorization: token
     }

@@ -20,6 +20,7 @@ import { DepartmentStudents } from './components/hod/DepartmentStudents';
 import { DepartmentLecturers } from './components/hod/DepartmentLecturers';
 import { DepartmentCourses } from './components/hod/DepartmentCourses';
 import { CourseForm } from './components/hod/CourseForm';
+import { AllotmentData } from './components/hod/AllotmentData';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
         <Route path='/add_departments' element={<DepartmentForm /> } />
         <Route path='/departments' element={<Departments /> } />
         <Route path='/add_course' element={<CourseForm /> } />
+        <Route path='/allotment_data' element={<AllotmentData /> } />
         <Route path='/department_students' element={<DepartmentStudents /> } />
         <Route path='/department_lecturers' element={<DepartmentLecturers /> } />
         <Route path='/department_courses' element={<DepartmentCourses /> } />
