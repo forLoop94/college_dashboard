@@ -20,13 +20,14 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
       setWarning("Enter score to update");
       return;
     }
-    dispatch(updateGrade({ body: formData, id: targetGrade.id  }));
+    dispatch(updateGrade({ body: formData, id: targetGrade.id  })).then(() => {
+      dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
+    })
     navigate("/assigned_courses");
     setFormData({
       value: ''
     });
     setWarning("");
-    dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
   }
 
   const handleChange = (e) => {

@@ -25,8 +25,9 @@ export const AllotmentData = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addAllotmentData(data));
-    dispatch(getAllotmentData(profile_id));
+    dispatch(addAllotmentData(data)).then(() => {
+      dispatch(getAllotmentData(profile_id));
+    })
   }
 
   const handleChange = (e) => {

@@ -20,13 +20,14 @@ export const NewGrade = ({ studentId, courseId }) => {
       setWarning("Score cannot be empty");
       return;
     }
-    dispatch(addGrades(formData));
+    dispatch(addGrades(formData)).then(() => {
+      dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
+    })
     navigate("/assigned_courses");
     setFormData({
       value: ''
     })
     setWarning("");
-    dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
   }
 
   const handleChange = (e) => {
