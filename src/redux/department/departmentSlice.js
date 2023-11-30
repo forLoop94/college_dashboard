@@ -30,6 +30,19 @@ export const getDepartments = createAsyncThunk('department/getDepartments', asyn
   }
 })
 
+export const getDeanDepartments = createAsyncThunk('department/getDeanDepartments', async() => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/dean_index`, {
+    headers: {
+      authorization: token
+    }
+  })
+  if(response.ok) {
+    const data = await response.json()
+    return data;
+  }
+})
+
 export const getDepartmentStudents = createAsyncThunk('department/getDepartmentStudents', async() => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${baseURL}/department_students`, {
@@ -74,6 +87,7 @@ const initialState = {
   departmentStudents: [],
   departmentLecturers: [],
   departmentCourses: [],
+  deanDepartments: []
 }
 
 const departmentSlice = createSlice({
@@ -82,6 +96,9 @@ const departmentSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getDepartments.fulfilled, (state, action) => {
       state.departments = action.payload
+    })
+    builder.addCase(getDeanDepartments.fulfilled, (state, action) => {
+      state.deanDepartments = action.payload
     })
     builder.addCase(getDepartmentCourses.fulfilled, (state, action) => {
       state.departmentCourses = action.payload
