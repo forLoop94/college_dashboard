@@ -12,7 +12,7 @@ export const HodForm = () => {
   useEffect(() => {
     dispatch(getDepartments());
   }, []);
-  
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -46,7 +46,7 @@ export const HodForm = () => {
 
   return (
     <>
-      <h1>Lecturers Form</h1>
+      <h1>HOD's Form</h1>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
@@ -145,14 +145,7 @@ export const HodForm = () => {
           value={formData.lga_of_origin}
           onChange={handleChange}
         />
-         {/* <input
-          type='number'
-          placeholder='user_id'
-          name='user_id'
-          value={formData.user_id}
-          onChange={handleChange}
-        /> */}
-        <button type='submit'>Create Student</button>
+        <button type='submit'>Create HOD</button>
         <Link to='/'>Home</Link>
       </form>
     </>
