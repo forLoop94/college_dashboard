@@ -10,7 +10,6 @@ import { LecturerForm } from './components/forms/LecturerForm';
 import { LecturerEligibleCourses } from './components/lecturer/LecturerEligibleCourses';
 import { Recommended_courses } from './components/student/Recommended_courses';
 import { Assigned_courses } from './components/lecturer/Assigned_courses';
-// import { Course_students } from './components/lecturer/Course_students';
 import { Grades } from './components/student/Grades';
 import { NewGrade } from './components/grade/NewGrade';
 import { DepartmentForm } from './components/dean/DepartmentForm';
@@ -31,10 +30,9 @@ const router = createBrowserRouter(
         <Route path='/students' element={<Students />} />
         <Route path='/recommended_courses' element={<Recommended_courses />} />
         <Route path='/assigned_courses' element={<Assigned_courses />} />
-        {/* <Route path='/course_students' element={<Course_students />} /> */}
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
         <Route path='/course_grades' element={<Grades /> } />
-        <Route path='/add_departments' element={<DepartmentForm /> } />
+        <Route path='/add_department' element={<DepartmentForm /> } />
         <Route path='/departments' element={<Departments /> } />
         <Route path='/add_course' element={<CourseForm /> } />
         <Route path='/allotment_data' element={<AllotmentData /> } />

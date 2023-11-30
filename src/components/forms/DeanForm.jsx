@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSchools } from "../../redux/dean/deanSlice";
+import { useNavigate } from "react-router-dom";
+import { addDean, getSchools } from "../../redux/dean/deanSlice";
 
 export const DeanForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const schools = useSelector(state => state.Deans.schools);
 
   useEffect(() => {
@@ -29,7 +31,8 @@ export const DeanForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    dispatch(addDean(formData));
+    navigate("/");
   }
 
   const handleChange = (e) => {
