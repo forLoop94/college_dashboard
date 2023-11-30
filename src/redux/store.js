@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import allotmentSlice from "./allotment_data/allotmentSlice";
 import courseSlice from "./course/courseSlice";
+import deanSlice from "./dean/deanSlice";
 import departmentSlice from "./department/departmentSlice";
 import gradeSlice from "./grade/gradeSlice";
 import hodSlice from "./hod/hodSlice";
@@ -17,6 +18,7 @@ const store = configureStore({
     Courses: courseSlice,
     Grades: gradeSlice,
     Hods: hodSlice,
+    Deans: deanSlice,
     Departments: departmentSlice,
     Allotments: allotmentSlice
   }

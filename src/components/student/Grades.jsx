@@ -8,6 +8,7 @@ import { gradePoint } from '../../utils/gradePoint';
 export const Grades = () => {
   const dispatch = useDispatch();
   const gradesInfo = useSelector((state) => state.Grades.courseGrades);
+  console.log(gradesInfo)
   const recCourses = useSelector((state) => state.Students.recommended)
 
   useEffect(() => {
