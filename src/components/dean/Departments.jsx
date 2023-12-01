@@ -6,20 +6,27 @@ import { getDeanDepartments } from '../../redux/department/departmentSlice'
 export const Departments = () => {
   const dispatch = useDispatch();
   const departments = useSelector(state => state.Departments.deanDepartments);
+  console.log(departments)
 
   useEffect(() => {
     dispatch(getDeanDepartments());
   }, [])
 
-  return (
-    <section>
-      <h1>Departments</h1>
-      {departments.map((dept) => (
-        <article key={dept.id}>
-          <div>Official Name: {dept.name}</div>
-          <div>School ID: {dept.school_id}</div>
-        </article>
-      ))}
-    </section>
-  )
+  if(!departments) {
+    return null;
+  } else {
+    return (
+      <section>
+        <h1>Departments</h1>
+        {departments.map((dept) => (
+          <article key={dept.id}>
+            <div>Official Name: {dept.name}</div>
+          </article>
+        ))}
+        {departments[0] && (
+          <article>Number of departments: {departments[0].count}</article>
+        )}
+      </section>
+    )
+  }
 }

@@ -2,14 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const baseURL = "http://localhost:4000/api/v1";
 
-export const addDepartments = createAsyncThunk('department/addDepartments', async() => {
+export const addDepartments = createAsyncThunk('department/addDepartments', async(body) => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${baseURL}/departments`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       authorization: token
-    }
+    },
+    body: JSON.stringify(body)
   })
   if(response.ok) {
     const data = await response.json()
