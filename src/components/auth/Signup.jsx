@@ -1,54 +1,51 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState({
-    "username": '',
-    "role": '',
-    "email": '',
-    "password": '',
-    "password_confirmation": ''
+    username: "",
+    role: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
   });
 
-  const baseURL = 'http://localhost:4000';
+  const baseURL = "http://localhost:4000";
 
-
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(data);
     try {
       const response = await fetch(`${baseURL}/signup`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user: data
-        })
-      })
-      if(response.ok) {
+          user: data,
+        }),
+      });
+      if (response.ok) {
         const responseData = await response.json();
         console.log(responseData);
-        const authorization = response.headers.get('authorization');
+        const authorization = response.headers.get("authorization");
+        localStorage.setItem("token", authorization);
         navigate("/login");
-        console.log(authorization);
       }
-
-    } catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({
       ...data,
-      [name]: value
-    })
-
-  }
+      [name]: value,
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -59,13 +56,16 @@ export const Signup = () => {
         name="username"
         onChange={handleChange}
       />
-      <input
-        type="text"
-        placeholder="Role"
+      <select
         value={data.role}
         name="role"
         onChange={handleChange}
-      />
+      >
+        <option value="student">Student</option>
+        <option value="lecturer">Lecturer</option>
+        <option value="hod">Head of Department</option>
+        <option value="dean">Dean</option>
+      </select>
       <input
         type="email"
         placeholder="email"
@@ -87,8 +87,8 @@ export const Signup = () => {
         name="password_confirmation"
         onChange={handleChange}
       />
-      <button type='submit'>Submit</button>
-      <Link to='/login'>Log in</Link>
+      <button type="submit">Submit</button>
+      <Link to="/login">Log in</Link>
     </form>
-  )
-}
+  );
+};

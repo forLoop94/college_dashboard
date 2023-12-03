@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getLecturers } from '../redux/lecturer/lecturerSlice';
+import { getLecturers } from '../../redux/lecturer/lecturerSlice';
 
 export const Lecturers = () => {
   const dispatch = useDispatch();
   const lecturers = useSelector((state) => state.Lecturers.lecturers);
-  console.log(lecturers);
 
   useEffect(() => {
     dispatch(getLecturers());
-  }, [])
+  }, [dispatch])
 
   if (lecturers.length === 0) {
     return "No lecturers yet!"

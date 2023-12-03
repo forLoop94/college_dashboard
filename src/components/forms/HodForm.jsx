@@ -1,16 +1,23 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { addLecturer } from '../redux/lecturer/lecturerSlice';
+import { getDepartments } from '../../redux/department/departmentSlice';
+import { addHod } from '../../redux/hod/hodSlice';
 
-export const LecturerForm = () => {
+export const HodForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  const departments = useSelector((state) => state.Departments.departments);
+
+  useEffect(() => {
+    dispatch(getDepartments());
+  }, [dispatch]);
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
     gender: '',
-    core_discipline: '',
+    years_of_admin_exp: '',
     number_of_publications: '',
     highest_academic_qualification: '',
     photo: '',
@@ -20,13 +27,12 @@ export const LecturerForm = () => {
     age: '',
     phone_number: '',
     lga_of_origin: '',
-    user_id: ''
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    dispatch(addLecturer(formData));
+    dispatch(addHod(formData));
     navigate("/");
   }
 
@@ -40,7 +46,7 @@ export const LecturerForm = () => {
 
   return (
     <>
-      <h1>Lecturers Form</h1>
+      <h1>HODs Form</h1>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
@@ -64,10 +70,10 @@ export const LecturerForm = () => {
           onChange={handleChange}
         />
         <input
-          type='text'
-          placeholder='core_discipline'
-          name='core_discipline'
-          value={formData.core_discipline}
+          type='number'
+          placeholder='Years of Administrative Experience'
+          name='years_of_admin_exp'
+          value={formData.years_of_admin_exp}
           onChange={handleChange}
         />
         <input
@@ -106,13 +112,18 @@ export const LecturerForm = () => {
           placeholder='Short Bio'
           onChange={handleChange}>
         </textarea>
-         <input
-          type='number'
-          placeholder='Department'
-          name='department_id'
+        <select
           value={formData.department_id}
+          name="department_id"
           onChange={handleChange}
-        />
+        >
+          <option>Department</option>
+          {departments.map((dept) => (
+            <option key={dept.id} value={dept.id}>
+              {dept.name}
+            </option>
+          ))}
+        </select>
          <input
           type='number'
           placeholder='Age'
@@ -134,14 +145,7 @@ export const LecturerForm = () => {
           value={formData.lga_of_origin}
           onChange={handleChange}
         />
-         <input
-          type='number'
-          placeholder='user_id'
-          name='user_id'
-          value={formData.user_id}
-          onChange={handleChange}
-        />
-        <button type='submit'>Create Student</button>
+        <button type='submit'>Create HOD</button>
         <Link to='/'>Home</Link>
       </form>
     </>
