@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getTargetGrade, updateGrade } from '../../redux/grade/gradeSlice';
@@ -67,3 +68,13 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
     </section>
   )
 }
+
+UpdateGrade.propTypes = {
+  studentId: PropTypes.number.isRequired,
+  courseId: PropTypes.number.isRequired,
+  targetGrade: PropTypes.shape({
+    id: PropTypes.number,
+    value: PropTypes.number,
+  }),
+};
+

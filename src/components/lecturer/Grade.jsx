@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
 import { getTargetGrade } from "../../redux/grade/gradeSlice";
 import { GradeInfo } from "../grade/GradeInfo";
@@ -37,3 +38,8 @@ export const Grade = ({ studentId, courseId }) => {
     </section>
   );
 };
+
+Grade.propTypes = {
+  studentId: PropTypes.number.isRequired,
+  courseId: PropTypes.number.isRequired
+}

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAssignedCourses } from '../../redux/lecturer/lecturerSlice';
-import { Course_students } from './Course_students';
+import { CourseStudents } from './Course_students';
 
 export const Assigned_courses = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export const Assigned_courses = () => {
           </button>
         </article>
       ))}
-      {selectedCourseId && <Course_students key={selectedCourseId} courseId={selectedCourseId} />}
+      {selectedCourseId && <CourseStudents key={selectedCourseId} courseId={selectedCourseId} />}
     </section>
   )
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addGrades, getTargetGrade } from '../../redux/grade/gradeSlice';
+import PropTypes from 'prop-types';
 
 export const NewGrade = ({ studentId, courseId }) => {
   const dispatch = useDispatch();
@@ -66,4 +67,9 @@ export const NewGrade = ({ studentId, courseId }) => {
       </form>
     </section>
   )
+}
+
+NewGrade.propTypes = {
+  studentId: PropTypes.number.isRequired,
+  courseId: PropTypes.number.isRequired
 }

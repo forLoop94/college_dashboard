@@ -3,8 +3,9 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourseStudents } from '../../redux/course/courseSlice';
 import { Grade } from './Grade';
+import PropTypes from 'prop-types';
 
-export const Course_students = ({ courseId }) => {
+export const CourseStudents = ({ courseId }) => {
   const dispatch = useDispatch();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const students = useSelector((state) => state.Courses.students);
@@ -35,4 +36,8 @@ export const Course_students = ({ courseId }) => {
       {selectedStudentId && <Grade key={selectedStudentId} studentId={selectedStudentId} courseId={courseId} />}
     </section>
   )
+}
+
+CourseStudents.propTypes = {
+  courseId: PropTypes.number.isRequired
 }
