@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 export const HodUser = ({ setNavPanelBackground }) => {
   return (
@@ -22,3 +23,7 @@ export const HodUser = ({ setNavPanelBackground }) => {
     </ul>
   )
 }
+
+HodUser.propTypes = {
+  setNavPanelBackground: PropTypes.func.isRequired,
+};

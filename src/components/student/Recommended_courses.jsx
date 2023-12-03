@@ -8,7 +8,7 @@ export const Recommended_courses = () => {
 
   useEffect(() => {
     dispatch(getRecommendedCourses())
-  }, [])
+  }, [dispatch])
 
   return (
     <section>

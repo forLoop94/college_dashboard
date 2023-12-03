@@ -12,7 +12,7 @@ export const CourseStudents = ({ courseId }) => {
 
   useEffect(() => {
     dispatch(getCourseStudents(courseId));
-  }, [])
+  }, [dispatch, courseId])
 
   const createGrade = (studentId) => {
     setSelectedStudentId(studentId);

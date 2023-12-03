@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import "../styles/nav_panel.css";
 import { DeanUser } from "./role_partitions/DeanUser";
 import { HodUser } from "./role_partitions/HodUser";

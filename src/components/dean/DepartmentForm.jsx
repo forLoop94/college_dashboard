@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ export const DepartmentForm = () => {
 
   useEffect(() => {
     dispatch(getSchools());
-  }, []);
+  }, [dispatch]);
 
   const [data, setData] = useState({
     name: "",
@@ -20,6 +20,7 @@ export const DepartmentForm = () => {
   });
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(addDepartments(data))
     navigate("/departments");
   };

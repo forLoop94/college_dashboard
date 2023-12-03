@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 
-const GradeInfo = ({ targetGrade }) => {
+export const GradeInfo = ({ targetGrade }) => {
   return (
     <div>
-      <p>{targetGrade.value}</p>
-      <p>{targetGrade.student.first_name}</p>
-      <p>{targetGrade.course.title}</p>
+      <span>Current Grade: {targetGrade.value}</span>
+      <span>Name: {targetGrade.student.first_name}</span>
+      <span>Course: {targetGrade.course.title}</span>
     </div>
   );
 };

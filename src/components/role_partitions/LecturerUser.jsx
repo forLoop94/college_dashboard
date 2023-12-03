@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const LecturerUser = ({ setNavPanelBackground }) => {
   return (
@@ -24,3 +25,7 @@ export const LecturerUser = ({ setNavPanelBackground }) => {
     </ul>
   )
 }
+
+LecturerUser.propTypes = {
+  setNavPanelBackground: PropTypes.func.isRequired,
+};

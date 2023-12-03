@@ -11,7 +11,7 @@ export const LecturerForm = () => {
 
   useEffect(() => {
     dispatch(getDepartments());
-  }, []);
+  }, [dispatch]);
 
   const [formData, setFormData] = useState({
     first_name: '',

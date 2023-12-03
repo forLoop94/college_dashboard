@@ -8,7 +8,7 @@ export const DepartmentStudents = () => {
 
   useEffect(() => {
     dispatch(getDepartmentStudents())
-  }, [])
+  }, [dispatch])
 
   if (students.length === 0) {
     return "No students yet!"

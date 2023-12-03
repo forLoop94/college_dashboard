@@ -11,7 +11,7 @@ export const Assigned_courses = () => {
 
   useEffect(() => {
     dispatch(getAssignedCourses());
-  }, [])
+  }, [dispatch])
 
   const showStudents = (courseId) => {
     setSelectedCourseId(courseId);

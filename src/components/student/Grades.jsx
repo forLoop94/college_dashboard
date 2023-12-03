@@ -14,7 +14,7 @@ export const Grades = () => {
   useEffect(() => {
     dispatch(getCourseGrades());
     dispatch(getRecommendedCourses());
-  }, [])
+  }, [dispatch])
 
   const gradePointCalculator = () => {
     const totalQualityPoints = gradesInfo.reduce((total, num) => total + (gradePoint(gradeAlphabet(num.grade)) * num.credit_load), 0);

@@ -21,7 +21,7 @@ export const AllotmentData = () => {
     dispatch(getAllotmentData(profile_id));
     dispatch(getDepartmentCourses());
     dispatch(getDepartmentLecturers());
-  }, []);
+  }, [dispatch, profile_id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getDeanDepartments } from '../../redux/department/departmentSlice'
@@ -10,7 +9,7 @@ export const Departments = () => {
 
   useEffect(() => {
     dispatch(getDeanDepartments());
-  }, [])
+  }, [dispatch])
 
   if(!departments) {
     return null;

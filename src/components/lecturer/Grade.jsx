@@ -15,7 +15,7 @@ export const Grade = ({ studentId, courseId }) => {
 
   useEffect(() => {
     dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
-  }, []);
+  }, [dispatch, studentId, courseId]);
 
   const createGrade = () => {
     setCreateGradeVar(true);

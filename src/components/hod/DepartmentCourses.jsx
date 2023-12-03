@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getDepartmentCourses } from '../../redux/department/departmentSlice';
@@ -9,7 +8,7 @@ export const DepartmentCourses = () => {
 
   useEffect(() => {
     dispatch(getDepartmentCourses())
-  }, [])
+  }, [dispatch])
 
   if (courses.length === 0) {
     return "No courses yet!"

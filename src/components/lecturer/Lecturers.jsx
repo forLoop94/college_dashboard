@@ -8,7 +8,7 @@ export const Lecturers = () => {
 
   useEffect(() => {
     dispatch(getLecturers());
-  }, [])
+  }, [dispatch])
 
   if (lecturers.length === 0) {
     return "No lecturers yet!"

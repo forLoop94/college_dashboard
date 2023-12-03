@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ export const DeanForm = () => {
 
   useEffect(() => {
     dispatch(getSchools());
-  }, []);
+  }, [dispatch]);
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -45,7 +45,7 @@ export const DeanForm = () => {
 
   return (
     <section>
-      <h1>Dean's Form</h1>
+      <h1>Deans Form</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

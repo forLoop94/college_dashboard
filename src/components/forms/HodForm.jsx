@@ -11,7 +11,7 @@ export const HodForm = () => {
 
   useEffect(() => {
     dispatch(getDepartments());
-  }, []);
+  }, [dispatch]);
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -46,7 +46,7 @@ export const HodForm = () => {
 
   return (
     <>
-      <h1>HOD's Form</h1>
+      <h1>HODs Form</h1>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
