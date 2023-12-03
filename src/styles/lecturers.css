@@ -1,0 +1,11 @@
+.assigned_courses {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 768px) {
+  .assigned_courses {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

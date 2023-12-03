@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCourseStudents } from '../../redux/course/courseSlice';
 import { Grade } from './Grade';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
 export const CourseStudents = ({ courseId }) => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export const CourseStudents = ({ courseId }) => {
           <div>{student.photo}</div>
           <div>{student.gender}</div>
           <div>{student.level}</div>
-          <button onClick={() => createGrade(student.id)}>Grade</button>
+          <Button variant='primary' onClick={() => createGrade(student.id)}>Grade</Button>
         </article>
       ))}
       {selectedStudentId && <Grade key={selectedStudentId} studentId={selectedStudentId} courseId={courseId} />}
