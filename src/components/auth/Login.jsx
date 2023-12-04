@@ -49,6 +49,9 @@ export const Login = () => {
   return (
     <section className="vh-100 vw-100 d-flex justify-content-center align-items-center auth-forms">
       <form onSubmit={handleSubmit}>
+        <header className="d-flex d-flex justify-content-center align-items-center">
+          <h3 className="p-4 text-light">Log in</h3>
+        </header>
         <input
           type="email"
           className="form-control"
