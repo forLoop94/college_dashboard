@@ -26,12 +26,10 @@ export const StudentForm = () => {
     age: "",
     bio: "",
     lga_of_origin: "",
-    // user_id: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
     dispatch(addStudents(formData));
     navigate("/");
   };
@@ -73,7 +71,7 @@ export const StudentForm = () => {
           </div>
           <div className="form-group col-md-3">
             <input
-              type="text"
+              type="file"
               className="form-control"
               placeholder="Image URL"
               name="photo"
@@ -94,14 +92,19 @@ export const StudentForm = () => {
         </div>
         <div className="form-row d-flex justify-content-between">
           <div className="form-group col-md-2">
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Level"
+            <select
               name="level"
               value={formData.level}
+              className="form-control"
               onChange={handleChange}
-            />
+            >
+              <option value="">level</option>
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="300">300</option>
+              <option value="400">400</option>
+              <option value="500">500</option>
+            </select>
           </div>
           <div className="form-group col-md-2">
             <input
@@ -160,16 +163,6 @@ export const StudentForm = () => {
               onChange={handleChange}
             />
           </div>
-          {/* <div className="form-group col-md-1">
-            <input
-              type="number"
-              className="form-control"
-              placeholder="user_id"
-              name="user_id"
-              value={formData.user_id}
-              onChange={handleChange}
-            />
-          </div> */}
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <button className="btn btn-primary" type="submit">
