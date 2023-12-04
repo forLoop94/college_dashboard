@@ -69,12 +69,17 @@ export const Login = () => {
         <div class="d-flex justify-content-center align-items-center">
           <button class="btn btn-primary">
             Log in
-            <FaGraduationCap className="ms-2"/>
+            <FaGraduationCap className="ms-2" />
           </button>
         </div>
         <div className="text-white position-absolute top-0 end-0 m-5">
           Not registered?
-          <Link to="/signup">Sign up</Link>
+          <Link className="ms-2 text-white text-decoration-none" to="/signup">
+            <button className="btn btn-primary" type="submit">
+              Sign up
+              <FaGraduationCap className="ms-2" />
+            </button>
+          </Link>
         </div>
       </form>
     </section>

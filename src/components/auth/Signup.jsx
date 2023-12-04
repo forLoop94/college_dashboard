@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGraduationCap } from "react-icons/fa";
+import "../../styles/auth_pages.css";
 
 export const Signup = () => {
   const navigate = useNavigate();
@@ -100,12 +101,17 @@ export const Signup = () => {
         <div className="d-flex justify-content-center align-items-center">
           <button className="btn btn-primary" type="submit">
             Sign up
-            <FaGraduationCap className="ms-2"/>
+            <FaGraduationCap className="ms-2" />
           </button>
         </div>
         <div className="text-white position-absolute top-0 end-0 m-5">
           Already registered?
-          <Link to="/login">Log in</Link>
+          <Link className="ms-2 text-white text-decoration-none" to="/login">
+            <button className="btn btn-primary" type="submit">
+              Log in
+              <FaGraduationCap className="ms-2" />
+            </button>
+          </Link>
         </div>
       </form>
     </section>
