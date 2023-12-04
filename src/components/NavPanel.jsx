@@ -16,7 +16,7 @@ export const NavPanel = () => {
 
   const setNavPanelBackground = (targetLocation) => {
     if (location.pathname === targetLocation)
-      return { backgroundColor: "var(--orange)", color: "white" };
+      return { backgroundColor: "var(--blue)", color: "white" };
     return {};
   };
 

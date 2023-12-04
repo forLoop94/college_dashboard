@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaGraduationCap } from "react-icons/fa";
+import { FaGraduationCap, FaChevronRight } from "react-icons/fa";
 import "../../styles/auth_pages.css";
 
 export const Signup = () => {
@@ -69,6 +69,7 @@ export const Signup = () => {
           onChange={handleChange}
           className="form-control"
         >
+          <option value="">Role</option>
           <option value="student">Student</option>
           <option value="lecturer">Lecturer</option>
           <option value="hod">Head of Department</option>
@@ -108,8 +109,9 @@ export const Signup = () => {
           Already registered?
           <Link className="ms-2 text-white text-decoration-none" to="/login">
             <button className="btn btn-primary" type="submit">
+              <FaGraduationCap className="me-2" />
               Log in
-              <FaGraduationCap className="ms-2" />
+              <FaChevronRight className="ms-2" />
             </button>
           </Link>
         </div>

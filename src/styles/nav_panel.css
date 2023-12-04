@@ -1,5 +1,5 @@
 :root {
-  --orange: #ff7f00;
+  --blue: #0d6efd;
 }
 
 * {
@@ -61,12 +61,12 @@
 }
 
 .nav-panel li:active {
-  background-color: var(--orange);
+  background-color: var(--blue);
   padding: 5px;
 }
 
 .nav-panel li:hover {
-  background-color: var(--orange);
+  background-color: var(--blue);
   padding: 5px;
 }
 
@@ -136,11 +136,11 @@
   }
 
   .nav-panel li:active {
-    background-color: var(--orange);
+    background-color: var(--blue);
   }
 
   .nav-panel li:hover {
-    background-color: var(--orange);
+    background-color: var(--blue);
   }
 
   .sign-out {

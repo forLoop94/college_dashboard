@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth_pages.css";
-import { FaGraduationCap } from "react-icons/fa";
+import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -76,8 +76,9 @@ export const Login = () => {
           Not registered?
           <Link className="ms-2 text-white text-decoration-none" to="/signup">
             <button className="btn btn-primary" type="submit">
+              <FaGraduationCap className="me-2" />
               Sign up
-              <FaGraduationCap className="ms-2" />
+              <FaChevronRight className="ms-2" />
             </button>
           </Link>
         </div>

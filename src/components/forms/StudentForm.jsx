@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addStudents } from "../../redux/student/studentSlice";
+import "../../styles/forms.css";
 
 export const StudentForm = () => {
   const dispatch = useDispatch();
@@ -24,11 +26,12 @@ export const StudentForm = () => {
     age: "",
     bio: "",
     lga_of_origin: "",
-    user_id: "",
+    // user_id: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
     dispatch(addStudents(formData));
     navigate("/");
   };
@@ -42,94 +45,141 @@ export const StudentForm = () => {
   };
 
   return (
-    <>
-      <h1>Students Profile</h1>
-      <form action="#" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="First Name"
-          name="first_name"
-          value={formData.first_name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          name="last_name"
-          value={formData.last_name}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Image URL"
-          name="photo"
-          value={formData.photo}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          placeholder="Phone number"
-          name="phone_number"
-          value={formData.phone_number}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          placeholder="Level"
-          name="level"
-          value={formData.level}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Gender"
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-        />
-        <select
-          value={formData.department_id}
-          name="department_id"
-          onChange={handleChange}
-        >
-          <option>Department</option>
-          {departments.map((dept) => (
-            <option key={dept.id} value={dept.id}>
-              {dept.name}
-            </option>
-          ))}
-        </select>
-        <input
-          type="number"
-          placeholder="Age"
-          name="age"
-          value={formData.age}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Short bio"
-          name="bio"
-          value={formData.bio}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="L.G.A"
-          name="lga_of_origin"
-          value={formData.lga_of_origin}
-          onChange={handleChange}
-        />
-        <input
-          type="number"
-          placeholder="user_id"
-          name="user_id"
-          value={formData.user_id}
-          onChange={handleChange}
-        />
-        <button type="submit">Create Student</button>
+    <section className="d-flex justify-content-center vw-100 p-5 profile-form-wrapper">
+      <form action="#" className="profile-form" onSubmit={handleSubmit}>
+        <header className="d-flex d-flex justify-content-center align-items-center">
+          <h1 className="p-4 text-light">Students Profile Form</h1>
+        </header>
+        <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="First Name"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Last Name"
+              name="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Image URL"
+              name="photo"
+              value={formData.photo}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Phone number"
+              name="phone_number"
+              value={formData.phone_number}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-2">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Level"
+              name="level"
+              value={formData.level}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-3">
+            <select
+              value={formData.department_id}
+              className="form-control"
+              name="department_id"
+              onChange={handleChange}
+            >
+              <option>Department</option>
+              {departments.map((dept) => (
+                <option key={dept.id} value={dept.id}>
+                  {dept.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Age"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-9">
+            <textarea
+              name="bio"
+              className="form-control mb-5"
+              id="bio"
+              value={formData.bio}
+              placeholder="Short Bio"
+              onChange={handleChange}
+            ></textarea>
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="L.G.A"
+              name="lga_of_origin"
+              value={formData.lga_of_origin}
+              onChange={handleChange}
+            />
+          </div>
+          {/* <div className="form-group col-md-1">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="user_id"
+              name="user_id"
+              value={formData.user_id}
+              onChange={handleChange}
+            />
+          </div> */}
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <button className="btn btn-primary" type="submit">
+            <FaGraduationCap className="me-2" />
+            Create Profile
+            <FaChevronRight className="ms-2" />
+          </button>
+        </div>
         <Link to="/students">Home</Link>
       </form>
-    </>
+    </section>
   );
 };
