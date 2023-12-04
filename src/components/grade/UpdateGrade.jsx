@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getTargetGrade, updateGrade } from '../../redux/grade/gradeSlice';
+import { Button } from 'react-bootstrap';
 
-export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
+export const UpdateGrade = ({ studentId, courseId, targetGrade, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [warning, setWarning] = useState('');
@@ -29,6 +30,7 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
       value: ''
     });
     setWarning("");
+    onClose();
   }
 
   const handleChange = (e) => {
@@ -41,7 +43,6 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
 
   return (
     <section>
-      <h1>Update Grade</h1>
       <small>{warning}</small>
       <form onSubmit={handleSubmit}>
         <input
@@ -63,7 +64,7 @@ export const UpdateGrade = ({ studentId, courseId, targetGrade }) => {
           value={formData.course_id}
           onChange={handleChange}
         />
-        <button type='submit'>Update</button>
+        <Button variant='primary' type='submit'>Update</Button>
       </form>
     </section>
   )
@@ -77,4 +78,3 @@ UpdateGrade.propTypes = {
     value: PropTypes.number,
   }),
 };
-

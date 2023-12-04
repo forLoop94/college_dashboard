@@ -7,7 +7,7 @@ import { GradeInfo } from "../grade/GradeInfo";
 import { NewGrade } from "../grade/NewGrade";
 import { UpdateGrade } from "../grade/UpdateGrade";
 
-export const Grade = ({ studentId, courseId }) => {
+export const Grade = ({ studentId, courseId, onClose }) => {
   const dispatch = useDispatch();
   const [createGradeVar, setCreateGradeVar] = useState(false);
   const [updateGradeVar, setUpdateGradeVar] = useState(false);
@@ -33,8 +33,8 @@ export const Grade = ({ studentId, courseId }) => {
       ) : (
         <button type="button" onClick={() => createGrade()}>Create grade</button>
       )}
-      {createGradeVar && <NewGrade key={studentId} studentId={studentId} courseId={courseId} targetGrade={targetGrade}/>}
-      {updateGradeVar && <UpdateGrade key={courseId} studentId={studentId} courseId={courseId} targetGrade={targetGrade}/>}
+      {createGradeVar && <NewGrade key={studentId} studentId={studentId} courseId={courseId} targetGrade={targetGrade} onClose={onClose} />}
+      {updateGradeVar && <UpdateGrade key={courseId} studentId={studentId} courseId={courseId} targetGrade={targetGrade} onClose={onClose} />}
     </section>
   );
 };

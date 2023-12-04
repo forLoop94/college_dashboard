@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addGrades, getTargetGrade } from '../../redux/grade/gradeSlice';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
-export const NewGrade = ({ studentId, courseId }) => {
+export const NewGrade = ({ studentId, courseId, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [warning, setWarning] = useState('');
@@ -29,6 +30,7 @@ export const NewGrade = ({ studentId, courseId }) => {
       value: ''
     })
     setWarning("");
+    onClose();
   }
 
   const handleChange = (e) => {
@@ -41,7 +43,6 @@ export const NewGrade = ({ studentId, courseId }) => {
 
   return (
     <section>
-      <h1>New Grade</h1>
       <small>{warning}</small>
       <form onSubmit={handleSubmit}>
         <input
@@ -63,7 +64,7 @@ export const NewGrade = ({ studentId, courseId }) => {
           value={formData.course_id}
           onChange={handleChange}
         />
-        <button type='submit'>Add</button>
+        <Button variant='primary' type='submit'>Add</Button>
       </form>
     </section>
   )

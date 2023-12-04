@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCourseStudents } from '../../redux/course/courseSlice';
 import { Grade } from './Grade';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 export const CourseStudents = ({ courseId }) => {
   const dispatch = useDispatch();
@@ -18,6 +18,10 @@ export const CourseStudents = ({ courseId }) => {
   const createGrade = (studentId) => {
     setSelectedStudentId(studentId);
   }
+
+  const closeGradeModal = () => {
+    setSelectedStudentId(null);
+  };
 
   return (
     <section>
@@ -34,7 +38,18 @@ export const CourseStudents = ({ courseId }) => {
           <Button variant='primary' onClick={() => createGrade(student.id)}>Grade</Button>
         </article>
       ))}
-      {selectedStudentId && <Grade key={selectedStudentId} studentId={selectedStudentId} courseId={courseId} />}
+      {/* {selectedStudentId && <Grade key={selectedStudentId} studentId={selectedStudentId} courseId={courseId} />} */}
+      {selectedStudentId && (
+        <Modal show={true} onHide={closeGradeModal}>
+          <Modal.Body>
+            <Grade
+              studentId={selectedStudentId}
+              courseId={courseId}
+              onClose={closeGradeModal}
+            />
+          </Modal.Body>
+        </Modal>
+      )}
     </section>
   )
 }
