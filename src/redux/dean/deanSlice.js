@@ -45,9 +45,21 @@ export const getDeanList = createAsyncThunk('schools/getDeanList', async() => {
   return list;
 })
 
+export const getHodsList = createAsyncThunk('schools/getHodsList', async() => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/hods_list`, {
+    headers: {
+      Authorization: token,
+    }
+  })
+  const list = await response.json()
+  return list;
+})
+
 const initialState = {
   schools: [],
   deanList: [],
+  hods: [],
 }
 
 const deanSlice = createSlice({
@@ -59,6 +71,9 @@ const deanSlice = createSlice({
     });
     builder.addCase(getDeanList.fulfilled, (state, action) => {
       state.deanList = action.payload;
+    })
+    builder.addCase(getHodsList.fulfilled, (state, action) => {
+      state.hods = action.payload;
     })
   }
 })
