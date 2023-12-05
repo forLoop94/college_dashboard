@@ -21,6 +21,8 @@ export const Assigned_courses = () => {
     setSelectedCourseId(courseId);
   };
 
+  // const csStyle = () => ({ display: selectedCourseId ? "none" : "block" });
+
   return (
     <>
       <h1>Assigned Courses</h1>
@@ -29,7 +31,7 @@ export const Assigned_courses = () => {
         have been choosen from courses you elegible to handle
       </small>
       <main className="assigned_courses">
-        <section>
+        <section style={selectedCourseId ? { display: "none" } : { display: "block" }}>
           {assignedCourses.map((course) => (
             <article key={course.id}>
               <h3>{course.title}</h3>
@@ -43,7 +45,7 @@ export const Assigned_courses = () => {
           ))}
         </section>
         {selectedCourseId && (
-          <CourseStudents key={selectedCourseId} courseId={selectedCourseId} />
+          <CourseStudents key={selectedCourseId} courseId={selectedCourseId} setSelectedCourseId={setSelectedCourseId} />
         )}
       </main>
     </>

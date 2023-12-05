@@ -6,7 +6,7 @@ import { Grade } from './Grade';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
 
-export const CourseStudents = ({ courseId }) => {
+export const CourseStudents = ({ courseId, setSelectedCourseId }) => {
   const dispatch = useDispatch();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const students = useSelector((state) => state.Courses.students);
@@ -23,6 +23,10 @@ export const CourseStudents = ({ courseId }) => {
     setSelectedStudentId(null);
   };
 
+  const undoStudentsDisplay = () => {
+    setSelectedCourseId(null);
+  }
+
   return (
     <section>
       <h1>Students offering ...</h1>
@@ -38,7 +42,7 @@ export const CourseStudents = ({ courseId }) => {
           <Button variant='primary' onClick={() => createGrade(student.id)}>Grade</Button>
         </article>
       ))}
-      {/* {selectedStudentId && <Grade key={selectedStudentId} studentId={selectedStudentId} courseId={courseId} />} */}
+      <button className='btn btn-primary' onClick={() => undoStudentsDisplay()}>Back to assigned courses</button>
       {selectedStudentId && (
         <Modal show={true} onHide={closeGradeModal}>
           <Modal.Body>
