@@ -5,7 +5,6 @@ import { getDeanDepartments } from '../../redux/department/departmentSlice'
 export const Departments = () => {
   const dispatch = useDispatch();
   const departments = useSelector(state => state.Departments.deanDepartments);
-  console.log(departments)
 
   useEffect(() => {
     dispatch(getDeanDepartments());
