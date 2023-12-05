@@ -5,15 +5,16 @@ import { getCourseStudents } from '../../redux/course/courseSlice';
 import { Grade } from './Grade';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-export const CourseStudents = ({ courseId, setSelectedCourseId }) => {
+export const CourseStudents = ({ course, showAssignedCourses }) => {
   const dispatch = useDispatch();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const students = useSelector((state) => state.Courses.students);
 
   useEffect(() => {
-    dispatch(getCourseStudents(courseId));
-  }, [dispatch, courseId])
+    dispatch(getCourseStudents(course.id));
+  }, [dispatch, course.id])
 
   const createGrade = (studentId) => {
     setSelectedStudentId(studentId);
@@ -23,13 +24,9 @@ export const CourseStudents = ({ courseId, setSelectedCourseId }) => {
     setSelectedStudentId(null);
   };
 
-  const undoStudentsDisplay = () => {
-    setSelectedCourseId(null);
-  }
-
   return (
     <section>
-      <h1>Students offering ...</h1>
+      <h1>Students offering {course.title}</h1>
       {students.map((student) => (
         <article key={student.id}>
           <h3>
@@ -42,13 +39,13 @@ export const CourseStudents = ({ courseId, setSelectedCourseId }) => {
           <Button variant='primary' onClick={() => createGrade(student.id)}>Grade</Button>
         </article>
       ))}
-      <button className='btn btn-primary' onClick={() => undoStudentsDisplay()}>Back to assigned courses</button>
+      <button className='btn btn-primary mt-5' onClick={() => showAssignedCourses(true)}>Back to assigned courses</button>
       {selectedStudentId && (
         <Modal show={true} onHide={closeGradeModal}>
           <Modal.Body>
             <Grade
               studentId={selectedStudentId}
-              courseId={courseId}
+              courseId={course.id}
               onClose={closeGradeModal}
             />
           </Modal.Body>
@@ -59,5 +56,8 @@ export const CourseStudents = ({ courseId, setSelectedCourseId }) => {
 }
 
 CourseStudents.propTypes = {
-  courseId: PropTypes.number.isRequired
+  course: PropTypes.shape({
+    id: PropTypes.number,
+    title: propTypes.string
+  })
 }

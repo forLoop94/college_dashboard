@@ -11,17 +11,34 @@ export const Assigned_courses = () => {
   const assignedCourses = useSelector(
     (state) => state.Lecturers.assignedCourses
   );
-  const [selectedCourseId, setSelectedCourseId] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState({
+    id: null,
+    title: null
+  })
 
   useEffect(() => {
     dispatch(getAssignedCourses());
   }, [dispatch]);
 
-  const showStudents = (courseId) => {
-    setSelectedCourseId(courseId);
+  const showStudents = (courseId, courseTitle) => {
+
+    setSelectedCourse({
+      id: courseId,
+      title: courseTitle
+    })
   };
 
-  // const csStyle = () => ({ display: selectedCourseId ? "none" : "block" });
+  const hideAssignedCourses = {
+    display: selectedCourse.id ? "none" : "block"
+  };
+
+  const showAssignedCourses = (toogle) => {
+    if(toogle) {
+      setSelectedCourse({
+        id: null
+      });
+    }
+  }
 
   return (
     <>
@@ -31,21 +48,21 @@ export const Assigned_courses = () => {
         have been choosen from courses you elegible to handle
       </small>
       <main className="assigned_courses">
-        <section style={selectedCourseId ? { display: "none" } : { display: "block" }}>
+        <section style={hideAssignedCourses}>
           {assignedCourses.map((course) => (
             <article key={course.id}>
               <h3>{course.title}</h3>
               <div>{course.code}</div>
               <div>{course.level}</div>
               <div>{course.department_id}</div>
-              <Button variant="primary" className="students-btn" type="button" onClick={() => showStudents(course.id)}>
+              <Button variant="primary" className="students-btn" type="button" onClick={() => showStudents(course.id, course.title)}>
                 students offering
               </Button>
             </article>
           ))}
         </section>
-        {selectedCourseId && (
-          <CourseStudents key={selectedCourseId} courseId={selectedCourseId} setSelectedCourseId={setSelectedCourseId} />
+        {selectedCourse.id && (
+          <CourseStudents key={selectedCourse.id} course={selectedCourse} showAssignedCourses={showAssignedCourses} />
         )}
       </main>
     </>
