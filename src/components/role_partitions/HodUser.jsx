@@ -5,6 +5,9 @@ export const HodUser = ({ setNavPanelBackground }) => {
   return (
     <ul>
       <list>Lists</list>
+      <li style={setNavPanelBackground("/hod_details")}>
+        <Link to="hod_details">Personal Profile</Link>
+      </li>
       <li style={setNavPanelBackground("/department_lecturers")}>
         <Link to="department_lecturers">Lecturers</Link>
       </li>

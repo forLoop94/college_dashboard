@@ -23,6 +23,7 @@ import { AllotmentData } from './components/hod/AllotmentData';
 import { DeanForm } from './components/forms/DeanForm';
 import { DeanList } from './components/dean/DeanList';
 import { Hods } from './components/dean/Hods';
+import { HodDetails } from './components/hod/HodDetails';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +39,7 @@ const router = createBrowserRouter(
         <Route path='/departments' element={<Departments /> } />
         <Route path='/dean_list' element={<DeanList /> } />
         <Route path='/hods_list' element={<Hods /> } />
+        <Route path='/hod_details' element={<HodDetails /> } />
         <Route path='/add_course' element={<CourseForm /> } />
         <Route path='/allotment_data' element={<AllotmentData /> } />
         <Route path='/department_students' element={<DepartmentStudents /> } />

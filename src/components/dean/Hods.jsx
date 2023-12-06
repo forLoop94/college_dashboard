@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getHodsList } from "../../redux/dean/deanSlice";
 import { getHodDetails } from "../../redux/hod/hodSlice";
 import convertTime from "../../utils/timeConverter";
+import { HodDetails } from "../hod/HodDetails";
 
 export const Hods = () => {
   const [hodId, setHodId] = useState(null);
@@ -33,7 +34,7 @@ export const Hods = () => {
               <div>Mobile: {hod.hod.phone_number}</div>
               <div>Qualification: {hod.hod.highest_academic_qualification}</div>
               <div>Appointed on: {convertTime(hod.hod.created_at)}</div>
-              <button className="btn btn-primary" onClick={() => hodDetails(hod.hod.id)}></button>
+              <button className="btn btn-primary" onClick={() => hodDetails(hod.hod.id)}>full details</button>
             </>
           ) : !hod.hod && hod.department ? (
             <>
@@ -45,6 +46,7 @@ export const Hods = () => {
           )}
         </article>
       ))}
+      {hodId && <HodDetails key={hodId} hodId={hodId} />}
     </section>
   );
 };
