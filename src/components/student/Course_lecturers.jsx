@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getCourseLecturers } from '../../redux/course/courseSlice';
 
-export const CourseLecturers = ({ courseInfo }) => {
+export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
   const dispatch = useDispatch();
   const lecturers = useSelector(state => state.Courses.lecturers);
 
@@ -29,6 +29,7 @@ export const CourseLecturers = ({ courseInfo }) => {
           <div>Qualification: {lecturer.highest_academic_qualification}</div>
         </article>
       ))}
+      <button className='btn btn-primary' onClick={() => showRecCourses(true)}>Back to Courses</button>
     </section>
   )
 }
