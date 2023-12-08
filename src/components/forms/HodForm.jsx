@@ -200,7 +200,7 @@ export const HodForm = () => {
             />
           </div>
         </div>
-        <div class="d-flex mt-5 justify-content-center align-items-center">
+        <div className="d-flex mt-5 justify-content-center align-items-center">
           <button className="btn btn-primary" type="submit">
             <FaGraduationCap className="me-2" />
             Create Profile

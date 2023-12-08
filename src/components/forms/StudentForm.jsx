@@ -164,7 +164,7 @@ export const StudentForm = () => {
             />
           </div>
         </div>
-        <div class="d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-center align-items-center">
           <button className="btn btn-primary" type="submit">
             <FaGraduationCap className="me-2" />
             Create Profile

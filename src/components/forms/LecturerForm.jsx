@@ -200,7 +200,7 @@ export const LecturerForm = () => {
             />
           </div>
         </div>
-        <div class="d-flex justify-content-center align-items-center mt-5">
+        <div className="d-flex justify-content-center align-items-center mt-5">
           <button className="btn btn-primary" type="submit">
             <FaGraduationCap className="me-2" />
             Create Profile

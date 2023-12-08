@@ -66,8 +66,8 @@ export const Login = () => {
           name="password"
           onChange={handleChange}
         />
-        <div class="d-flex justify-content-center align-items-center">
-          <button class="btn btn-primary">
+        <div className="d-flex justify-content-center align-items-center">
+          <button className="btn btn-primary">
             Log in
             <FaGraduationCap className="ms-2" />
           </button>

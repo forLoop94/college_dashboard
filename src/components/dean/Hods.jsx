@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getHodsList } from "../../redux/dean/deanSlice";
 import { getHodDetails } from "../../redux/hod/hodSlice";
 import convertTime from "../../utils/timeConverter";
