@@ -1,13 +1,38 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../../styles/lesson_area.css';
 import { Chats } from './Chats';
 import { Submissions } from './Submissions';
 
 export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
+  const { profile_id } = useSelector((state) => state.user.currentUser);
   const [linkPages, setLinkPages] = useState({
     submission: false,
     chats: false
   });
+
+  const getLessonArea = async(studentId, courseId, lecturerId) => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`http://localhost:4000/api/v1/student_lesson/${studentId}/${courseId}/${lecturerId}`, {
+      headers: {
+        authorization: token
+      }
+    })
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data)
+      return data;
+    } else {
+      const error = await response.json()
+      console.log(error)
+      return error;
+    }
+  }
+
+  useEffect(() => {
+    getLessonArea(profile_id, courseInfo.id, lecturerInfo.id);
+  }, [profile_id, courseInfo.id, lecturerInfo.id])
 
   const showSubmissionPage = () => {
     setLinkPages({
