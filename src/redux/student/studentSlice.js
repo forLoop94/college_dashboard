@@ -54,9 +54,33 @@ export const getRecommendedCourses = createAsyncThunk("students/getRecommendedCo
   return recCourses;
 })
 
+export const getLessonLinks = createAsyncThunk("students/getLessonLinks", async({course_id, lecturer_id}) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/submissions/${course_id}/${lecturer_id}`, {
+    headers: {
+      authorization: token
+    }
+  })
+  const links = await response.json()
+  return links
+})
+
+export const getLessonChats = createAsyncThunk("students/getLessonChats", async({course_id, lecturer_id}) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/student_messages/${course_id}/${lecturer_id}`, {
+    headers: {
+      authorization: token
+    }
+  })
+  const chats = await response.json()
+  return chats
+})
+
 const initialState = {
   students: [],
   recommended: [],
+  chats: [],
+  links: []
 }
 
 const studentSlice = createSlice({
@@ -69,6 +93,12 @@ const studentSlice = createSlice({
     })
     builder.addCase(getRecommendedCourses.fulfilled, (state, action) => {
       state.recommended = action.payload;
+    })
+    builder.addCase(getLessonLinks.fulfilled, (state, action) => {
+      state.links = action.payload;
+    })
+    builder.addCase(getLessonChats.fulfilled, (state, action) => {
+      state.chats = action.payload;
     })
   }
 })
