@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseLecturers } from "../../redux/course/courseSlice";
-import { LessonArea } from "./Lesson-area";
+import { LessonArea } from "./lesson_area/Lesson-area";
 
 export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
   const [lecturerDetails, setlecturerDetails] = useState({
@@ -26,8 +26,16 @@ export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
     });
   };
 
-  const hideCourseLecturer = {
+  const hideLecturer = {
     display: lecturerDetails.id ? 'none' : 'block'
+  }
+
+  const showLecturer = (bool) => {
+    if(bool) {
+      setlecturerDetails({
+        id: null
+      })
+    }
   }
 
   if (lecturers.length === 0) {
@@ -36,7 +44,7 @@ export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
 
   return (
     <main>
-      <section style={hideCourseLecturer}>
+      <section style={hideLecturer}>
         {lecturers.map((lecturer) => (
           <article key={lecturer.id}>
             <h3>
@@ -63,7 +71,7 @@ export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
         </button>
       </section>
       <section>
-        {lecturerDetails.id && <LessonArea key={lecturerDetails.id} lecturerInfo={lecturerDetails} courseInfo={courseInfo} />}
+        {lecturerDetails.id && <LessonArea key={lecturerDetails.id} lecturerInfo={lecturerDetails} courseInfo={courseInfo} showLecturer={showLecturer} />}
       </section>
     </main>
   );
