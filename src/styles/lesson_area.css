@@ -7,7 +7,7 @@
   list-style-type: none;
 }
 
-.la-nav-link {
+.pointer {
   cursor: pointer;
 }
 
@@ -15,6 +15,11 @@
   color: grey;
 }
 
-.la-nav-link:hover {
+.pointer:hover {
   color: black;
+}
+
+.outgoing-chats, .incoming-chats {
+  /* width: 50%; */
+  word-wrap: break-word;
 }

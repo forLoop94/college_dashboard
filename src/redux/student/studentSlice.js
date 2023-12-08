@@ -65,9 +65,9 @@ export const getLessonLinks = createAsyncThunk("students/getLessonLinks", async(
   return links
 })
 
-export const getLessonChats = createAsyncThunk("students/getLessonChats", async({course_id, lecturer_id}) => {
+export const getLessonChats = createAsyncThunk("students/getLessonChats", async({courseId, lecturerId}) => {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${baseURL}/student_messages/${course_id}/${lecturer_id}`, {
+  const response = await fetch(`${baseURL}/student_messages/${courseId}/${lecturerId}`, {
     headers: {
       authorization: token
     }

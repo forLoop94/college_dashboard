@@ -27,26 +27,29 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
     display: linkPages.submission || linkPages.chats ? 'none' : 'block'
   }
 
-  const styleSubmissionLink = {
-    backgroundColor: linkPages.submission ? 'white' : ''
+  const showLessonArea = () => {
+    setLinkPages({
+      submission: false,
+      chats: false
+    });
   }
 
   const stylePressedLink = {
     submission: {
-      color: linkPages.submission ? 'black' : ''
+      color: linkPages.submission ? '#0d6efd' : ''
     },
     chats: {
-      color: linkPages.chats ? 'black' : ''
+      color: linkPages.chats ? '#0d6efd' : ''
     },
   }
 
   return (
     <main>
       <nav className="d-flex ps-5 bg-light nav-menu">
-        <h3 className='mt-1'>Lesson Area</h3>
+        <h3 className='mt-1 pointer' onClick={() => showLessonArea()}>Lesson Area</h3>
         <ul className='d-flex mt-2 ms-5 list-style-none'>
-          <li className='la-nav-link grey' onClick={() => showSubmissionPage()} style={stylePressedLink.submission}>Submissions</li>
-          <li className='ms-3 la-nav-link grey' onClick={() => showChatsPage()} style={stylePressedLink.chats}>Chats</li>
+          <li className='pointer grey' onClick={() => showSubmissionPage()} style={stylePressedLink.submission}>Submissions</li>
+          <li className='ms-3 pointer grey' onClick={() => showChatsPage()} style={stylePressedLink.chats}>Chats</li>
         </ul>
       </nav>
       <section className='mb-5' style={hideLessonAreaText}>
@@ -59,8 +62,8 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
         <button className='btn btn-danger ms-4' onClick={() => showLecturer(true)}>Close lesson area</button>
       </section>
       <section>
-        {linkPages.submission && <Submissions/>}
-        {linkPages.chats && <Chats/>}
+        {linkPages.submission && <Submissions courseInfo={courseInfo} lecturerInfo={lecturerInfo} />}
+        {linkPages.chats && <Chats courseInfo={courseInfo} lecturerInfo={lecturerInfo} />}
       </section>
     </main>
   )
