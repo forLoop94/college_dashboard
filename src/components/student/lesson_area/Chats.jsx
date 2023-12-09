@@ -38,9 +38,6 @@ export const Chats = ({ courseInfo, lecturerInfo }) => {
             );
           }
         })}
-        <form onSubmit={handleSubmit}>
-
-        </form>
       </section>
     );
   }
