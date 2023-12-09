@@ -36,7 +36,7 @@ export const Chats = ({ courseInfo, lecturerInfo, lessonAreaId }) => {
           );
         }
       })}
-      <ChatsForm lessonAreaId={lessonAreaId} />
+      <ChatsForm lessonAreaId={lessonAreaId} courseId={courseInfo.id} lecturerId={lecturerInfo.id} />
     </section>
   );
 };
