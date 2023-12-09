@@ -1,4 +1,4 @@
-import React from 'react'
+import "../../styles/lesson_area_form.css";
 
 export const LessonAreaForm = ({ studentId, courseId, lecturerId, setShowForm }) => {
   const data = {
@@ -26,9 +26,9 @@ export const LessonAreaForm = ({ studentId, courseId, lecturerId, setShowForm })
   }
 
   return (
-    <div>
-      <div>Confirm you are not a robot</div>
-      <button className='btn btn-primary' onClick={() => createlessonArea(data)}>Confirm</button>
+    <div className='modal-wrapper p-2'>
+      <h5 className="text-white">Confirm you are not a robot</h5>
+      <button className='btn btn-primary mt-4' onClick={() => createlessonArea(data)}>Confirm</button>
     </div>
   )
 }

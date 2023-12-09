@@ -1,0 +1,7 @@
+.modal-wrapper {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), url('https://tse1.mm.bing.net/th?id=OIP.zwpiR3_uPExSsX6nHK2PcwHaEW&pid=Api&P=0&h=220');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import "../../../styles/lesson_area.css";
 import { LessonAreaForm } from "../../forms/LessonAreaForm";
@@ -76,6 +77,10 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
     },
   };
 
+  const closeLessonAreaForm = () => {
+    setShowForm(false);
+  };
+
   return (
     <main>
       <nav className="d-flex ps-5 bg-light nav-menu">
@@ -135,12 +140,16 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
         )}
       </section>
       {showForm && (
-        <LessonAreaForm
-          studentId={profile_id}
-          courseId={courseInfo.id}
-          lecturerId={lecturerInfo.id}
-          setShowForm={setShowForm}
-        />
+        <Modal show={true} onHide={closeLessonAreaForm}>
+          <Modal.Body>
+            <LessonAreaForm
+              studentId={profile_id}
+              courseId={courseInfo.id}
+              lecturerId={lecturerInfo.id}
+              setShowForm={setShowForm}
+            />
+          </Modal.Body>
+        </Modal>
       )}
     </main>
   );
