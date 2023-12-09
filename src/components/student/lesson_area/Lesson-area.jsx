@@ -7,6 +7,7 @@ import { Chats } from "./Chats";
 import { Submissions } from "./Submissions";
 
 export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
+  const [area, setArea] = useState();
   const [showForm, setShowForm] = useState(false);
   const { profile_id } = useSelector((state) => state.user.currentUser);
   const [linkPages, setLinkPages] = useState({
@@ -38,6 +39,7 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
       if (!data) {
         setShowForm(true);
       }
+      setArea(data);
     };
 
     fetchData();
@@ -133,10 +135,10 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
       </section>
       <section>
         {linkPages.submission && (
-          <Submissions courseInfo={courseInfo} lecturerInfo={lecturerInfo} />
+          <Submissions courseInfo={courseInfo} lecturerInfo={lecturerInfo} lessonAreaId={area.id} />
         )}
         {linkPages.chats && (
-          <Chats courseInfo={courseInfo} lecturerInfo={lecturerInfo} />
+          <Chats courseInfo={courseInfo} lecturerInfo={lecturerInfo} lessonAreaId={area.id} />
         )}
       </section>
       {showForm && (
