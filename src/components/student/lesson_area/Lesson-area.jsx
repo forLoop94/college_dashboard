@@ -6,10 +6,16 @@ import { LessonAreaForm } from "../../forms/LessonAreaForm";
 import { Chats } from "./Chats";
 import { Submissions } from "./Submissions";
 
-export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
+export const LessonArea = ({
+  lecturerInfo,
+  courseInfo,
+  showLecturer,
+  studentDetails,
+  showStudents,
+}) => {
   const [area, setArea] = useState();
   const [showForm, setShowForm] = useState(false);
-  const { profile_id } = useSelector((state) => state.user.currentUser);
+  const { role, profile_id } = useSelector((state) => state.user.currentUser);
   const [linkPages, setLinkPages] = useState({
     submission: false,
     chats: false,
@@ -29,21 +35,41 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
     return data;
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getLessonArea(
-        profile_id,
-        courseInfo.id,
-        lecturerInfo.id
-      );
-      if (!data) {
-        setShowForm(true);
-      }
-      setArea(data);
-    };
+  if (role === "student") {
+    useEffect(() => {
+      const fetchData = async () => {
+        const data = await getLessonArea(
+          profile_id,
+          courseInfo.id,
+          lecturerInfo.id
+        );
+        if (!data) {
+          setShowForm(true);
+        }
+        setArea(data);
+      };
 
-    fetchData();
-  }, [profile_id, courseInfo.id, lecturerInfo.id]);
+      fetchData();
+    }, [profile_id, courseInfo.id, lecturerInfo.id]);
+  } else if (role === "lecturer") {
+    useEffect(() => {
+      const fetchData = async () => {
+        const data = await getLessonArea(
+          studentDetails.id,
+          courseInfo.id,
+          profile_id
+        );
+        if (!data) {
+          setShowForm(true);
+        }
+        setArea(data);
+      };
+
+      fetchData();
+    }, [profile_id, courseInfo.id, studentDetails.id]);
+  } else {
+    return;
+  }
 
   const showSubmissionPage = () => {
     setLinkPages({
@@ -85,7 +111,7 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
 
   return (
     <main>
-      <nav className="d-flex ps-5 bg-light nav-menu">
+      <nav className="d-flex ps-5 bg-light nav-menu fixed-top">
         <h3 className="mt-1 pointer" onClick={() => showLessonArea()}>
           Lesson Area
         </h3>
@@ -118,27 +144,49 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
           conversions between the student(name below) and lecturer(name below)
           on matters related to course: {courseInfo.title}
         </p>
-        <div className="ms-4">student: ...</div>
-        <div className="ms-4">
-          lecturer: {lecturerInfo.first_name} {lecturerInfo.last_name}
-        </div>
+        {role === 'student' ? (<div>
+          <div className="ms-4">student: You</div>
+          <div className="ms-4">
+            lecturer: {lecturerInfo.first_name} {lecturerInfo.last_name}
+          </div>
+        </div>) : (<div>
+          <div className="ms-4">Lecturer: You</div>
+          <div className="ms-4">
+            Student: {studentDetails.first_name} {studentDetails.last_name}
+          </div>
+        </div>)}
         <p className="ms-4 text-sm">
           Note: If the student, lecturer or course information above is
           incorrect, make a complain at <a href="#">studentSuport@rails.org</a>
         </p>
-        <button
+        {role === 'student' ? (<button
           className="btn btn-danger ms-4"
           onClick={() => showLecturer(true)}
         >
           Close lesson area
+        </button>) : (
+          <button
+          className="btn btn-danger ms-4"
+          onClick={() => showStudents(true)}
+        >
+          Close lesson area
         </button>
+        )}
       </section>
       <section>
         {linkPages.submission && (
-          <Submissions courseInfo={courseInfo} lecturerInfo={lecturerInfo} lessonAreaId={area.id} />
+          <Submissions
+            courseInfo={courseInfo}
+            lecturerInfo={lecturerInfo}
+            lessonAreaId={area.id}
+          />
         )}
         {linkPages.chats && (
-          <Chats courseInfo={courseInfo} lecturerInfo={lecturerInfo} lessonAreaId={area.id} />
+          <Chats
+            courseInfo={courseInfo}
+            lecturerInfo={lecturerInfo}
+            lessonAreaId={area.id}
+          />
         )}
       </section>
       {showForm && (
