@@ -20,6 +20,10 @@ export const CourseStudents = () => {
     last_name: "",
   });
   const students = useSelector((state) => state.Courses.students);
+  const [courseInfo, setCourseInfo] = useState({
+    id: null,
+    title: ''
+  })
 
   useEffect(() => {
     dispatch(getCourseStudents(courseId));
@@ -74,9 +78,10 @@ export const CourseStudents = () => {
             <div>{student.level}</div>
             <button
               className="btn btn-dark me-5"
-              onClick={() =>
-                fetchStudent(student.id, student.first_name, student.last_name)
-              }
+              onClick={() => {
+                fetchStudent(student.id, student.first_name, student.last_name);
+                setCourseInfo({ id: courseId, title: courseTitle });
+              }}
             >
               Submissions & Dialogue
             </button>
@@ -111,7 +116,7 @@ export const CourseStudents = () => {
           <LessonArea
             key={studentDetails.id}
             studentDetails={studentDetails}
-            courseInfo={courseId}
+            courseInfo={courseInfo}
             showStudents={showStudents}
           />
         )}

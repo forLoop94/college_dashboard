@@ -35,7 +35,7 @@ export const LessonArea = ({
     return data;
   };
 
-  if (role === "student") {
+  if (role && role === "student") {
     useEffect(() => {
       const fetchData = async () => {
         const data = await getLessonArea(
@@ -144,47 +144,53 @@ export const LessonArea = ({
           conversions between the student(name below) and lecturer(name below)
           on matters related to course: {courseInfo.title}
         </p>
-        {role === 'student' ? (<div>
-          <div className="ms-4">student: You</div>
-          <div className="ms-4">
-            lecturer: {lecturerInfo.first_name} {lecturerInfo.last_name}
+        {role === "student" ? (
+          <div>
+            <div className="ms-4">student: You</div>
+            <div className="ms-4">
+              lecturer: {lecturerInfo.first_name} {lecturerInfo.last_name}
+            </div>
           </div>
-        </div>) : (<div>
-          <div className="ms-4">Lecturer: You</div>
-          <div className="ms-4">
-            Student: {studentDetails.first_name} {studentDetails.last_name}
+        ) : (
+          <div>
+            <div className="ms-4">Lecturer: You</div>
+            <div className="ms-4">
+              Student: {studentDetails.first_name} {studentDetails.last_name}
+            </div>
           </div>
-        </div>)}
+        )}
         <p className="ms-4 text-sm">
           Note: If the student, lecturer or course information above is
           incorrect, make a complain at <a href="#">studentSuport@rails.org</a>
         </p>
-        {role === 'student' ? (<button
-          className="btn btn-danger ms-4"
-          onClick={() => showLecturer(true)}
-        >
-          Close lesson area
-        </button>) : (
+        {role === "student" ? (
           <button
-          className="btn btn-danger ms-4"
-          onClick={() => showStudents(true)}
-        >
-          Close lesson area
-        </button>
+            className="btn btn-danger ms-4"
+            onClick={() => showLecturer(true)}
+          >
+            Close lesson area
+          </button>
+        ) : (
+          <button
+            className="btn btn-danger ms-4"
+            onClick={() => showStudents(true)}
+          >
+            Close lesson area
+          </button>
         )}
       </section>
       <section>
         {linkPages.submission && (
           <Submissions
             courseInfo={courseInfo}
-            otherUserInfo={role === 'student' ? lecturerInfo : studentDetails}
+            otherUserInfo={role === "student" ? lecturerInfo : studentDetails}
             lessonAreaId={area.id}
           />
         )}
         {linkPages.chats && (
           <Chats
             courseInfo={courseInfo}
-            otherUserInfo={role === 'student' ? lecturerInfo : studentDetails}
+            otherUserInfo={role === "student" ? lecturerInfo : studentDetails}
             lessonAreaId={area.id}
           />
         )}

@@ -27,7 +27,7 @@ export const Chats = ({ courseInfo, otherUserInfo, lessonAreaId }) => {
         if (chat.user_id === id) {
           return (
             <article key={chat.id} className="d-flex justify-content-end">
-              <p className="w-50 incoming-chats word-wrap-break-word text-end">
+              <p className="w-50 word-wrap-break-word text-end">
                 {chat.message}
               </p>
             </article>
@@ -35,7 +35,7 @@ export const Chats = ({ courseInfo, otherUserInfo, lessonAreaId }) => {
         } else {
           return (
             <article key={chat.id} className="d-flex justify-content-start">
-              <p className="w-50 outgoing-chats word-wrap-break-word d-flex">
+              <p className="w-50 word-wrap-break-word d-flex text-start">
                 {chat.message}
               </p>
             </article>
