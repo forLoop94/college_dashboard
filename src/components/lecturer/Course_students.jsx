@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCourseStudents } from "../../redux/course/courseSlice";
 import { Grade } from "./Grade";
 import PropTypes from "prop-types";
-import { Button, Modal } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { Modal } from "react-bootstrap";
+import { propTypes } from "prop-types";
 import { LessonArea } from "../student/lesson_area/Lesson-area";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const CourseStudents = ({ course, showAssignedCourses }) => {
+export const CourseStudents = () => {
+  const { courseId, courseTitle } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const [studentDetails, setStudentDetails] = useState({
@@ -19,8 +22,8 @@ export const CourseStudents = ({ course, showAssignedCourses }) => {
   const students = useSelector((state) => state.Courses.students);
 
   useEffect(() => {
-    dispatch(getCourseStudents(course.id));
-  }, [dispatch, course.id]);
+    dispatch(getCourseStudents(courseId));
+  }, [dispatch, courseId]);
 
   const createGrade = (studentId) => {
     setSelectedStudentId(studentId);
@@ -42,6 +45,10 @@ export const CourseStudents = ({ course, showAssignedCourses }) => {
     display: studentDetails.id ? "none" : "block",
   };
 
+  const showAssignedCourses = () => {
+    navigate("/assigned_courses");
+  }
+
   const showStudents = (bool) => {
     if (bool) {
       setStudentDetails({
@@ -55,7 +62,7 @@ export const CourseStudents = ({ course, showAssignedCourses }) => {
   return (
     <div>
       <div style={hideStudents}>
-        <h1>Students offering {course.title}</h1>
+        <h1>Students offering {courseTitle}</h1>
         {students.map((student) => (
           <article key={student.id}>
             <h3>
@@ -83,7 +90,7 @@ export const CourseStudents = ({ course, showAssignedCourses }) => {
         ))}
         <button
           className="btn btn-primary mt-5"
-          onClick={() => showAssignedCourses(true)}
+          onClick={() => showAssignedCourses()}
         >
           Back to assigned courses
         </button>
@@ -92,7 +99,7 @@ export const CourseStudents = ({ course, showAssignedCourses }) => {
             <Modal.Body>
               <Grade
                 studentId={selectedStudentId}
-                courseId={course.id}
+                courseId={courseId}
                 onClose={closeGradeModal}
               />
             </Modal.Body>
@@ -104,7 +111,7 @@ export const CourseStudents = ({ course, showAssignedCourses }) => {
           <LessonArea
             key={studentDetails.id}
             studentDetails={studentDetails}
-            courseInfo={course}
+            courseInfo={courseId}
             showStudents={showStudents}
           />
         )}

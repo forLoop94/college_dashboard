@@ -1,49 +1,30 @@
-import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAssignedCourses } from "../../redux/lecturer/lecturerSlice";
-import { CourseStudents } from "./Course_students";
 import "../../styles/lecturers.css";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const Assigned_courses = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const assignedCourses = useSelector(
     (state) => state.Lecturers.assignedCourses
   );
-  const [selectedCourse, setSelectedCourse] = useState({
-    id: null,
-    title: null,
-  });
 
   useEffect(() => {
     dispatch(getAssignedCourses());
   }, [dispatch]);
 
   const showStudents = (courseId, courseTitle) => {
-    setSelectedCourse({
-      id: courseId,
-      title: courseTitle,
-    });
-  };
-
-  const hideAssignedCourses = {
-    display: selectedCourse.id ? "none" : "block",
-  };
-
-  const showAssignedCourses = (toogle) => {
-    if (toogle) {
-      setSelectedCourse({
-        id: null,
-      });
-    }
+    navigate(`/assigned_courses/${courseId}/${courseTitle}`);
   };
 
   return (
     <section>
       <h1>Assigned Courses</h1>
       <main className="assigned_courses">
-        <section style={hideAssignedCourses}>
+        <section>
           <small>
             Below are the courses you have been assigned by the department.
             There have been choosen from courses you elegible to handle
@@ -65,13 +46,6 @@ export const Assigned_courses = () => {
             </article>
           ))}
         </section>
-        {selectedCourse.id && (
-          <CourseStudents
-            key={selectedCourse.id}
-            course={selectedCourse}
-            showAssignedCourses={showAssignedCourses}
-          />
-        )}
       </main>
     </section>
   );

@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { addGrades, getTargetGrade } from '../../redux/grade/gradeSlice';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
-export const NewGrade = ({ studentId, courseId, onClose }) => {
+export const NewGrade = ({ studentId, onClose }) => {
+  const { courseId, courseTitle } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [warning, setWarning] = useState('');
@@ -25,7 +26,7 @@ export const NewGrade = ({ studentId, courseId, onClose }) => {
     dispatch(addGrades(formData)).then(() => {
       dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
     })
-    navigate("/assigned_courses");
+    navigate(`/assigned_courses/${courseId}/${courseTitle}`);
     setFormData({
       value: ''
     })
