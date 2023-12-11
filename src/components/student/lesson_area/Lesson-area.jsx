@@ -111,7 +111,7 @@ export const LessonArea = ({
 
   return (
     <main>
-      <nav className="d-flex ps-5 bg-light nav-menu fixed-top">
+      <nav className="d-flex ps-5 bg-light position-fixed top-0 w-100">
         <h3 className="mt-1 pointer" onClick={() => showLessonArea()}>
           Lesson Area
         </h3>
@@ -177,14 +177,14 @@ export const LessonArea = ({
         {linkPages.submission && (
           <Submissions
             courseInfo={courseInfo}
-            lecturerInfo={lecturerInfo}
+            otherUserInfo={role === 'student' ? lecturerInfo : studentDetails}
             lessonAreaId={area.id}
           />
         )}
         {linkPages.chats && (
           <Chats
             courseInfo={courseInfo}
-            lecturerInfo={lecturerInfo}
+            otherUserInfo={role === 'student' ? lecturerInfo : studentDetails}
             lessonAreaId={area.id}
           />
         )}

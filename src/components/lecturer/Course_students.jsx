@@ -38,65 +38,78 @@ export const CourseStudents = ({ course, showAssignedCourses }) => {
     });
   };
 
+  const hideStudents = {
+    display: studentDetails.id ? "none" : "block",
+  };
+
   const showStudents = (bool) => {
-    if(bool) {
+    if (bool) {
       setStudentDetails({
         id: null,
-        first_name: '',
-        last_name: ''
-      })
+        first_name: "",
+        last_name: "",
+      });
     }
-  }
+  };
 
   return (
-    <section>
-      <h1>Students offering {course.title}</h1>
-      {students.map((student) => (
-        <article key={student.id}>
-          <h3>
-            <span>{student.first_name + " "}</span>
-            <span>{" " + student.last_name}</span>
-          </h3>
-          <div>{student.photo}</div>
-          <div>{student.gender}</div>
-          <div>{student.level}</div>
-          <button
-            className="btn btn-dark me-5"
-            onClick={() =>
-              fetchStudent(student.id, student.first_name, student.last_name)
-            }
-          >
-            Submissions & Dialogue
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={() => createGrade(student.id)}
-          >
-            Grade
-          </button>
-        </article>
-      ))}
-      <button
-        className="btn btn-primary mt-5"
-        onClick={() => showAssignedCourses(true)}
-      >
-        Back to assigned courses
-      </button>
-      {selectedStudentId && (
-        <Modal show={true} onHide={closeGradeModal}>
-          <Modal.Body>
-            <Grade
-              studentId={selectedStudentId}
-              courseId={course.id}
-              onClose={closeGradeModal}
-            />
-          </Modal.Body>
-        </Modal>
-      )}
-      <div>
-        {studentDetails.id && <LessonArea key={studentDetails.id} studentDetails={studentDetails} courseInfo={course} showStudents={showStudents} />}
+    <div>
+      <div style={hideStudents}>
+        <h1>Students offering {course.title}</h1>
+        {students.map((student) => (
+          <article key={student.id}>
+            <h3>
+              <span>{student.first_name + " "}</span>
+              <span>{" " + student.last_name}</span>
+            </h3>
+            <div>{student.photo}</div>
+            <div>{student.gender}</div>
+            <div>{student.level}</div>
+            <button
+              className="btn btn-dark me-5"
+              onClick={() =>
+                fetchStudent(student.id, student.first_name, student.last_name)
+              }
+            >
+              Submissions & Dialogue
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => createGrade(student.id)}
+            >
+              Grade
+            </button>
+          </article>
+        ))}
+        <button
+          className="btn btn-primary mt-5"
+          onClick={() => showAssignedCourses(true)}
+        >
+          Back to assigned courses
+        </button>
+        {selectedStudentId && (
+          <Modal show={true} onHide={closeGradeModal}>
+            <Modal.Body>
+              <Grade
+                studentId={selectedStudentId}
+                courseId={course.id}
+                onClose={closeGradeModal}
+              />
+            </Modal.Body>
+          </Modal>
+        )}
       </div>
-    </section>
+      <div>
+        {studentDetails.id && (
+          <LessonArea
+            key={studentDetails.id}
+            studentDetails={studentDetails}
+            courseInfo={course}
+            showStudents={showStudents}
+          />
+        )}
+      </div>
+    </div>
   );
 };
 

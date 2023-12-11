@@ -4,39 +4,45 @@ import { getLessonChats } from "../../../redux/student/studentSlice";
 import "../../../styles/lesson_area.css";
 import { ChatsForm } from "../../forms/ChatsForm";
 
-export const Chats = ({ courseInfo, lecturerInfo, lessonAreaId }) => {
+export const Chats = ({ courseInfo, otherUserInfo, lessonAreaId }) => {
   const dispatch = useDispatch();
   const chats = useSelector((state) => state.Students.chats);
-  const { id } = useSelector((state) => state.user.currentUser);
+  const { id, role, profile_id } = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
-    dispatch(
-      getLessonChats({ courseId: courseInfo.id, lecturerId: lecturerInfo.id })
-    );
-  }, [dispatch]);
+    if (role === 'student') {
+      dispatch(
+        getLessonChats({ studentId: profile_id, courseId: courseInfo.id, lecturerId: otherUserInfo.id })
+      );
+    } else {
+      dispatch(
+        getLessonChats({ studentId: otherUserInfo.id, courseId: courseInfo.id, lecturerId: profile_id })
+      );
+    }
+  }, [dispatch, profile_id, courseInfo.id, otherUserInfo.id]);
 
   return (
     <section className="m-5">
       {chats.map((chat) => {
         if (chat.user_id === id) {
           return (
-            <article key={chat.id} className="d-flex justify-content-start">
-              <p className="w-50 outgoing-chats word-wrap-break-word">
+            <article key={chat.id} className="d-flex justify-content-end">
+              <p className="w-50 incoming-chats word-wrap-break-word text-end">
                 {chat.message}
               </p>
             </article>
           );
         } else {
           return (
-            <article key={chat.id} className="d-flex justify-content-end">
-              <p className="w-50 incoming-chats word-wrap-break-word d-flex justify-content-end">
+            <article key={chat.id} className="d-flex justify-content-start">
+              <p className="w-50 outgoing-chats word-wrap-break-word d-flex">
                 {chat.message}
               </p>
             </article>
           );
         }
       })}
-      <ChatsForm lessonAreaId={lessonAreaId} courseId={courseInfo.id} lecturerId={lecturerInfo.id} />
+      <ChatsForm lessonAreaId={lessonAreaId} courseId={courseInfo.id} otherUserId={otherUserInfo.id} />
     </section>
   );
 };
