@@ -1,6 +1,6 @@
 import "../../styles/lesson_area_form.css";
 
-export const LessonAreaForm = ({ studentId, courseId, lecturerId, setShowForm }) => {
+export const LessonAreaForm = ({ studentId, courseId, lecturerId, setShowForm, setRefreshPage }) => {
   const data = {
     student_id: studentId,
     course_id: courseId,
@@ -20,6 +20,7 @@ export const LessonAreaForm = ({ studentId, courseId, lecturerId, setShowForm })
     if (response.ok) {
       const result = await response.json();
       console.log(result);
+      setRefreshPage(true);
       setShowForm(false)
       return result;
     }

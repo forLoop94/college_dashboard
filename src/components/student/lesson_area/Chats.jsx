@@ -35,7 +35,7 @@ export const Chats = ({ courseInfo, otherUserInfo, lessonAreaId }) => {
         } else {
           return (
             <article key={chat.id} className="d-flex justify-content-start">
-              <p className="w-50 word-wrap-break-word d-flex text-start">
+              <p className="w-50 word-wrap-break-word d-flex">
                 {chat.message}
               </p>
             </article>
