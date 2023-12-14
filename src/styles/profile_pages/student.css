@@ -1,0 +1,31 @@
+.headline, .card {
+  background: linear-gradient(90deg, rgba(230, 10, 10,  0.7),rgba(0, 0, 0, 0.917));
+  height: 30vh;
+  position: relative;
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+}
+
+.bio {
+  font-size: 13px;
+}
+
+.card {
+  height: 5%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(230, 10, 10,  0.7));
+}
+
+@media (min-width: 768px) {
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    left: 2%;
+  }
+}
