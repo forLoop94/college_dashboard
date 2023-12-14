@@ -43,7 +43,7 @@ export const getLecturers = createAsyncThunk(
 );
 
 export const getlecturerDetails = createAsyncThunk(
-  "hods/getlecturerDetails",
+  "lecturers/getlecturerDetails",
   async (id) => {
     const token = localStorage.getItem("token");
     const response = await fetch(`${baseURL}/lecturers/${id}`, {

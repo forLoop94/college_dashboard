@@ -43,6 +43,21 @@ export const getStudents = createAsyncThunk('students/getStudents', async () => 
   }
 })
 
+export const getStudentDetails = createAsyncThunk('students/getStudentDetails', async(id) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/students/${id}`, {
+    headers: {
+      authorization: token
+    }
+  })
+  if(response.ok) {
+    const data = await response.json()
+    return data;
+  } else {
+    console.log("kisi")
+  }
+})
+
 export const getRecommendedCourses = createAsyncThunk("students/getRecommendedCourses", async() => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${baseURL}/recommended_courses`, {
@@ -78,6 +93,7 @@ export const getLessonChats = createAsyncThunk("students/getLessonChats", async(
 
 const initialState = {
   students: [],
+  studentDetails: "",
   recommended: [],
   chats: [],
   links: []
@@ -90,6 +106,9 @@ const studentSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getStudents.fulfilled, (state, action) => {
       state.students = action.payload;
+    })
+    builder.addCase(getStudentDetails.fulfilled, (state, action) => {
+      state.studentDetails = action.payload;
     })
     builder.addCase(getRecommendedCourses.fulfilled, (state, action) => {
       state.recommended = action.payload;
