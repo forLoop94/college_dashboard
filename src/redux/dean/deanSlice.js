@@ -23,6 +23,19 @@ export const addDean = createAsyncThunk('deans/addDean', async(body) => {
   }
 })
 
+export const getDeanDetails = createAsyncThunk('deans/getDeanDetails', async(id) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/deans/${id}`, {
+    headers: {
+      authorization: token
+    }
+  })
+  if(response.ok) {
+    const data = await response.json()
+    return data;
+  }
+})
+
 export const getSchools = createAsyncThunk('schools/getSchools', async() => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${baseURL}/schools`, {
@@ -59,6 +72,7 @@ export const getHodsList = createAsyncThunk('schools/getHodsList', async() => {
 const initialState = {
   schools: [],
   deanList: [],
+  details: "",
   hods: [],
 }
 
@@ -68,6 +82,9 @@ const deanSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getSchools.fulfilled, (state, action) => {
       state.schools = action.payload;
+    });
+    builder.addCase(getDeanDetails.fulfilled, (state, action) => {
+      state.details = action.payload;
     });
     builder.addCase(getDeanList.fulfilled, (state, action) => {
       state.deanList = action.payload;

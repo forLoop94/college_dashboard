@@ -53,8 +53,6 @@ export const getStudentDetails = createAsyncThunk('students/getStudentDetails', 
   if(response.ok) {
     const data = await response.json()
     return data;
-  } else {
-    console.log("kisi")
   }
 })
 
