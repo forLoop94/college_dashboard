@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import "../../../styles/lesson_area.css";
 import { LessonAreaForm } from "../../forms/LessonAreaForm";
 import { Chats } from "./Chats";
@@ -10,11 +11,20 @@ export const LessonArea = ({
   lecturerInfo,
   courseInfo,
   showLecturer,
-  studentDetails,
-  showStudents,
+  // studentDetails,
+  // showStudents,
 }) => {
+  const { courseId, courseTitle, studentId, firstName, lastName } = useParams();
   const [area, setArea] = useState(null);
+  const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
+  const [studentCourseInfo, setStudentCourseInfo] = useState({
+    id: null,
+    first_name: "",
+    last_name: "",
+    course_id: "",
+    course_title: "",
+  });
   const { role, profile_id } = useSelector((state) => state.user.currentUser);
   const [linkPages, setLinkPages] = useState({
     submission: false,
@@ -54,19 +64,22 @@ export const LessonArea = ({
   } else if (role === "lecturer") {
     useEffect(() => {
       const fetchData = async () => {
-        const data = await getLessonArea(
-          studentDetails.id,
-          courseInfo.id,
-          profile_id
-        );
+        const data = await getLessonArea(studentId, courseId, profile_id);
         if (!data) {
           setShowForm(true);
         }
         setArea(data);
+        setStudentCourseInfo({
+          id: studentId,
+          first_name: firstName,
+          last_name: lastName,
+          course_id: courseId,
+          course_title: courseTitle,
+        });
       };
 
       fetchData();
-    }, [profile_id, courseInfo.id, studentDetails.id]);
+    }, [profile_id, courseId, studentId]);
   } else {
     return;
   }
@@ -109,8 +122,6 @@ export const LessonArea = ({
     setShowForm(false);
   };
 
-  console.log(area);
-
   return (
     <main>
       <nav className="d-flex ps-5 bg-light position-fixed top-0 w-100">
@@ -127,7 +138,10 @@ export const LessonArea = ({
           </li>
           <li
             className="ms-3 pointer grey"
-            onClick={() => showChatsPage()}
+            onClick={() => {
+              showChatsPage();
+              // setStudentCourseInfo({ id: studentId, first_name: fName, last_name: lName, course_id: courseId, course_title: courseTitle });
+            }}
             style={stylePressedLink.chats}
           >
             Chats
@@ -144,7 +158,7 @@ export const LessonArea = ({
           This Lesson area is provided to support the easy exchange of study
           materials, tests, assignments, examinations and general academic
           conversions between the student(name below) and lecturer(name below)
-          on matters related to course: {courseInfo.title}
+          on matters related to course: {courseTitle}
         </p>
         {role === "student" ? (
           <div>
@@ -157,7 +171,7 @@ export const LessonArea = ({
           <div>
             <div className="ms-4">Lecturer: You</div>
             <div className="ms-4">
-              Student: {studentDetails.first_name} {studentDetails.last_name}
+              Student: {firstName} {lastName}
             </div>
           </div>
         )}
@@ -175,7 +189,9 @@ export const LessonArea = ({
         ) : (
           <button
             className="btn btn-danger ms-4"
-            onClick={() => showStudents(true)}
+            onClick={() =>
+              navigate(`/assigned_courses/${courseId}/${courseTitle}`)
+            }
           >
             Close lesson area
           </button>
@@ -185,14 +201,18 @@ export const LessonArea = ({
         {linkPages.submission && (
           <Submissions
             courseInfo={courseInfo}
-            otherUserInfo={role === "student" ? lecturerInfo : studentDetails}
+            otherUserInfo={
+              role === "student" ? lecturerInfo : studentCourseInfo
+            }
             lessonAreaId={area.id}
           />
         )}
         {linkPages.chats && (
           <Chats
-            courseInfo={courseInfo}
-            otherUserInfo={role === "student" ? lecturerInfo : studentDetails}
+            // courseInfo={courseInfo}
+            otherUserInfo={
+              role === "student" ? lecturerInfo : studentCourseInfo
+            }
             lessonAreaId={area.id}
           />
         )}
@@ -209,8 +229,9 @@ export const LessonArea = ({
               />
             ) : (
               <LessonAreaForm
-                studentId={studentDetails.id}
-                courseInfo={courseInfo}
+                // studentId={studentDetails.id}
+                // courseInfo={courseInfo}
+                studentCourseInfo={studentCourseInfo}
                 lecturerId={profile_id}
                 setShowForm={setShowForm}
                 setArea={setArea}

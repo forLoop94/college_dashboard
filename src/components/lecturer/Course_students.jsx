@@ -14,16 +14,16 @@ export const CourseStudents = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
-  const [studentDetails, setStudentDetails] = useState({
-    id: null,
-    first_name: "",
-    last_name: "",
-  });
+  // const [studentDetails, setStudentDetails] = useState({
+  //   id: null,
+  //   first_name: "",
+  //   last_name: "",
+  // });
   const students = useSelector((state) => state.Courses.students);
-  const [courseInfo, setCourseInfo] = useState({
-    id: null,
-    title: ''
-  })
+  // const [courseInfo, setCourseInfo] = useState({
+  //   id: null,
+  //   title: ''
+  // })
 
   useEffect(() => {
     dispatch(getCourseStudents(courseId));
@@ -38,34 +38,35 @@ export const CourseStudents = () => {
   };
 
   const fetchStudent = (id, fName, lName) => {
-    setStudentDetails({
-      id: id,
-      first_name: fName,
-      last_name: lName,
-    });
+    // setStudentDetails({
+    //   id: id,
+    //   first_name: fName,
+    //   last_name: lName,
+    // });
+    navigate(`/lesson_area/${courseId}/${courseTitle}/${id}/${fName}/${lName}`);
   };
 
-  const hideStudents = {
-    display: studentDetails.id ? "none" : "block",
-  };
+  // const hideStudents = {
+  //   display: studentDetails.id ? "none" : "block",
+  // };
 
-  const showAssignedCourses = () => {
-    navigate("/assigned_courses");
-  }
+  // const showAssignedCourses = () => {
+  //   navigate("/assigned_courses");
+  // }
 
-  const showStudents = (bool) => {
-    if (bool) {
-      setStudentDetails({
-        id: null,
-        first_name: "",
-        last_name: "",
-      });
-    }
-  };
+  // const showStudents = (bool) => {
+  //   if (bool) {
+  //     setStudentDetails({
+  //       id: null,
+  //       first_name: "",
+  //       last_name: "",
+  //     });
+  //   }
+  // };
 
   return (
     <div>
-      <div style={hideStudents}>
+      <div>
         <h1>Students offering {courseTitle}</h1>
         {students.map((student) => (
           <article key={student.id}>
@@ -80,7 +81,6 @@ export const CourseStudents = () => {
               className="btn btn-dark me-5"
               onClick={() => {
                 fetchStudent(student.id, student.first_name, student.last_name);
-                setCourseInfo({ id: courseId, title: courseTitle });
               }}
             >
               Submissions & Dialogue
@@ -95,7 +95,7 @@ export const CourseStudents = () => {
         ))}
         <button
           className="btn btn-primary mt-5"
-          onClick={() => showAssignedCourses()}
+          onClick={() => navigate("/assigned_courses")}
         >
           Back to assigned courses
         </button>
@@ -111,7 +111,7 @@ export const CourseStudents = () => {
           </Modal>
         )}
       </div>
-      <div>
+      {/* <div>
         {studentDetails.id && (
           <LessonArea
             key={studentDetails.id}
@@ -120,7 +120,7 @@ export const CourseStudents = () => {
             showStudents={showStudents}
           />
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

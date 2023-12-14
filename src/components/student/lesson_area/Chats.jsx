@@ -4,7 +4,7 @@ import { getLessonChats } from "../../../redux/student/studentSlice";
 import "../../../styles/lesson_area.css";
 import { ChatsForm } from "../../forms/ChatsForm";
 
-export const Chats = ({ courseInfo, otherUserInfo, lessonAreaId }) => {
+export const Chats = ({ otherUserInfo, lessonAreaId }) => {
   const dispatch = useDispatch();
   const chats = useSelector((state) => state.Students.chats);
   const { id, role, profile_id } = useSelector((state) => state.user.currentUser);
@@ -16,10 +16,10 @@ export const Chats = ({ courseInfo, otherUserInfo, lessonAreaId }) => {
       );
     } else {
       dispatch(
-        getLessonChats({ studentId: otherUserInfo.id, courseId: courseInfo.id, lecturerId: profile_id })
+        getLessonChats({ studentId: otherUserInfo.id, courseId: otherUserInfo.course_id, lecturerId: profile_id })
       );
     }
-  }, [dispatch, profile_id, courseInfo.id, otherUserInfo.id]);
+  }, [dispatch, profile_id, otherUserInfo]);
 
   return (
     <section className="m-5">
@@ -42,7 +42,7 @@ export const Chats = ({ courseInfo, otherUserInfo, lessonAreaId }) => {
           );
         }
       })}
-      <ChatsForm lessonAreaId={lessonAreaId} courseId={courseInfo.id} otherUserId={otherUserInfo.id} />
+      <ChatsForm lessonAreaId={lessonAreaId} courseId={otherUserInfo.course_id} otherUserId={otherUserInfo.id} />
     </section>
   );
 };
