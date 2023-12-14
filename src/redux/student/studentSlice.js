@@ -89,6 +89,22 @@ export const getLessonChats = createAsyncThunk("students/getLessonChats", async(
   return chats
 })
 
+export const updateStudent = createAsyncThunk('students/updateStudent', async({ body, id }) => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(`${baseURL}/students/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: token,
+    },
+    body: JSON.stringify(body)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    return data;
+  }
+})
+
 const initialState = {
   students: [],
   studentDetails: "",
