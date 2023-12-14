@@ -1,17 +1,20 @@
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../styles/lesson_area_form.css";
 
 export const LessonAreaForm = ({
   studentCourseInfo,
   lecturerId,
+  studentId,
   setShowForm,
   setArea,
 }) => {
   const navigate = useNavigate();
+  const { role } = useSelector(state => state.user.currentUser);
   const data = {
-    student_id: studentCourseInfo.id,
+    student_id: role === "student" ? studentId : studentCourseInfo.id,
     course_id: studentCourseInfo.course_id,
-    lecturer_id: lecturerId,
+    lecturer_id: role === "student" ? studentCourseInfo.id : lecturerId,
   };
 
   const createlessonArea = async (body) => {
@@ -28,9 +31,15 @@ export const LessonAreaForm = ({
       const result = await response.json();
       console.log(result);
       setArea(result);
-      navigate(
-        `/assigned_courses/${studentCourseInfo.course_id}/${studentCourseInfo.course_title}`
-      );
+      if (role === "student") {
+        navigate(
+          `/recommended_courses/${studentCourseInfo.course_id}/${studentCourseInfo.course_title}`
+        );
+      } else {
+        navigate(
+          `/assigned_courses/${studentCourseInfo.course_id}/${studentCourseInfo.course_title}`
+        );
+      }
       setShowForm(false);
       return result;
     }

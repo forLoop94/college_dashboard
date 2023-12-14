@@ -1,19 +1,11 @@
-import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCourseLecturers } from "../../redux/course/courseSlice";
-import { LessonArea } from "./lesson_area/Lesson-area";
 
 export const CourseLecturers = () => {
   const navigate = useNavigate();
   const { courseId, courseTitle } = useParams();
-
-  const [lecturerDetails, setlecturerDetails] = useState({
-    id: null,
-    first_name: '',
-    last_name: ''
-  });
   const dispatch = useDispatch();
   const lecturers = useSelector((state) => state.Courses.lecturers);
 
@@ -21,33 +13,13 @@ export const CourseLecturers = () => {
     dispatch(getCourseLecturers(courseId));
   }, [dispatch]);
 
-  const fetchLecturer = (id, fName, lName) => {
-    setlecturerDetails({
-      id: id,
-      first_name: fName,
-      last_name: lName
-    });
-  };
-
-  const hideLecturer = {
-    display: lecturerDetails.id ? 'none' : 'block'
-  }
-
-  const showLecturer = (bool) => {
-    if(bool) {
-      setlecturerDetails({
-        id: null
-      })
-    }
-  }
-
   if (lecturers.length === 0) {
     return "This course has not been assigned a lecturer";
   }
 
   return (
     <main>
-      <section style={hideLecturer}>
+      <section>
         {lecturers.map((lecturer) => (
           <article key={lecturer.id}>
             <h3>
@@ -73,9 +45,6 @@ export const CourseLecturers = () => {
           Back to Courses
         </button>
       </section>
-      {/* <section>
-        {lecturerDetails.id && <LessonArea key={lecturerDetails.id} lecturerInfo={lecturerDetails} courseInfo={courseInfo} showLecturer={showLecturer} />}
-      </section> */}
     </main>
   );
 };

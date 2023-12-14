@@ -7,7 +7,7 @@ import { LessonAreaForm } from "../../forms/LessonAreaForm";
 import { Chats } from "./Chats";
 import { Submissions } from "./Submissions";
 
-export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
+export const LessonArea = () => {
   const [area, setArea] = useState(null);
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
@@ -48,8 +48,8 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
       const fetchData = async () => {
         const data = await getLessonArea(
           profile_id,
-          courseInfo.id,
-          lecturerInfo.id
+          courseId,
+          lecturerId
         );
         if (!data) {
           setShowForm(true);
@@ -204,18 +204,13 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
       <section>
         {linkPages.submission && (
           <Submissions
-            courseInfo={courseInfo}
-            otherUserInfo={
-              role === "student" ? lecturerInfo : studentCourseInfo
-            }
+            otherUserInfo={studentCourseInfo}
             lessonAreaId={area.id}
           />
         )}
         {linkPages.chats && (
           <Chats
-            otherUserInfo={
-              role === "student" ? lecturerInfo : studentCourseInfo
-            }
+            otherUserInfo={studentCourseInfo}
             lessonAreaId={area.id}
           />
         )}
@@ -226,9 +221,9 @@ export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
             {role === "student" ? (
               <LessonAreaForm
                 studentId={profile_id}
-                courseId={courseInfo.id}
-                lecturerId={lecturerInfo.id}
+                studentCourseInfo={studentCourseInfo}
                 setShowForm={setShowForm}
+                setArea={setArea}
               />
             ) : (
               <LessonAreaForm

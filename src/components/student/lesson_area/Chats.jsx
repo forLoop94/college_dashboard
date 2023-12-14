@@ -12,7 +12,7 @@ export const Chats = ({ otherUserInfo, lessonAreaId }) => {
   useEffect(() => {
     if (role === 'student') {
       dispatch(
-        getLessonChats({ studentId: profile_id, courseId: courseInfo.id, lecturerId: otherUserInfo.id })
+        getLessonChats({ studentId: profile_id, courseId: otherUserInfo.course_id, lecturerId: otherUserInfo.id })
       );
     } else {
       dispatch(
