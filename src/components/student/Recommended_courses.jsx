@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getRecommendedCourses } from "../../redux/student/studentSlice";
 import { CourseLecturers } from "./Course_lecturers";
 
 export const Recommended_courses = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [selectedCourse, setSelectedCourse] = useState({
     id: null,
     title: null,
@@ -15,28 +17,29 @@ export const Recommended_courses = () => {
     dispatch(getRecommendedCourses());
   }, [dispatch]);
 
-  const showCourseLecturers = (id, title) => {
-    setSelectedCourse({
-      id: id,
-      title: title,
-    });
-  };
+  // const showCourseLecturers = (id, title) => {
+  //   setSelectedCourse({
+  //     id: id,
+  //     title: title,
+  //   });
+  //   navigate(`/recommended_courses/${course.id}/${course.title}`)
+  // };
 
-  const hideRecCourses = {
-    display: selectedCourse.id ? "none" : "block"
-  }
+  // const hideRecCourses = {
+  //   display: selectedCourse.id ? "none" : "block"
+  // }
 
-  const showRecCourses = (bool) => {
-    if(bool) {
-      setSelectedCourse({
-        id: null
-      })
-    }
-  }
+  // const showRecCourses = (bool) => {
+  //   if(bool) {
+  //     setSelectedCourse({
+  //       id: null
+  //     })
+  //   }
+  // }
 
   return (
     <main>
-      <section style={hideRecCourses}>
+      <section>
         <h1>Recommended Courses</h1>
         {recCourses.map((course) => (
           <article key={course.id}>
@@ -46,14 +49,14 @@ export const Recommended_courses = () => {
             <div>{course.department.name}</div>
             <button
               className="btn btn-primary"
-              onClick={() => showCourseLecturers(course.id, course.title)}
+              onClick={() => navigate(`/recommended_courses/${course.id}/${course.title}`)}
             >
               Lecturers
             </button>
           </article>
         ))}
       </section>
-      <section>
+      {/* <section>
         {selectedCourse.id && (
           <CourseLecturers
             key={selectedCourse.id}
@@ -61,7 +64,7 @@ export const Recommended_courses = () => {
             showRecCourses={showRecCourses}
           />
         )}
-      </section>
+      </section> */}
     </main>
   );
 };

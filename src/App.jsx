@@ -26,6 +26,7 @@ import { Hods } from './components/dean/Hods';
 import { HodDetails } from './components/hod/HodDetails';
 import { CourseStudents } from './components/lecturer/Course_students';
 import { LessonArea } from './components/student/lesson_area/Lesson-area';
+import { CourseLecturers } from './components/student/Course_lecturers';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         <Route path='/recommended_courses' element={<Recommended_courses />} />
         <Route path='/assigned_courses' element={<Assigned_courses />} />
         <Route path='/assigned_courses/:courseId/:courseTitle' element={<CourseStudents />} />
+        <Route path='/recommended_courses/:courseId/:courseTitle' element={<CourseLecturers />} />
         <Route path='lesson_area/:courseId/:courseTitle/:studentId/:firstName/:lastName' element={<LessonArea />}></Route>
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
         <Route path='/course_grades' element={<Grades /> } />

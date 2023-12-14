@@ -6,7 +6,6 @@ import { Grade } from "./Grade";
 import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 import { propTypes } from "prop-types";
-import { LessonArea } from "../student/lesson_area/Lesson-area";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const CourseStudents = () => {
@@ -14,16 +13,7 @@ export const CourseStudents = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [selectedStudentId, setSelectedStudentId] = useState(null);
-  // const [studentDetails, setStudentDetails] = useState({
-  //   id: null,
-  //   first_name: "",
-  //   last_name: "",
-  // });
   const students = useSelector((state) => state.Courses.students);
-  // const [courseInfo, setCourseInfo] = useState({
-  //   id: null,
-  //   title: ''
-  // })
 
   useEffect(() => {
     dispatch(getCourseStudents(courseId));
@@ -38,31 +28,8 @@ export const CourseStudents = () => {
   };
 
   const fetchStudent = (id, fName, lName) => {
-    // setStudentDetails({
-    //   id: id,
-    //   first_name: fName,
-    //   last_name: lName,
-    // });
     navigate(`/lesson_area/${courseId}/${courseTitle}/${id}/${fName}/${lName}`);
   };
-
-  // const hideStudents = {
-  //   display: studentDetails.id ? "none" : "block",
-  // };
-
-  // const showAssignedCourses = () => {
-  //   navigate("/assigned_courses");
-  // }
-
-  // const showStudents = (bool) => {
-  //   if (bool) {
-  //     setStudentDetails({
-  //       id: null,
-  //       first_name: "",
-  //       last_name: "",
-  //     });
-  //   }
-  // };
 
   return (
     <div>
@@ -111,16 +78,6 @@ export const CourseStudents = () => {
           </Modal>
         )}
       </div>
-      {/* <div>
-        {studentDetails.id && (
-          <LessonArea
-            key={studentDetails.id}
-            studentDetails={studentDetails}
-            courseInfo={courseInfo}
-            showStudents={showStudents}
-          />
-        )}
-      </div> */}
     </div>
   );
 };

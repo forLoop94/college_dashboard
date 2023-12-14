@@ -10,9 +10,7 @@ import { Submissions } from "./Submissions";
 export const LessonArea = ({
   lecturerInfo,
   courseInfo,
-  showLecturer,
-  // studentDetails,
-  // showStudents,
+  showLecturer
 }) => {
   const { courseId, courseTitle, studentId, firstName, lastName } = useParams();
   const [area, setArea] = useState(null);
@@ -140,7 +138,6 @@ export const LessonArea = ({
             className="ms-3 pointer grey"
             onClick={() => {
               showChatsPage();
-              // setStudentCourseInfo({ id: studentId, first_name: fName, last_name: lName, course_id: courseId, course_title: courseTitle });
             }}
             style={stylePressedLink.chats}
           >
@@ -209,7 +206,6 @@ export const LessonArea = ({
         )}
         {linkPages.chats && (
           <Chats
-            // courseInfo={courseInfo}
             otherUserInfo={
               role === "student" ? lecturerInfo : studentCourseInfo
             }
@@ -229,8 +225,6 @@ export const LessonArea = ({
               />
             ) : (
               <LessonAreaForm
-                // studentId={studentDetails.id}
-                // courseInfo={courseInfo}
                 studentCourseInfo={studentCourseInfo}
                 lecturerId={profile_id}
                 setShowForm={setShowForm}

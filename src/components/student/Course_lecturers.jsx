@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { getCourseLecturers } from "../../redux/course/courseSlice";
 import { LessonArea } from "./lesson_area/Lesson-area";
 
-export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
+export const CourseLecturers = () => {
+  const navigate = useNavigate();
+  const { courseId, courseTitle } = useParams();
+
   const [lecturerDetails, setlecturerDetails] = useState({
     id: null,
     first_name: '',
@@ -14,7 +18,7 @@ export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
   const lecturers = useSelector((state) => state.Courses.lecturers);
 
   useEffect(() => {
-    dispatch(getCourseLecturers(courseInfo.id));
+    dispatch(getCourseLecturers(courseId));
   }, [dispatch]);
 
   const fetchLecturer = (id, fName, lName) => {
@@ -64,7 +68,7 @@ export const CourseLecturers = ({ courseInfo, showRecCourses }) => {
         ))}
         <button
           className="btn btn-primary mt-5"
-          onClick={() => showRecCourses(true)}
+          onClick={() => navigate("/recommended_courses")}
         >
           Back to Courses
         </button>
