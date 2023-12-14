@@ -60,7 +60,7 @@ export const CourseLecturers = () => {
             <div>Qualification: {lecturer.highest_academic_qualification}</div>
             <button
               className="btn btn-light mb-5"
-              onClick={() => fetchLecturer(lecturer.id, lecturer.first_name, lecturer.last_name)}
+              onClick={() => navigate(`/lesson_area_lecturer/${courseId}/${courseTitle}/${lecturer.id}/${lecturer.first_name}/${lecturer.last_name}`)}
             >
               Lesson Area
             </button>
@@ -73,9 +73,9 @@ export const CourseLecturers = () => {
           Back to Courses
         </button>
       </section>
-      <section>
+      {/* <section>
         {lecturerDetails.id && <LessonArea key={lecturerDetails.id} lecturerInfo={lecturerDetails} courseInfo={courseInfo} showLecturer={showLecturer} />}
-      </section>
+      </section> */}
     </main>
   );
 };

@@ -7,12 +7,7 @@ import { LessonAreaForm } from "../../forms/LessonAreaForm";
 import { Chats } from "./Chats";
 import { Submissions } from "./Submissions";
 
-export const LessonArea = ({
-  lecturerInfo,
-  courseInfo,
-  showLecturer
-}) => {
-  const { courseId, courseTitle, studentId, firstName, lastName } = useParams();
+export const LessonArea = ({ lecturerInfo, courseInfo, showLecturer }) => {
   const [area, setArea] = useState(null);
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
@@ -28,6 +23,11 @@ export const LessonArea = ({
     submission: false,
     chats: false,
   });
+
+  const { courseId, courseTitle, studentId, lecturerId, firstName, lastName } =
+    useParams();
+  // const userId = role === "student" ? studentId : lecturerId;
+  console.log(courseId + courseTitle + studentId + lecturerId + firstName +lastName)
 
   const getLessonArea = async (studentId, courseId, lecturerId) => {
     const token = localStorage.getItem("token");
@@ -55,10 +55,17 @@ export const LessonArea = ({
           setShowForm(true);
         }
         setArea(data);
+        setStudentCourseInfo({
+          id: lecturerId,
+          first_name: firstName,
+          last_name: lastName,
+          course_id: courseId,
+          course_title: courseTitle,
+        });
       };
 
       fetchData();
-    }, [profile_id, courseInfo.id, lecturerInfo.id]);
+    }, [profile_id, courseId, lecturerId]);
   } else if (role === "lecturer") {
     useEffect(() => {
       const fetchData = async () => {
@@ -161,7 +168,7 @@ export const LessonArea = ({
           <div>
             <div className="ms-4">student: You</div>
             <div className="ms-4">
-              lecturer: {lecturerInfo.first_name} {lecturerInfo.last_name}
+              lecturer: {firstName} {lastName}
             </div>
           </div>
         ) : (
@@ -179,7 +186,7 @@ export const LessonArea = ({
         {role === "student" ? (
           <button
             className="btn btn-danger ms-4"
-            onClick={() => showLecturer(true)}
+            onClick={() => navigate(`/recommended_courses/${courseId}/${courseTitle}`)}
           >
             Close lesson area
           </button>

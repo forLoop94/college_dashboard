@@ -39,6 +39,7 @@ const router = createBrowserRouter(
         <Route path='/assigned_courses/:courseId/:courseTitle' element={<CourseStudents />} />
         <Route path='/recommended_courses/:courseId/:courseTitle' element={<CourseLecturers />} />
         <Route path='lesson_area/:courseId/:courseTitle/:studentId/:firstName/:lastName' element={<LessonArea />}></Route>
+        <Route path='lesson_area_lecturer/:courseId/:courseTitle/:lecturerId/:firstName/:lastName' element={<LessonArea />}></Route>
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
         <Route path='/course_grades' element={<Grades /> } />
         <Route path='/add_department' element={<DepartmentForm /> } />
