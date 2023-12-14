@@ -5,6 +5,7 @@ import { getLessonChats } from "../../redux/student/studentSlice";
 export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
   const dispatch = useDispatch();
   const { role, profile_id } = useSelector((state) => state.user.currentUser);
+
   const [formData, setFormData] = useState({
     message: "",
     lesson_area_id: lessonAreaId,
@@ -20,8 +21,12 @@ export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
       },
       body: JSON.stringify(body),
     });
-    const data = await response.json();
-    return data;
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      console.log('nothingssss');
+    }
   };
 
   const handleSubmit = (e) => {
@@ -43,7 +48,7 @@ export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
           getLessonChats({
             studentId: otherUserId,
             courseId: courseId,
-            lecturerId: profile_id
+            lecturerId: profile_id,
           })
         );
       }

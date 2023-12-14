@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import "../../styles/lesson_area_form.css";
 
-export const LessonAreaForm = ({ studentId, courseId, lecturerId, setShowForm, setRefreshPage }) => {
+export const LessonAreaForm = ({ studentId, courseInfo, lecturerId, setShowForm, setArea }) => {
+  const navigate = useNavigate();
   const data = {
     student_id: studentId,
-    course_id: courseId,
+    course_id: courseInfo.id,
     lecturer_id: lecturerId
   }
 
@@ -20,7 +22,8 @@ export const LessonAreaForm = ({ studentId, courseId, lecturerId, setShowForm, s
     if (response.ok) {
       const result = await response.json();
       console.log(result);
-      setRefreshPage(true);
+      setArea(result);
+      navigate("/assigned_courses");
       setShowForm(false)
       return result;
     }

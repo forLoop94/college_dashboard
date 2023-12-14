@@ -13,8 +13,7 @@ export const LessonArea = ({
   studentDetails,
   showStudents,
 }) => {
-  const [area, setArea] = useState();
-  const [refreshPage, setRefreshPage] = useState(false);
+  const [area, setArea] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const { role, profile_id } = useSelector((state) => state.user.currentUser);
   const [linkPages, setLinkPages] = useState({
@@ -52,7 +51,7 @@ export const LessonArea = ({
 
       fetchData();
     }, [profile_id, courseInfo.id, lecturerInfo.id]);
-  } else if (role === "lecturer" || refreshPage) {
+  } else if (role === "lecturer") {
     useEffect(() => {
       const fetchData = async () => {
         const data = await getLessonArea(
@@ -110,8 +109,7 @@ export const LessonArea = ({
     setShowForm(false);
   };
 
-  console.log(refreshPage)
-  console.log(area)
+  console.log(area);
 
   return (
     <main>
@@ -212,10 +210,10 @@ export const LessonArea = ({
             ) : (
               <LessonAreaForm
                 studentId={studentDetails.id}
-                courseId={courseInfo.id}
+                courseInfo={courseInfo}
                 lecturerId={profile_id}
                 setShowForm={setShowForm}
-                setRefreshPage={setRefreshPage}
+                setArea={setArea}
               />
             )}
           </Modal.Body>
