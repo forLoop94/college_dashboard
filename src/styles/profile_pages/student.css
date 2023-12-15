@@ -12,6 +12,15 @@
   left: 2%;
 }
 
+.pencil {
+  color: white;
+  font-size: 25px;
+}
+
+.pencil:hover {
+  font-size: 27px;
+}
+
 .bio {
   font-size: 13px;
 }

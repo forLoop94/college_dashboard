@@ -1,10 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
+import { FaChevronRight, FaGraduationCap, FaArrowLeft } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getDepartments } from "../../../redux/department/departmentSlice";
-import { getStudentDetails, updateStudent } from "../../../redux/student/studentSlice";
+import {
+  getStudentDetails,
+  updateStudent,
+} from "../../../redux/student/studentSlice";
 
 export const StudentProfileUpdate = ({ showProfile }) => {
   const dispatch = useDispatch();
@@ -26,15 +29,15 @@ export const StudentProfileUpdate = ({ showProfile }) => {
 
   useEffect(() => {
     dispatch(getDepartments());
-  }, [dispatch])
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateStudent({ body: values, id: student.id })).then(() => {
       dispatch(getStudentDetails(student.id));
-    })
+    });
     showProfile(true);
-  }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,14 +45,18 @@ export const StudentProfileUpdate = ({ showProfile }) => {
       ...values,
       [name]: value,
     });
-  }
+  };
 
   return (
-    <section className="d-flex justify-content-center vw-100 p-5 profile-form-wrapper">
+    <section className="d-flex justify-content-center p-5 profile-form-wrapper">
       <form action="#" className="profile-form" onSubmit={handleSubmit}>
         <header className="d-flex d-flex justify-content-center align-items-center">
-          <h1 className="p-4 text-light">Students Profile Form</h1>
+          <h1 className="p-4 text-light">Update Profile</h1>
         </header>
+        <FaArrowLeft
+          className="position-absolute top-0 start-0 mt-4 ms-5 pencil"
+          onClick={() => showProfile(true)}
+        />
         <div className="form-row d-flex justify-content-between">
           <div className="form-group col-md-3">
             <input
@@ -169,7 +176,7 @@ export const StudentProfileUpdate = ({ showProfile }) => {
         <div className="d-flex justify-content-center align-items-center">
           <button className="btn btn-primary" type="submit">
             <FaGraduationCap className="me-2" />
-            Create Profile
+            Update Profile
             <FaChevronRight className="ms-2" />
           </button>
         </div>

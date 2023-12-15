@@ -40,7 +40,7 @@ export const StudentDetails = ({ studentId }) => {
             {studentDetails.first_name} {studentDetails.last_name}
           </h1>
           <FaPencilAlt
-            className="text-white position-absolute top-0 end-0 mt-4 me-5"
+            className="position-absolute top-0 end-0 mt-4 me-5 pencil"
             style={hidePen}
             onClick={() => setUpdateForm(true)}
           />
