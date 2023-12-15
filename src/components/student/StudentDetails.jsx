@@ -22,6 +22,10 @@ export const StudentDetails = ({ studentId }) => {
     display: updateForm ? "none" : "block",
   };
 
+  const hidePen = {
+    display: studentId ? "none" : "block"
+  }
+
   const showProfile = (toogle) => {
     if(toogle) {
       setUpdateForm(false);
@@ -37,6 +41,7 @@ export const StudentDetails = ({ studentId }) => {
           </h1>
           <FaPencilAlt
             className="text-white position-absolute top-0 end-0 mt-4 me-5"
+            style={hidePen}
             onClick={() => setUpdateForm(true)}
           />
           <small className="text-white">
@@ -64,7 +69,7 @@ export const StudentDetails = ({ studentId }) => {
           </div>
         </div>
       </article>
-      <article>{updateForm && <StudentProfileUpdate setUpdateForm={setUpdateForm} />}</article>
+      <article>{updateForm && <StudentProfileUpdate showProfile={showProfile} />}</article>
     </section>
   );
 };

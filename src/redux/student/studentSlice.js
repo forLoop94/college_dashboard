@@ -101,6 +101,7 @@ export const updateStudent = createAsyncThunk('students/updateStudent', async({ 
   })
   if(response.ok) {
     const data = await response.json();
+    console.log("update succesful")
     return data;
   }
 })
