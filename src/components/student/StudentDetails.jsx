@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentDetails } from "../../redux/student/studentSlice";
-import "../../styles/profile_pages/student.css";
+import "../../styles/profile_pages/profile.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { StudentProfileUpdate } from "../forms/update_profiles/StudentProfileUpdate";
@@ -35,7 +35,7 @@ export const StudentDetails = ({ studentId }) => {
   return (
     <section className="position-relative">
       <article style={hideProfile}>
-        <div className="headline d-flex flex-column align-items-center p-3">
+        <div className="headline-student d-flex flex-column align-items-center p-3">
           <h1 className="text-white">
             {studentDetails.first_name} {studentDetails.last_name}
           </h1>
@@ -60,7 +60,7 @@ export const StudentDetails = ({ studentId }) => {
             </p>
           </div>
           <div></div>
-          <div className="d-flex m-5 card text-white p-3">
+          <div className="d-flex m-5 card-student flex-column text-white p-3">
             <div>Gender: {studentDetails.gender}</div>
             <div>Age: {studentDetails.age}</div>
             <div>Level: {studentDetails.level}</div>

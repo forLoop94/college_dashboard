@@ -71,7 +71,7 @@ export const StudentForm = () => {
           </div>
           <div className="form-group col-md-3">
             <input
-              type="file"
+              type="text"
               className="form-control"
               placeholder="Image URL"
               name="photo"

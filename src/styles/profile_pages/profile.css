@@ -1,7 +1,11 @@
-.headline, .card {
+.headline-student, .card-student, .headline-lecturer, .card-lecturer {
   background: linear-gradient(90deg, rgba(230, 10, 10,  0.7),rgba(0, 0, 0, 0.917));
   height: 30vh;
   position: relative;
+}
+
+.headline-lecturer, .card-lecturer {
+  background: linear-gradient(90deg, rgba(11, 129, 7, 0.7),rgba(0, 0, 0, 0.917));
 }
 
 .profile-photo {
@@ -25,9 +29,13 @@
   font-size: 13px;
 }
 
-.card {
+.card-student, .card-lecturer {
   height: 5%;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(230, 10, 10,  0.7));
+}
+
+.card-lecturer {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(11, 129, 7, 0.7));
 }
 
 @media (min-width: 768px) {
