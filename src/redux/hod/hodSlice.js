@@ -44,6 +44,23 @@ export const getHodDetails = createAsyncThunk('hods/getHodDetails', async(id) =>
   }
 })
 
+export const updateHod = createAsyncThunk('hods/updateHod', async({ body, id }) => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(`${baseURL}/hods/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: token,
+    },
+    body: JSON.stringify(body)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    console.log("update succesful")
+    return data;
+  }
+})
+
 const initialState = {
   hods: [],
   details: '',
