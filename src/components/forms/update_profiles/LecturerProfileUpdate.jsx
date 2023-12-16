@@ -206,7 +206,7 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
         <div className="d-flex justify-content-center align-items-center mt-5">
           <button className="btn btn-primary" type="submit">
             <FaGraduationCap className="me-2" />
-            Create Profile
+            Update Profile
             <FaChevronRight className="ms-2" />
           </button>
         </div>

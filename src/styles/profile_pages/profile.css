@@ -13,7 +13,7 @@
 }
 
 .headline-dean, .card-dean {
-  background: linear-gradient(90deg, rgb(83, 9, 110),rgba(0, 0, 0, 0.917));
+  background: linear-gradient(90deg, rgb(83, 9, 110, 0.7),rgba(0, 0, 0, 0.917));
 }
 
 .profile-photo {
@@ -51,7 +51,7 @@
 }
 
 .card-dean {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(83, 9, 110));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(83, 9, 110, 0.7));
 }
 
 @media (min-width: 768px) {

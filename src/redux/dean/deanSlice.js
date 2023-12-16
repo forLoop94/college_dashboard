@@ -69,6 +69,24 @@ export const getHodsList = createAsyncThunk('schools/getHodsList', async() => {
   return list;
 })
 
+export const updateDean = createAsyncThunk('deans/updateDean', async({ body, id }) => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(`${baseURL}/deans/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: token,
+    },
+    body: JSON.stringify(body)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    console.log("update succesful")
+    return data;
+  }
+})
+
+
 const initialState = {
   schools: [],
   deanList: [],
