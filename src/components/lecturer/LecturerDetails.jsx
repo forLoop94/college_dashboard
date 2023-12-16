@@ -75,7 +75,7 @@ export const LecturerDetails = ({ lecturerId }) => {
         </div>
       </article>
       <article>
-        {updateForm && <StudentProfileUpdate showProfile={showProfile} />}
+        {updateForm && <LecturerProfileUpdate showProfile={showProfile} />}
       </article>
     </section>
   );

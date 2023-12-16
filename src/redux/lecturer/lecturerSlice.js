@@ -86,6 +86,23 @@ export const getAssignedCourses = createAsyncThunk(
   }
 );
 
+export const updateLecturer = createAsyncThunk('lecturers/updateLecturer', async({ body, id }) => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(`${baseURL}/lecturers/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: token,
+    },
+    body: JSON.stringify(body)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    console.log("update succesful")
+    return data;
+  }
+})
+
 const initialState = {
   lecturers: [],
   details: '',

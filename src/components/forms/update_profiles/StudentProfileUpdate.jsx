@@ -51,7 +51,7 @@ export const StudentProfileUpdate = ({ showProfile }) => {
     <section className="d-flex justify-content-center p-5 profile-form-wrapper">
       <form action="#" className="profile-form" onSubmit={handleSubmit}>
         <header className="d-flex d-flex justify-content-center align-items-center">
-          <h1 className="p-4 text-light">Update Profile</h1>
+          <h1 className="p-4 text-light">Update Student Profile</h1>
         </header>
         <FaArrowLeft
           className="position-absolute top-0 start-0 mt-4 ms-5 pencil"
