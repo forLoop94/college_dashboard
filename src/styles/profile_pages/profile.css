@@ -1,4 +1,4 @@
-.headline-student, .card-student, .headline-lecturer, .card-lecturer, .headline-hod, .card-hod {
+.headline-student, .card-student, .headline-lecturer, .card-lecturer, .headline-hod, .card-hod, .headline-dean, .card-dean {
   background: linear-gradient(90deg, rgba(230, 10, 10,  0.7),rgba(0, 0, 0, 0.917));
   height: 30vh;
   position: relative;
@@ -10,6 +10,10 @@
 
 .headline-hod, .card-hod {
   background: linear-gradient(90deg, rgba(13, 110, 253),rgba(0, 0, 0, 0.917));
+}
+
+.headline-dean, .card-dean {
+  background: linear-gradient(90deg, rgb(83, 9, 110),rgba(0, 0, 0, 0.917));
 }
 
 .profile-photo {
@@ -44,6 +48,10 @@
 
 .card-hod {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(13, 110, 253));
+}
+
+.card-dean {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(83, 9, 110));
 }
 
 @media (min-width: 768px) {

@@ -62,7 +62,7 @@ export const HodDetails = ({ hodId }) => {
           <div className="d-flex m-5 card-hod flex-column text-white p-3">
             <div>Gender: {hodDetails.gender}</div>
             <div>Age: {hodDetails.age}</div>
-            <div>Major: {hodDetails.years_of_admin_exp}</div>
+            <div>Admin Experience: {hodDetails.years_of_admin_exp}</div>
             <div>
               Number of Publications: {hodDetails.number_of_publications}
             </div>
