@@ -1,4 +1,4 @@
-.headline-student, .card-student, .headline-lecturer, .card-lecturer {
+.headline-student, .card-student, .headline-lecturer, .card-lecturer, .headline-hod, .card-hod {
   background: linear-gradient(90deg, rgba(230, 10, 10,  0.7),rgba(0, 0, 0, 0.917));
   height: 30vh;
   position: relative;
@@ -6,6 +6,10 @@
 
 .headline-lecturer, .card-lecturer {
   background: linear-gradient(90deg, rgba(11, 129, 7, 0.7),rgba(0, 0, 0, 0.917));
+}
+
+.headline-hod, .card-hod {
+  background: linear-gradient(90deg, rgba(13, 110, 253),rgba(0, 0, 0, 0.917));
 }
 
 .profile-photo {
@@ -29,13 +33,17 @@
   font-size: 13px;
 }
 
-.card-student, .card-lecturer {
+.card-student, .card-lecturer, .card-hod {
   height: 5%;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(230, 10, 10,  0.7));
 }
 
 .card-lecturer {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(11, 129, 7, 0.7));
+}
+
+.card-hod {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(13, 110, 253));
 }
 
 @media (min-width: 768px) {
