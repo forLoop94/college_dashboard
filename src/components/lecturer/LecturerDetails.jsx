@@ -25,6 +25,12 @@ export const LecturerDetails = ({ lecturerId }) => {
     display: lecturerId ? "none" : "block",
   };
 
+  const AdjustImageSize = {
+    width: lecturerId ? "120px" : "",
+    height: lecturerId ? "120px" : "",
+    top: lecturerId ? "60%" : ""
+  }
+
   const showProfile = (toogle) => {
     if (toogle) {
       setUpdateForm(false);
@@ -47,6 +53,7 @@ export const LecturerDetails = ({ lecturerId }) => {
             Email: {email} | Phone: {lecturerDetails.phone_number}
           </small>
           <img
+          style={AdjustImageSize}
             className="profile-photo rounded-circle"
             src={lecturerDetails.photo}
             alt={lecturerDetails.first_name}

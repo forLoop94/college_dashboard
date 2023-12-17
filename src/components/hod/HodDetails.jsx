@@ -21,7 +21,13 @@ export const HodDetails = ({ hodId }) => {
   };
 
   const hidePen = {
-    display: hodId ? "none" : "block"
+    display: hodId ? "none" : "block",
+  }
+
+  const AdjustImageSize = {
+    width: hodId ? "120px" : "",
+    height: hodId ? "120px" : "",
+    top: hodId ? "60%" : ""
   }
 
   const showProfile = (toogle) => {
@@ -47,6 +53,7 @@ export const HodDetails = ({ hodId }) => {
             Email: {email} | Phone: {hodDetails.phone_number}
           </small>
           <img
+            style={AdjustImageSize}
             className="profile-photo rounded-circle"
             src={hodDetails.photo}
             alt={hodDetails.first_name}

@@ -26,7 +26,6 @@ export const LessonArea = () => {
 
   const { courseId, courseTitle, studentId, lecturerId, firstName, lastName } =
     useParams();
-  // const userId = role === "student" ? studentId : lecturerId;
   console.log(courseId + courseTitle + studentId + lecturerId + firstName +lastName)
 
   const getLessonArea = async (studentId, courseId, lecturerId) => {

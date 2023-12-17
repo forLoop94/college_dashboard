@@ -59,6 +59,7 @@ export const DeanDetails = ({ deanId }) => {
           </div>
           <div></div>
           <div className="d-flex m-5 card-dean flex-column text-white p-3">
+            <div>Cadre: {deanDetails.rank}</div>
             <div>Gender: {deanDetails.gender}</div>
             <div>Age: {deanDetails.age}</div>
             <div>Admin Experience(years): {deanDetails.years_of_admin_exp}</div>
