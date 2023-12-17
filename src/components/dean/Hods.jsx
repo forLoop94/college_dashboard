@@ -42,7 +42,7 @@ export const Hods = () => {
                 className="btn btn-primary"
                 onClick={() => hodDetails(hod.hod.id)}
               >
-                full details
+                Profile
               </button>
             </>
           ) : !hod.hod && hod.department ? (

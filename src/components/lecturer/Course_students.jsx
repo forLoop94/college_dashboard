@@ -7,11 +7,13 @@ import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 import { propTypes } from "prop-types";
 import { useNavigate, useParams } from "react-router-dom";
+import { StudentDetails } from "../student/StudentDetails";
 
 export const CourseStudents = () => {
   const { courseId, courseTitle } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [studentId, setStudentId] = useState(null);
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const students = useSelector((state) => state.Courses.students);
 
@@ -30,6 +32,14 @@ export const CourseStudents = () => {
   const fetchStudent = (id, fName, lName) => {
     navigate(`/lesson_area/${courseId}/${courseTitle}/${id}/${fName}/${lName}`);
   };
+
+  const showStudentProfile = (id) => {
+    setStudentId(id);
+  };
+
+  const closeProfileModal = () => {
+    setStudentId(null);
+  }
 
   return (
     <div>
@@ -50,13 +60,19 @@ export const CourseStudents = () => {
                 fetchStudent(student.id, student.first_name, student.last_name);
               }}
             >
-              Submissions & Dialogue
+              Private Exchanges
             </button>
             <button
               className="btn btn-primary"
               onClick={() => createGrade(student.id)}
             >
               Grade
+            </button>
+            <button
+              className="btn btn-light ms-5"
+              onClick={() => showStudentProfile(student.id)}
+            >
+              Profile
             </button>
           </article>
         ))}
@@ -75,6 +91,11 @@ export const CourseStudents = () => {
                 onClose={closeGradeModal}
               />
             </Modal.Body>
+          </Modal>
+        )}
+        {studentId && (
+          <Modal show={true} onHide={closeProfileModal}>
+            <Modal.Body>{<StudentDetails key={studentId} studentId={studentId} />}</Modal.Body>
           </Modal>
         )}
       </div>
