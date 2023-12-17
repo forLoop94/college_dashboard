@@ -6,6 +6,7 @@ import { DeanUser } from "./role_partitions/DeanUser";
 import { HodUser } from "./role_partitions/HodUser";
 import { LecturerUser } from "./role_partitions/LecturerUser";
 import { StudentUser } from "./role_partitions/StudentUser";
+import { FaBars } from "react-icons/fa6";
 
 export const NavPanel = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ export const NavPanel = () => {
 
   const setNavPanelBackground = (targetLocation) => {
     if (location.pathname === targetLocation)
-      return { backgroundColor: "var(--blue)", color: "white" };
+      return { borderBottom: "2px solid white", color: "white" };
     return {};
   };
 
@@ -55,8 +56,7 @@ export const NavPanel = () => {
           tabIndex={0}
           aria-label="Toggle Panel"
         >
-          {/* <BsList className="bars" /> */}
-          <div>menu</div>
+          <FaBars className="text-white menu-btn ms-2 mt-2" />
         </span>
       </div>
       <div

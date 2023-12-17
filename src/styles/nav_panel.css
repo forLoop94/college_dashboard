@@ -1,9 +1,15 @@
 :root {
   --blue: #0d6efd;
+  --lavendar: rgba(255, 240, 245, 0.6);
+  --lavendar-light: rgba(255, 240, 245, 0.8);
 }
 
 * {
   font-family: lato, sans-serif;
+}
+
+.menu-btn {
+  font-size: 25px;
 }
 
 #header {
@@ -18,7 +24,8 @@
   top: 0;
   backdrop-filter: blur(50px);
   z-index: 999;
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: rgb(93,57,84);
 }
 
 .mobile-nav {
@@ -61,19 +68,18 @@
 }
 
 .nav-panel li:active {
-  background-color: var(--blue);
+  color: white;
   padding: 5px;
 }
 
 .nav-panel li:hover {
-  background-color: var(--blue);
   padding: 5px;
 }
 
 .nav-panel a {
   text-align: left;
   font-size: 1rem;
-  color: rgb(61, 61, 61);
+  color: var(--lavendar-light);
   outline: none;
   text-transform: uppercase;
   text-decoration: none;
@@ -84,7 +90,7 @@
 }
 
 .nav-panel li:hover a {
-  color: rgb(255, 254, 254);
+  color: white;
 }
 
 .close {
@@ -113,6 +119,7 @@
     padding: 2rem 0;
     padding-left: 2rem;
     box-shadow: 0 0 10px 0 rgb(200, 200, 200);
+    background-color: rgb(93,57,84);
   }
 
   .nav-panel {
@@ -136,11 +143,11 @@
   }
 
   .nav-panel li:active {
-    background-color: var(--blue);
+    color: var(--lavendar);
   }
 
   .nav-panel li:hover {
-    background-color: var(--blue);
+    color: white;
   }
 
   .sign-out {

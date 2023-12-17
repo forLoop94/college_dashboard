@@ -14,7 +14,7 @@ export const Recommended_courses = () => {
   }, [dispatch]);
 
   return (
-    <main>
+    <main className="technical-pages-bg">
       <section>
         <h1>Recommended Courses</h1>
         {recCourses.map((course) => (

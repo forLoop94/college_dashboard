@@ -21,6 +21,11 @@ body {
   overflow-y: auto;
 }
 
+.technical-pages-bg {
+  background-color: rgba(255, 240, 245, 0.6);
+  color: rgb(17, 0, 13);
+}
+
 @media screen and (min-width: 768px) {
   body {
     display: block;
