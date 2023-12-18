@@ -33,45 +33,55 @@ export const Grades = () => {
     <section className="technical-pages-bg-v2">
       <h1 className="tech-header-v2">Grade Information</h1>
       <article className="d-flex flex-column align-items-center tech-card-container">
+        <small className="small-note-light mb-2">
+          {`Grades available for ${gradesInfo.length} of ${recCourses.length} recommended courses`}
+        </small>
         {gradesInfo.map((course) => (
           <div
             className="tech-card-v2 d-flex mb-5 justify-content-between align-items-center"
             key={course.id}
           >
-            <div>
-              Title <p className="text-center">{course.title}</p>
-            </div>
-            <div>
-              Code <p className="text-center">{course.code}</p>
-            </div>
-            <div>
-              Credit Hours <p className="text-center">{course.credit_load}</p>
-            </div>
-            <div>
-              Score <p className="text-center">{course.grade}</p>
-            </div>
-            <div>
-              Symbol{" "}
-              <p style={{
-              color: symbolColor(gradeAlphabet(course.grade)),
-            }} className="text-center">
-                {gradeAlphabet(course.grade)}
+            <div className="tech-grade-info">
+              <p className="text-center">
+                Title <p className="text-center">{course.title}</p>
+              </p>
+              <p className="text-center">
+                Code <p className="text-center">{course.code}</p>
               </p>
             </div>
-            <div>
-              Points{" "}
+            <div className="tech-grade-info">
               <p className="text-center">
-                {gradePoint(gradeAlphabet(course.grade))}
+                Credit Hours <p className="text-center">{course.credit_load}</p>
+              </p>
+              <p className="text-center">
+                Score <p className="text-center">{course.grade}</p>
+              </p>
+            </div>
+            <div className="tech-grade-info">
+              <p className="text-center">
+                Symbol
+                <p
+                  style={{
+                    color: symbolColor(gradeAlphabet(course.grade)),
+                  }}
+                  className="text-center"
+                >
+                  {gradeAlphabet(course.grade)}
+                </p>
+              </p>
+              <p className="text-center">
+                Points
+                <p className="text-center">
+                  {gradePoint(gradeAlphabet(course.grade))}
+                </p>
               </p>
             </div>
           </div>
         ))}
       </article>
-      <small>
-        Note:{" "}
-        {`Grades are available for ${gradesInfo.length} of ${recCourses.length} recommended courses`}
-      </small>
-      <h2>GPA: {gradePointCalculator()}</h2>
+      <div className="position-absolute gpa">
+        GPA: {gradePointCalculator()}
+      </div>
     </section>
   );
 };

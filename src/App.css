@@ -2,6 +2,7 @@
   --english-lavendar: rgb(180,131,149);
   --lavendar-light-text: rgba(255, 249, 251, 0.9);
   --lavendar-light: rgba(255, 240, 245, 0.8);
+  --lavendar-dark: rgba(253, 231, 239, 0.4);
   --dark-mauve: rgb(17, 0, 13);
   --carton: rgba(255, 219, 99, 0.9);
   --carton-light: rgba(253, 225, 133, 0.9);
@@ -35,7 +36,6 @@ body {
 .technical-pages-bg, .technical-pages-bg-v2 {
   background-color: var(--lavendar-light);
   color: var(--lavendar-light);
-  height: auto;
 }
 
 .technical-pages-bg-v2 {
@@ -55,13 +55,18 @@ body {
 }
 
 .tech-header-v2 {
-  background-color: var(--lavendar-light-text);
+  background-color: var(--lavendar-dark);
   border-bottom: 3px solid var(--razzmatazz);
 }
 
+.small-note-light {
+  color: var(--lavendar-light-text);
+  margin-top: 2rem;
+}
+
 .tech-card-container {
-  height: 100vh;
-  padding-top: 6rem;
+  height: auto;
+  padding-top: 3rem;
 }
 
 .tech-card, .tech-card-v2 {
@@ -78,6 +83,7 @@ body {
 .tech-card-v2 {
   background-color: var(--lavendar-light-text);
   border-left: 5px solid var(--razzmatazz);
+  height: 15rem;
 }
 
 .tech-btn {
@@ -93,6 +99,18 @@ body {
   background-color: var(--carton);
 }
 
+.tech-grade-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.gpa {
+  top: 4rem;
+  right: 2rem;
+  color: var(--lavendar-light-text);
+}
+
 @media screen and (min-width: 1000px) {
   body {
     display: block;
@@ -104,14 +122,30 @@ body {
     padding-top: 0;
   }
 
+  .tech-header-v2 {
+    background-color: var(--lavendar-light-text);
+  }
+
   .tech-card, .tech-card-v2 {
     width: 70%;
     padding: 1rem;
     flex-direction: row;
   }
 
+  .tech-card-v2 {
+    height: 9rem;
+  }
+
   .tech-title {
     width: 20%;
+  }
+
+  .tech-grade-info {
+    display: block;
+  }
+
+  .gpa {
+    right: 6rem;
   }
 }
 
