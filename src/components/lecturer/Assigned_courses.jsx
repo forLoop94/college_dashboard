@@ -21,8 +21,8 @@ export const Assigned_courses = () => {
   };
 
   return (
-    <section>
-      <h1>Assigned Courses</h1>
+    <section className="technical-pages-bg">
+      <h1 className="pt-1 tech-header">Assigned Courses</h1>
       <main className="assigned_courses">
         <section>
           <small>

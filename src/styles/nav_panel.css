@@ -110,7 +110,7 @@
   padding: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   #header {
     width: 23%;
     display: block;

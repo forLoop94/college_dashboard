@@ -15,20 +15,26 @@ export const Recommended_courses = () => {
 
   return (
     <main className="technical-pages-bg">
-      <section>
-        <h1>Recommended Courses</h1>
+      <h1 className="tech-header">Recommended Courses</h1>
+      <section className="d-flex flex-column align-items-center tech-card-container">
         {recCourses.map((course) => (
-          <article key={course.id}>
-            <h3>{course.title}</h3>
-            <div>{course.code}</div>
-            <div>{course.level}</div>
-            <div>{course.department.name}</div>
-            <button
-              className="btn btn-primary"
-              onClick={() => navigate(`/recommended_courses/${course.id}/${course.title}`)}
+          <article className="tech-card d-flex mb-5 justify-content-between align-items-center" key={course.id}>
+            <h3 className="tech-title">{course.title}</h3>
+            <div className="tech-card-content">
+              <div>Course code: {course.code}</div>
+              <div className="text-center mt-2">Level: {course.level}</div>
+            </div>
+            <div className="tech-card-content d-flex flex-column align-items-center mt-2">
+              <div>Department: {course.department.name}</div>
+              <button
+              className="tech-btn mt-2"
+              onClick={() =>
+                navigate(`/recommended_courses/${course.id}/${course.title}`)
+              }
             >
               Lecturers
             </button>
+            </div>
           </article>
         ))}
       </section>
