@@ -1,10 +1,12 @@
 :root {
   --english-lavendar: rgb(180,131,149);
-  --lavendar-light: rgba(255, 249, 251, 0.9);
+  --lavendar-light-text: rgba(255, 249, 251, 0.9);
+  --lavendar-light: rgba(255, 240, 245, 0.8);
   --dark-mauve: rgb(17, 0, 13);
   --carton: rgba(255, 219, 99, 0.9);
   --carton-light: rgba(253, 225, 133, 0.9);
   --razzmatazz: #D90077;
+  --razzma-light: #d84696;
 }
 
 * {
@@ -30,13 +32,18 @@ body {
   overflow-y: auto;
 }
 
-.technical-pages-bg {
-  background-color: rgba(255, 240, 245, 0.6);
+.technical-pages-bg, .technical-pages-bg-v2 {
+  background-color: var(--lavendar-light);
   color: var(--lavendar-light);
-  height: 100vh;
+  height: auto;
 }
 
-.tech-header {
+.technical-pages-bg-v2 {
+  background-color: var(--english-lavendar);
+  color: var(--dark-mauve);
+}
+
+.tech-header, .tech-header-v2 {
   background-color: var(--english-lavendar);
   height: 3.5rem;
   padding-top: 6px;
@@ -47,12 +54,17 @@ body {
   border-bottom: 3px solid var(--carton-light);
 }
 
+.tech-header-v2 {
+  background-color: var(--lavendar-light-text);
+  border-bottom: 3px solid var(--razzmatazz);
+}
+
 .tech-card-container {
   height: 100vh;
   padding-top: 6rem;
 }
 
-.tech-card {
+.tech-card, .tech-card-v2 {
   background-color: var(--english-lavendar);
   width: 90%;
   height: 12rem;
@@ -61,6 +73,11 @@ body {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.tech-card-v2 {
+  background-color: var(--lavendar-light-text);
+  border-left: 5px solid var(--razzmatazz);
 }
 
 .tech-btn {
@@ -82,12 +99,12 @@ body {
     width: 100%;
   }
 
-  .tech-header {
+  .tech-header, .tech-header-v2 {
     width: 80%;
     padding-top: 0;
   }
 
-  .tech-card {
+  .tech-card, .tech-card-v2 {
     width: 70%;
     padding: 1rem;
     flex-direction: row;

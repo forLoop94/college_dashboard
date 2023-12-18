@@ -24,8 +24,8 @@ export const Recommended_courses = () => {
               <div>Course code: {course.code}</div>
               <div className="text-center mt-2">Level: {course.level}</div>
             </div>
-            <div className="tech-card-content d-flex flex-column align-items-center mt-2">
-              <div>Department: {course.department.name}</div>
+            <div className="tech-card-content d-flex flex-column align-items-center">
+              <div className="mt-2">Department: {course.department.name}</div>
               <button
               className="tech-btn mt-2"
               onClick={() =>

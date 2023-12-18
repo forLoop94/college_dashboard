@@ -13,3 +13,20 @@ export const gradeAlphabet = (score) => {
     return 'A';
   }
 };
+
+export const symbolColor = (symbol) => {
+  switch (symbol) {
+    case 'A':
+      return 'green';
+    case 'B':
+      return 'blue';
+    case 'C':
+      return 'purple';
+    case 'D':
+      return 'orange';
+    case 'E':
+      return 'yellow';
+    default:
+      return 'red';
+  }
+};
