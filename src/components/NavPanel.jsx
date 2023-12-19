@@ -7,6 +7,7 @@ import { HodUser } from "./role_partitions/HodUser";
 import { LecturerUser } from "./role_partitions/LecturerUser";
 import { StudentUser } from "./role_partitions/StudentUser";
 import { FaBars } from "react-icons/fa6";
+import { FaUserLock } from "react-icons/fa6";
 
 export const NavPanel = () => {
   const location = useLocation();
@@ -81,6 +82,7 @@ export const NavPanel = () => {
           )}
           <div>
             <button type="button" onClick={handleSignOut} className="sign-out">
+              <FaUserLock className="mb-1 me-1" />
               SIGN OUT
             </button>
           </div>
