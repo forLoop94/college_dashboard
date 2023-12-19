@@ -21,32 +21,48 @@ export const Assigned_courses = () => {
   };
 
   return (
-    <section className="technical-pages-bg">
-      <h1 className="pt-1 tech-header">Assigned Courses</h1>
-      <main className="assigned_courses">
-        <section>
-          <small>
-            Below are the courses you have been assigned by the department.
-            There have been choosen from courses you elegible to handle
-          </small>
-          {assignedCourses.map((course) => (
-            <article key={course.id}>
-              <h3>{course.title}</h3>
-              <div>{course.code}</div>
-              <div>{course.level}</div>
-              <div>{course.department_id}</div>
-              <Button
-                variant="primary"
-                className="students-btn"
-                type="button"
+    <main className="technical-pages-bg">
+      <h1 className="tech-header">Assigned Courses</h1>
+      <section className="d-flex flex-column align-items-center tech-card-container">
+        <small className="small-note-light mb-2">
+          Below are the courses you have been assigned by the department. There
+          have been choosen from courses you elegible to handle
+        </small>
+        {assignedCourses.map((course) => (
+          <article
+            className="assigned_courses tech-card d-flex mb-5 justify-content-between align-items-center"
+            key={course.id}
+          >
+            {/* <h3>{course.title}</h3>
+            <div>{course.code}</div>
+            <div>{course.level}</div>
+            <div>{course.department_id}</div>
+            <Button
+              variant="primary"
+              className="students-btn"
+              type="button"
+              onClick={() => showStudents(course.id, course.title)}
+            >
+              students offering
+            </Button> */}
+
+            <h3 className="tech-title">{course.title}</h3>
+            <div className="tech-card-content">
+              <div>Course code: {course.code}</div>
+              <div className="text-center mt-2">Level: {course.level}</div>
+            </div>
+            <div className="tech-card-content d-flex flex-column align-items-center">
+              {/* <div className="mt-2">Department: {course.department.name}</div> */}
+              <button
+                className="tech-btn mt-2"
                 onClick={() => showStudents(course.id, course.title)}
               >
-                students offering
-              </Button>
-            </article>
-          ))}
-        </section>
-      </main>
-    </section>
+                Students
+              </button>
+            </div>
+          </article>
+        ))}
+      </section>
+    </main>
   );
 };

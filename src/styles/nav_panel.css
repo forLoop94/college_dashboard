@@ -168,7 +168,7 @@
     height: 120px;
   }
 
-  .mobile-close {
+  .mobile-close, .mobile-nav {
     display: none;
   }
 }

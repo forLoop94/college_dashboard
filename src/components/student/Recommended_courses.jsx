@@ -18,7 +18,10 @@ export const Recommended_courses = () => {
       <h1 className="tech-header">Recommended Courses</h1>
       <section className="d-flex flex-column align-items-center tech-card-container">
         {recCourses.map((course) => (
-          <article className="tech-card d-flex mb-5 justify-content-between align-items-center" key={course.id}>
+          <article
+            className="tech-card d-flex mb-5 justify-content-between align-items-center"
+            key={course.id}
+          >
             <h3 className="tech-title">{course.title}</h3>
             <div className="tech-card-content">
               <div>Course code: {course.code}</div>
@@ -27,13 +30,13 @@ export const Recommended_courses = () => {
             <div className="tech-card-content d-flex flex-column align-items-center">
               <div className="mt-2">Department: {course.department.name}</div>
               <button
-              className="tech-btn mt-2"
-              onClick={() =>
-                navigate(`/recommended_courses/${course.id}/${course.title}`)
-              }
-            >
-              Lecturers
-            </button>
+                className="tech-btn mt-2"
+                onClick={() =>
+                  navigate(`/recommended_courses/${course.id}/${course.title}`)
+                }
+              >
+                Lecturers
+              </button>
             </div>
           </article>
         ))}
