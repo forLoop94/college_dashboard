@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 export const StudentUser = ({ setNavPanelBackground }) => {
   return (
     <ul>
-      <li style={setNavPanelBackground("/student_details")}>
-        <Link to="student_details">Personal profile</Link>
+      <li>
+        <Link style={setNavPanelBackground("/student_details")} to="student_details">Personal profile</Link>
       </li>
-      <li style={setNavPanelBackground("/recommended_courses")}>
-        <Link to="/recommended_courses">Recommended Courses</Link>
+      <li>
+        <Link style={setNavPanelBackground("/recommended_courses")} to="/recommended_courses">Recommended Courses</Link>
       </li>
-      <li style={setNavPanelBackground("/course_grades")}>
-        <Link to="/course_grades">Grades</Link>
+      <li>
+        <Link style={setNavPanelBackground("/course_grades")} to="/course_grades">Grades</Link>
       </li>
       {/* <li style={setNavPanelBackground("/students")}>
         <Link to="/student_user/students">Students</Link>

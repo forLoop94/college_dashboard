@@ -5,23 +5,23 @@ export const HodUser = ({ setNavPanelBackground }) => {
   return (
     <ul>
       <list>Lists</list>
-      <li style={setNavPanelBackground("/hod_details")}>
-        <Link to="hod_details">Personal Profile</Link>
+      <li>
+        <Link style={setNavPanelBackground("/hod_details")} to="hod_details">Personal Profile</Link>
       </li>
-      <li style={setNavPanelBackground("/department_lecturers")}>
-        <Link to="department_lecturers">Lecturers</Link>
+      <li>
+        <Link style={setNavPanelBackground("/department_lecturers")} to="department_lecturers">Lecturers</Link>
       </li>
-      <li style={setNavPanelBackground("/department_students")}>
-        <Link to="/department_students">Students</Link>
+      <li>
+        <Link style={setNavPanelBackground("/department_students")} to="/department_students">Students</Link>
       </li>
-      <li style={setNavPanelBackground("/department_courses")}>
-        <Link to="department_courses">Courses</Link>
+      <li>
+        <Link style={setNavPanelBackground("/department_courses")} to="department_courses">Courses</Link>
       </li>
-      <li style={setNavPanelBackground("/add_course")}>
-        <Link to="add_course">New Course</Link>
+      <li>
+        <Link style={setNavPanelBackground("/add_course")} to="add_course">New Course</Link>
       </li>
-      <li style={setNavPanelBackground("/allotment_data")}>
-        <Link to="allotment_data">Allotment Information</Link>
+      <li>
+        <Link style={setNavPanelBackground("/allotment_data")} to="allotment_data">Allotment Information</Link>
       </li>
     </ul>
   )

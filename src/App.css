@@ -66,7 +66,7 @@ body {
 
 .tech-card-container {
   height: auto;
-  padding-top: 3rem;
+  padding-top: 6rem;
 }
 
 .tech-card, .tech-card-v2 {
@@ -130,6 +130,7 @@ body {
     width: 70%;
     padding: 1rem;
     flex-direction: row;
+    height: 6rem;
   }
 
   .tech-card-v2 {
