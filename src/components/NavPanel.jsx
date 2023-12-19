@@ -19,7 +19,7 @@ export const NavPanel = () => {
 
   const setNavPanelBackground = (targetLocation) => {
     if (location.pathname === targetLocation)
-      return { borderBottom: "2px solid white", color: "white" };
+      return { borderBottom: "1px solid white", color: "white" };
     return {};
   };
 
