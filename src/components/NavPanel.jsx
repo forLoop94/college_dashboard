@@ -6,8 +6,9 @@ import { DeanUser } from "./role_partitions/DeanUser";
 import { HodUser } from "./role_partitions/HodUser";
 import { LecturerUser } from "./role_partitions/LecturerUser";
 import { StudentUser } from "./role_partitions/StudentUser";
-import { FaBars } from "react-icons/fa6";
-import { FaUserLock } from "react-icons/fa6";
+import { FaBars, FaUserLock, FaX } from "react-icons/fa6";
+import logo from '../assets/logo.png';
+import { Footer } from "./Footer";
 
 export const NavPanel = () => {
   const location = useLocation();
@@ -47,9 +48,13 @@ export const NavPanel = () => {
     }
   };
 
+  const hideBars = {
+    display: !panel ? "none" : "block"
+  }
+
   return (
     <>
-      <div className="mobile-nav">
+      <div style={hideBars} className="mobile-nav">
         <span
           role="button"
           onClick={() => setPanel(!panel)}
@@ -68,6 +73,13 @@ export const NavPanel = () => {
         onKeyDown={() => setPanel(!panel)}
         tabIndex={0}
       >
+        <div className="logo-container">
+          <img
+            src={logo}
+            alt="logo"
+            className="logo"
+          />
+        </div>
         <div className="nav-panel">
           {role === "student" ? (
             <StudentUser setNavPanelBackground={setNavPanelBackground} />
@@ -86,16 +98,17 @@ export const NavPanel = () => {
               SIGN OUT
             </button>
           </div>
+          <Footer className="footer" />
         </div>
         <div
-          className="mobile close"
+          className="mobile-close"
           role="button"
           onClick={() => setPanel(!panel)}
           onKeyDown={() => setPanel(!panel)}
           tabIndex={0}
           aria-label="close button"
         >
-          <i className="fa fa-solid fa-xmark" />
+          <FaX className="text-white menu-btn" />
         </div>
       </div>
     </>
