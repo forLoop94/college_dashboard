@@ -40,7 +40,7 @@ export const LecturerUser = ({ setNavPanelBackground }) => {
           to="lecturer_eligible"
         >
           <FaToolbox className="mb-1 me-1" />
-          Lecturer Eligible
+          Proficiences
         </Link>
       </li>
     </ul>

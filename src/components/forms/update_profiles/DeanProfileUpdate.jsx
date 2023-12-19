@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaChevronRight, FaGraduationCap } from "react-icons/fa";
+import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
+import { FaArrowLeftLong } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { getDeanDetails, getSchools, updateDean } from "../../../redux/dean/deanSlice";
 
@@ -50,7 +51,7 @@ export const DeanProfileUpdate = ({ showProfile }) => {
         <header className="d-flex d-flex justify-content-center align-items-center">
           <h1 className="p-4 text-light">Update Dean Profile</h1>
         </header>
-        <FaArrowLeft
+        <FaArrowLeftLong
           className="position-absolute top-0 start-0 mt-4 ms-5 pencil"
           onClick={() => showProfile(true)}
         />

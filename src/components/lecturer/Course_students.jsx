@@ -8,6 +8,7 @@ import { Modal } from "react-bootstrap";
 import { propTypes } from "prop-types";
 import { useNavigate, useParams } from "react-router-dom";
 import { StudentDetails } from "../student/StudentDetails";
+import { FaAngleLeft } from "react-icons/fa6";
 
 export const CourseStudents = () => {
   const { courseId, courseTitle } = useParams();
@@ -39,48 +40,73 @@ export const CourseStudents = () => {
 
   const closeProfileModal = () => {
     setStudentId(null);
-  }
+  };
 
   return (
-    <div>
-      <div>
-        <h1>Students offering {courseTitle}</h1>
-        {students.map((student) => (
-          <article key={student.id}>
-            <h3>
-              <span>{student.first_name + " "}</span>
-              <span>{" " + student.last_name}</span>
-            </h3>
-            <div>{student.photo}</div>
-            <div>{student.gender}</div>
-            <div>{student.level}</div>
-            <button
-              className="btn btn-dark me-5"
-              onClick={() => {
-                fetchStudent(student.id, student.first_name, student.last_name);
-              }}
+    <>
+      <div className="technical-pages-bg-v2">
+        <h1 className="tech-header-v2">Students</h1>
+        <div className="d-flex flex-column align-items-center tech-card-container">
+          <small className="small-note-light m-4">
+            Below are students offering {courseTitle}
+          </small>
+          {students.map((student) => (
+            <div
+              className="tech-card-v2 d-flex mb-5 justify-content-between align-items-center h-25"
+              key={student.id}
             >
-              Private Exchanges
-            </button>
-            <button
-              className="btn btn-primary"
-              onClick={() => createGrade(student.id)}
-            >
-              Grade
-            </button>
-            <button
-              className="btn btn-light ms-5"
-              onClick={() => showStudentProfile(student.id)}
-            >
-              Profile
-            </button>
-          </article>
-        ))}
+              <img
+                src={student.photo}
+                alt={student.first_name}
+                width="80px"
+                height="80px"
+              />
+              <div className="w-75 d-flex flex-column justify-content-between upper-details">
+                <div className="d-flex justify-content-between">
+                  <h5>
+                    <span>{student.first_name + " "}</span>
+                    <span>{" " + student.last_name}</span>
+                  </h5>
+                  <div>Gender: {student.gender}</div>
+                  <div className="age">Age: {student.age}</div>
+                  <div>Level: {student.level}</div>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <div className="d-flex">
+                    <div
+                      className="false-links"
+                      onClick={() => {
+                        fetchStudent(
+                          student.id,
+                          student.first_name,
+                          student.last_name
+                        );
+                      }}
+                    >
+                      Exchanges
+                      <span className="ms-2 me-2">|</span>
+                    </div>
+                    <div className="false-links" onClick={() => createGrade(student.id)}>
+                      Grade
+                      <span className="ms-2 me-2">|</span>
+                    </div>
+                    <div
+                      className="false-links"
+                      onClick={() => showStudentProfile(student.id)}
+                    >
+                      Profile
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
         <button
-          className="btn btn-primary mt-5"
+          className="inner-page-return"
           onClick={() => navigate("/assigned_courses")}
         >
-          Back to assigned courses
+          <FaAngleLeft />
         </button>
         {selectedStudentId && (
           <Modal show={true} onHide={closeGradeModal}>
@@ -95,11 +121,13 @@ export const CourseStudents = () => {
         )}
         {studentId && (
           <Modal show={true} onHide={closeProfileModal}>
-            <Modal.Body>{<StudentDetails key={studentId} studentId={studentId} />}</Modal.Body>
+            <Modal.Body>
+              {<StudentDetails key={studentId} studentId={studentId} />}
+            </Modal.Body>
           </Modal>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
