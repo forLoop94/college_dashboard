@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
+import { FaAngleLeft } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../../styles/lesson_area.css";
@@ -26,7 +27,6 @@ export const LessonArea = () => {
 
   const { courseId, courseTitle, studentId, lecturerId, firstName, lastName } =
     useParams();
-  console.log(courseId + courseTitle + studentId + lecturerId + firstName +lastName)
 
   const getLessonArea = async (studentId, courseId, lecturerId) => {
     const token = localStorage.getItem("token");
@@ -115,10 +115,10 @@ export const LessonArea = () => {
 
   const stylePressedLink = {
     submission: {
-      color: linkPages.submission ? "#0d6efd" : "",
+      color: linkPages.submission ? "var(--razzmatazz)" : "",
     },
     chats: {
-      color: linkPages.chats ? "#0d6efd" : "",
+      color: linkPages.chats ? "var(--razzmatazz)" : "",
     },
   };
 
@@ -127,21 +127,21 @@ export const LessonArea = () => {
   };
 
   return (
-    <main>
-      <nav className="d-flex ps-5 bg-light position-fixed top-0 w-100">
-        <h3 className="mt-1 pointer" onClick={() => showLessonArea()}>
+    <main className="lesson-area-bg">
+      <nav className="tech-header-v3 d-flex ps-5 pe-5">
+        <h5 className="mt-1 pointer hFive" onClick={() => showLessonArea()}>
           Lesson Area
-        </h3>
-        <ul className="d-flex mt-2 ms-5 list-style-none">
+        </h5>
+        <ul className="d-flex mt-1 list-style-none nav-links">
           <li
-            className="pointer grey"
+            className="pointer nav-link"
             onClick={() => showSubmissionPage()}
             style={stylePressedLink.submission}
           >
             Submissions
           </li>
           <li
-            className="ms-3 pointer grey"
+            className="ms-3 pointer nav-link"
             onClick={() => {
               showChatsPage();
             }}
@@ -151,13 +151,13 @@ export const LessonArea = () => {
           </li>
         </ul>
       </nav>
-      <section className="mb-5" style={hideLessonAreaText}>
-        <small className="ms-4 me-2 text-primary">Did you know?</small>
-        <small className="grey">
+      <section className="lesson-area-intro" style={hideLessonAreaText}>
+        <small className="razzma-text">Did you know?</small>
+        <small>
           Submissions of articles, links, project etc, made here are end-to-end
           encryted, meaning you dont have to be afraid of IPT
         </small>
-        <p className="m-4">
+        <p className="mt-2">
           This Lesson area is provided to support the easy exchange of study
           materials, tests, assignments, examinations and general academic
           conversions between the student(name below) and lecturer(name below)
@@ -165,38 +165,38 @@ export const LessonArea = () => {
         </p>
         {role === "student" ? (
           <div>
-            <div className="ms-4">student: You</div>
-            <div className="ms-4">
+            <div>student: You</div>
+            <div>
               lecturer: {firstName} {lastName}
             </div>
           </div>
         ) : (
           <div>
-            <div className="ms-4">Lecturer: You</div>
-            <div className="ms-4">
+            <div>Lecturer: You</div>
+            <div>
               Student: {firstName} {lastName}
             </div>
           </div>
         )}
-        <p className="ms-4 text-sm">
+        <p>
           Note: If the student, lecturer or course information above is
-          incorrect, make a complain at <a href="#">studentSuport@rails.org</a>
+          incorrect, make a complain at <a className="razzma-text" href="#">studentSuport@rails.org</a>
         </p>
         {role === "student" ? (
           <button
-            className="btn btn-danger ms-4"
+            className="inner-page-return"
             onClick={() => navigate(`/recommended_courses/${courseId}/${courseTitle}`)}
           >
-            Close lesson area
+            <FaAngleLeft />
           </button>
         ) : (
           <button
-            className="btn btn-danger ms-4"
+            className="inner-page-return"
             onClick={() =>
               navigate(`/assigned_courses/${courseId}/${courseTitle}`)
             }
           >
-            Close lesson area
+            <FaAngleLeft />
           </button>
         )}
       </section>
@@ -205,12 +205,14 @@ export const LessonArea = () => {
           <Submissions
             otherUserInfo={studentCourseInfo}
             lessonAreaId={area.id}
+            showLessonArea={showLessonArea}
           />
         )}
         {linkPages.chats && (
           <Chats
             otherUserInfo={studentCourseInfo}
             lessonAreaId={area.id}
+            setLinkPages={setLinkPages}
           />
         )}
       </section>

@@ -7,12 +7,33 @@
   list-style-type: none;
 }
 
+.lesson-area-bg {
+  background-color: var(--lavendar-light-text);
+  height: 100vh;
+  padding: 7rem 10%;
+  position: relative;
+}
+
+.lesson-area-intro {
+  background-color: var(--carton-light);
+  color: var(--dark-mauve);
+  padding: 2rem;
+}
+
 .pointer {
   cursor: pointer;
 }
 
-.grey {
-  color: grey;
+.razzma-text {
+  color: var(--razzmatazz);
+}
+
+.nav-links {
+  width: 50%;
+}
+
+.nav-link {
+  font-size: 12px;
 }
 
 .pointer:hover {
@@ -20,6 +41,5 @@
 }
 
 .outgoing-chats, .incoming-chats {
-  /* width: 50%; */
   word-wrap: break-word;
 }
