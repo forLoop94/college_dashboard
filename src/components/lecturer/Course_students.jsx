@@ -46,7 +46,7 @@ export const CourseStudents = () => {
     <>
       <div className="technical-pages-bg-v2">
         <h1 className="tech-header-v2">Students</h1>
-        <div className="d-flex flex-column align-items-center tech-card-container">
+        <div className="d-flex flex-column align-items-center tech-card-container-v2">
           <small className="small-note-light m-4">
             Below are students offering {courseTitle}
           </small>

@@ -21,7 +21,7 @@ export const LecturerEligibleCourses = () => {
   return (
     <main className="technical-pages-bg-v2">
       <h1 className="tech-header-v2">Proficiences</h1>
-      <section className="d-flex flex-column align-items-center tech-card-container">
+      <section className="d-flex flex-column align-items-center tech-card-container-v2">
         <small className="small-note-light m-4">
           Below are courses you qualify to handle. This list will inform your assigned courses
         </small>

@@ -34,14 +34,14 @@ body {
   overflow-y: auto;
 }
 
-.technical-pages-bg, .technical-pages-bg-v2 {
+.technical-pages-bg, .technical-pages-bg-v2, .tech-card-container {
   background-color: var(--lavendar-light);
   color: var(--lavendar-light);
-  height: 100vh;
   position: relative;
+  height: 100vh;
 }
 
-.technical-pages-bg-v2 {
+.technical-pages-bg-v2, .tech-card-container-v2 {
   background-color: var(--english-lavendar);
   color: var(--dark-mauve);
 }
@@ -55,6 +55,7 @@ body {
   top: 0;
   width: 100%;
   border-bottom: 3px solid var(--carton-light);
+  z-index: 2;
 }
 
 .tech-header-v2 {
@@ -67,9 +68,9 @@ body {
   margin-top: 2rem;
 }
 
-.tech-card-container {
+.tech-card-container, .tech-card-container-v2 {
   height: auto;
-  padding-top: 6rem;
+  padding-top: 4rem;
 }
 
 .tech-card, .tech-card-v2 {
@@ -190,7 +191,6 @@ body {
     font-size: 20px;
     width: 4rem;
     height: 4rem;
-    top: 70%;
   }
 
   .age {
