@@ -17,31 +17,64 @@ export const DepartmentLecturers = () => {
 
   const showLecturerProfile = (id) => {
     setLecturerId(id);
-  }
+  };
 
   const closeProfileModal = () => {
     setLecturerId(null);
-  }
+  };
 
   if (lecturers.length === 0) {
     return "No lecturers yet!";
   } else {
     return (
-      <div className="technical-pages-bg">
-        <h1 className="tech-header">Lecturers</h1>
-        <small className="small-note-light">Lecturers in {lecturers[0].department.name} department</small>
-        {lecturers.map((lecturer) => (
-          <div key={lecturer.id}>
-            <h2>{lecturer.first_name}</h2>
-            <div>{lecturer.last_name}</div>
-            <button
-              className="btn btn-light"
-              onClick={() => showLecturerProfile(lecturer.id)}
+      <div className="technical-pages-bg-v2">
+        <h1 className="tech-header-v2">Lecturers</h1>
+        <div className="d-flex flex-column align-items-center tech-card-container-v2">
+          <small className="small-note-light">
+            Lecturers in {lecturers[0].department.name} department
+          </small>
+          {lecturers.map((lecturer) => (
+            <div
+              className="tech-card-v2 d-flex mb-5 justify-content-between align-items-center h-25"
+              key={lecturer.id}
             >
-              Profile
-            </button>
-          </div>
-        ))}
+              <img
+                src={lecturer.photo}
+                alt={lecturer.first_name}
+                width="80px"
+                height="80px"
+              />
+
+              <div className="w-75 d-flex flex-column justify-content-between upper-details">
+                <div className="d-flex details justify-content-between">
+                  <h5>
+                    <span>{lecturer.first_name + " "}</span>
+                    <span>{" " + lecturer.last_name}</span>
+                  </h5>
+                  <div>Gender: {lecturer.gender}</div>
+                  <div>Major: {lecturer.core_discipline}</div>
+                  <div>
+                    Qualification: {lecturer.highest_academic_qualification}
+                  </div>
+                </div>
+
+                <div className="d-flex card-links">
+                  <div className="d-flex">
+                    <div
+                      className="false-links"
+                      onClick={() => showLecturerProfile(lecturer.id)}
+                    >
+                      View full profile
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="position-absolute gpa">
+          Total: {lecturers.length}
+        </div>
         {lecturerId && (
           <Modal show={true} onHide={closeProfileModal}>
             <Modal.Body>

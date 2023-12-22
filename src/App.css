@@ -144,10 +144,6 @@ body {
   justify-content: center;
 }
 
-.age {
-  display: none;
-}
-
 .details {
   flex-direction: column;
   align-items: center;
@@ -203,10 +199,6 @@ body {
     font-size: 20px;
     width: 4rem;
     height: 4rem;
-  }
-
-  .age {
-    display: block;
   }
 
   .details {

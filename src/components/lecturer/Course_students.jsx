@@ -8,7 +8,7 @@ import { Modal } from "react-bootstrap";
 import { propTypes } from "prop-types";
 import { useNavigate, useParams } from "react-router-dom";
 import { StudentDetails } from "../student/StudentDetails";
-import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleLeft, FaX } from "react-icons/fa6";
 
 export const CourseStudents = () => {
   const { courseId, courseTitle } = useParams();
@@ -62,16 +62,16 @@ export const CourseStudents = () => {
                 height="80px"
               />
               <div className="w-75 d-flex flex-column justify-content-between upper-details">
-                <div className="d-flex justify-content-between">
+                <div className="d-flex details justify-content-between">
                   <h5>
                     <span>{student.first_name + " "}</span>
                     <span>{" " + student.last_name}</span>
                   </h5>
                   <div>Gender: {student.gender}</div>
-                  <div className="age">Age: {student.age}</div>
+                  <div>Age: {student.age}</div>
                   <div>Level: {student.level}</div>
                 </div>
-                <div className="d-flex justify-content-between">
+                <div className="d-flex card-links">
                   <div className="d-flex">
                     <div
                       className="false-links"
@@ -86,7 +86,10 @@ export const CourseStudents = () => {
                       Exchanges
                       <span className="ms-2 me-2">|</span>
                     </div>
-                    <div className="false-links" onClick={() => createGrade(student.id)}>
+                    <div
+                      className="false-links"
+                      onClick={() => createGrade(student.id)}
+                    >
                       Grade
                       <span className="ms-2 me-2">|</span>
                     </div>
@@ -111,6 +114,7 @@ export const CourseStudents = () => {
         {selectedStudentId && (
           <Modal show={true} onHide={closeGradeModal}>
             <Modal.Body>
+              {/* <FaX className="text-white menu-btn" /> */}
               <Grade
                 studentId={selectedStudentId}
                 courseId={courseId}
