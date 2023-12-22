@@ -27,8 +27,9 @@ export const DepartmentLecturers = () => {
     return "No lecturers yet!";
   } else {
     return (
-      <div>
-        <h1>Lecturers in {lecturers[0].department.name} department</h1>
+      <div className="technical-pages-bg">
+        <h1 className="tech-header">Lecturers</h1>
+        <small className="small-note-light">Lecturers in {lecturers[0].department.name} department</small>
         {lecturers.map((lecturer) => (
           <div key={lecturer.id}>
             <h2>{lecturer.first_name}</h2>
