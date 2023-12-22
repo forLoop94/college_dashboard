@@ -128,7 +128,7 @@ export const LessonArea = () => {
 
   return (
     <main className="lesson-area-bg">
-      <nav className="tech-header-v3 d-flex ps-5 pe-5">
+      <nav className="tech-header d-flex ps-5 pe-5">
         <h5 className="mt-1 pointer hFive" onClick={() => showLessonArea()}>
           Lesson Area
         </h5>

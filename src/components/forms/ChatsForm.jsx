@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLessonChats } from "../../redux/student/studentSlice";
+import { FaCircleRight } from "react-icons/fa6";
 
 export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
       const data = await response.json();
       return data;
     } else {
-      console.log('nothingssss');
+      console.log("nothingssss");
     }
   };
 
@@ -68,9 +69,10 @@ export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
   };
 
   return (
-    <form className="d-flex" onSubmit={handleSubmit}>
+    <form className="d-flex chat-form" onSubmit={handleSubmit}>
       <input
-        className="form-control"
+        placeholder="Compose..."
+        className="form-control message-bar"
         value={formData.message}
         name="message"
         onChange={handleChange}
@@ -80,9 +82,11 @@ export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
         name="lesson_area_id"
         value={formData.lesson_area_id}
       />
-      <button className="btn btn-primary ms-3" type="submit">
-        send
-      </button>
+      <div className="send-container d-flex align-items-center ms-3">
+        <button className="chat-submit" type="submit">
+          <FaCircleRight className="send-btn" />
+        </button>
+      </div>
     </form>
   );
 };

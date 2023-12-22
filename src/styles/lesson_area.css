@@ -7,17 +7,47 @@
   list-style-type: none;
 }
 
-.lesson-area-bg {
-  background-color: var(--lavendar-light-text);
-  height: 100vh;
-  padding: 7rem 10%;
-  position: relative;
-}
-
 .lesson-area-intro {
   background-color: var(--carton-light);
   color: var(--dark-mauve);
   padding: 2rem;
+  margin: 7rem 10%;
+}
+
+.chats-page {
+  background-color: var(--lavendar-light);
+  height: auto;
+  padding: 7rem 10% 3rem 10%;
+  /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), url('../assets/profile-pages-bg.jpg'); */
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.old-message {
+  width: auto;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.message-bar {
+  width: 50%;
+}
+
+.send-container {
+  height: 2.5rem;
+}
+
+.chat-submit {
+  border: none;
+  background: transparent;
+}
+
+.send-btn {
+  font-size: 30px;
+  color: var(--dark-byzantium);
 }
 
 .pointer {
@@ -37,7 +67,7 @@
 }
 
 .pointer:hover {
-  color: black;
+  color: white;
 }
 
 .outgoing-chats, .incoming-chats {
