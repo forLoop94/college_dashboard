@@ -76,7 +76,7 @@ body {
   padding-top: 4rem;
 }
 
-.tech-card, .tech-card-v2 {
+.tech-card, .tech-card-v2, .tech-card-v3 {
   background-color: var(--english-lavendar);
   width: 90%;
   height: 12rem;
@@ -90,6 +90,12 @@ body {
 .tech-card-v2 {
   background-color: var(--lavendar-light-text);
   border-left: 5px solid var(--razzmatazz);
+  height: 15rem;
+}
+
+.tech-card-v3 {
+  background-color: var(--dark-byzantium);
+  border-right: 5px solid var(--carton-light);
   height: 15rem;
 }
 
@@ -179,6 +185,11 @@ body {
     height: 9rem;
   }
 
+  .tech-card-v3 {
+    flex-direction: row;
+    height: 3rem;
+  }
+
   .tech-title {
     width: 20%;
   }
@@ -208,6 +219,10 @@ body {
 
   .card-links {
     justify-content: start;
+  }
+
+  .small-fonts {
+    font-size: 13px;
   }
 }
 
