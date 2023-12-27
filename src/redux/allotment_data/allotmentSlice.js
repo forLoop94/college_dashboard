@@ -24,7 +24,7 @@ export const getAllotmentData = createAsyncThunk(
   async (id) => {
     const token = localStorage.getItem("token");
     const response = await fetch(`${baseURL}/lecturer_courses/${id}`, {
-      header: {
+      headers: {
         authorization: token,
       },
     });
@@ -33,6 +33,19 @@ export const getAllotmentData = createAsyncThunk(
   }
 );
 
+export const deleteAllotment = createAsyncThunk("lecturerCourses/deleteAllotment", async (id) => {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`${baseURL}/lecturer_courses/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: token
+    }
+  })
+  if (response.ok) {
+    return id;
+  }
+})
+
 const initialState = {
   allotmentData: [],
 };
@@ -40,11 +53,19 @@ const initialState = {
 const allotmentSlice = createSlice({
   name: "allotmentData",
   initialState,
+  reducers: {
+    // removeAllotment: (state, { payload }) => {
+    //   const newData = state.allotmentData.filter(elm => elm.id !== payload.id);
+    //   state.allotmentData = newData;
+    // }
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllotmentData.fulfilled, (state, action) => {
       state.allotmentData = action.payload;
     });
   },
 });
+
+// export const { removeAllotment } = allotmentSlice.actions;
 
 export default allotmentSlice.reducer;

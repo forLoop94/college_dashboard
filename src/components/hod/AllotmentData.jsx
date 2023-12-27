@@ -4,6 +4,7 @@ import { FaChevronRight, FaReadme } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addAllotmentData,
+  deleteAllotment,
   getAllotmentData,
 } from "../../redux/allotment_data/allotmentSlice";
 import {
@@ -44,6 +45,12 @@ export const AllotmentData = () => {
       [name]: value,
     });
   };
+
+  const cancelAllotment = (id) => {
+    dispatch(deleteAllotment(id)).then(() => {
+      dispatch(getAllotmentData(profile_id))
+    })
+  }
 
   return (
     <section className=" technical-pages-bg d-flex flex-column align-items-center w-100">
@@ -100,12 +107,12 @@ export const AllotmentData = () => {
                   className="tech-card-v3 alotment-card d-flex mb-2 w-100"
                   key={row.id}
                 >
-                  <div>{row.course.title}</div>
-                  <div className="">
+                  <div className="w-50 alotted-course">{row.course.title}</div>
+                  <div>
                     Lecturer: {row.lecturer.first_name} {row.lecturer.last_name}
                   </div>
                   <div className="d-flex justify-content-center mt-1 mb-1">
-                    <button className="btn btn-danger">Cancel</button>
+                    <button className="btn btn-danger" onClick={() => cancelAllotment(row.id)}>Cancel</button>
                   </div>
                 </div>
               ))}
