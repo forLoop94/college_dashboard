@@ -22,39 +22,47 @@ export const Hods = () => {
 
   const closeProfileModal = () => {
     setHodId(null);
-  }
+  };
 
   return (
-    <section className="m-5">
-      {hods.map((hod, index) => (
-        <article className="d-flex" key={index}>
-          {hod.hod ? (
-            <>
-              <img src={hod.hod.photo} width="100" height="100" />
-              <div>Department: {hod.department.name}</div>
-              <div>
-                HOD: {hod.hod.first_name} {hod.hod.last_name}
-              </div>
-              <div>Mobile: {hod.hod.phone_number}</div>
-              <div>Qualification: {hod.hod.highest_academic_qualification}</div>
-              <div>Appointed on: {convertTime(hod.hod.created_at)}</div>
-              <button
-                className="btn btn-primary"
-                onClick={() => hodDetails(hod.hod.id)}
-              >
-                Profile
-              </button>
-            </>
-          ) : !hod.hod && hod.department ? (
-            <>
-              <h2>Department: {hod.department.name}</h2>
-              <div>HOD: No HOD yet!</div>
-            </>
-          ) : (
-            ""
-          )}
-        </article>
-      ))}
+    <section className="technical-pages-bg">
+      <h1 className="tech-header">HOD's LIST</h1>
+      <div className="d-flex flex-column align-items-center tech-card-container">
+        {hods.map((hod, index) => (
+          <article className="d-flex m-2 tech-card h-25 w-75" key={index}>
+            {hod.hod ? (
+              <>
+                {/* <img src={hod.hod.photo} width="60" height="60" /> */}
+                <div>{hod.department.name}</div>
+                <div className="small-fonts">
+                  HOD: {hod.hod.first_name} {hod.hod.last_name}
+                </div>
+                <div className="small-fonts">Mobile: {hod.hod.phone_number}</div>
+                <div className="small-fonts">
+                  Qualification: {hod.hod.highest_academic_qualification}
+                </div>
+                <div className="small-fonts">Appointed on: {convertTime(hod.hod.created_at)}</div>
+                <div className="d-flex justify-content-start">
+                  <button
+                    className="small-btn btn-light btn"
+                    type="submit"
+                    onClick={() => hodDetails(hod.hod.id)}
+                  >
+                    Profile
+                  </button>
+                </div>
+              </>
+            ) : !hod.hod && hod.department ? (
+              <>
+                <h2>Department: {hod.department.name}</h2>
+                <div>HOD: No HOD yet!</div>
+              </>
+            ) : (
+              ""
+            )}
+          </article>
+        ))}
+      </div>
       {hodId && (
         <Modal show={true} onHide={closeProfileModal}>
           <Modal.Body>{<HodDetails key={hodId} hodId={hodId} />}</Modal.Body>

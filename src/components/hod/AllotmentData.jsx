@@ -101,13 +101,13 @@ export const AllotmentData = () => {
         ) : (
           <div className="">
             <h2>Course Allotment Table</h2>
-            <div className="">
+            <div>
               {allotmentInfo.map((row) => (
                 <div
                   className="tech-card-v3 alotment-card d-flex mb-2 w-100"
                   key={row.id}
                 >
-                  <div className="w-50 alotted-course">{row.course.title}</div>
+                  <h4 className="w-50 alotted-course">{row.course.title}</h4>
                   <div>
                     Lecturer: {row.lecturer.first_name} {row.lecturer.last_name}
                   </div>
