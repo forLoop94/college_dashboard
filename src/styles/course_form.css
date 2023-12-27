@@ -18,6 +18,17 @@
   background-color: var(--razzma-light);
 }
 
+.allotment-form {
+  z-index: 2;
+  margin-top: 6rem;
+  flex-direction: column;
+  width: 80%;
+}
+
+.alotment-card {
+  height: auto;
+}
+
 .mobile-header {
   background-color: var(--dark-byzantium);
   width: 100vw;
@@ -30,6 +41,11 @@
 @media screen and (min-width: 1000px) {
   .mobile-header {
     display: none;
+  }
+
+  .alotment-card {
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
