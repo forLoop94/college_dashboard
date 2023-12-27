@@ -53,7 +53,7 @@ export const AllotmentData = () => {
   }
 
   return (
-    <section className=" technical-pages-bg d-flex flex-column align-items-center w-100">
+    <section className="technical-pages-bg d-flex flex-column align-items-center w-100">
       <h2 className="tech-header">Allotment Form</h2>
       <form
         className="allotment-form d-flex justify-content-between w-75"
