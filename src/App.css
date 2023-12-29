@@ -97,6 +97,7 @@ body {
   background-color: var(--dark-byzantium);
   border-right: 5px solid var(--carton-light);
   height: 15rem;
+  gap: 1rem;
 }
 
 .tech-btn {
@@ -187,7 +188,12 @@ body {
 
   .tech-card-v3 {
     flex-direction: row;
-    height: 3rem;
+    height: 5rem;
+    gap: 2rem;
+  }
+
+  .tech-card-v3 h5 {
+    width: 30%;
   }
 
   .tech-title {

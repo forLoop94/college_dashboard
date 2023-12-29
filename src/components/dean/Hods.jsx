@@ -26,14 +26,13 @@ export const Hods = () => {
 
   return (
     <section className="technical-pages-bg">
-      <h1 className="tech-header">HOD's LIST</h1>
+      <h1 className="tech-header">HODs</h1>
       <div className="d-flex flex-column align-items-center tech-card-container">
         {hods.map((hod, index) => (
           <article className="d-flex m-2 tech-card h-25 w-75" key={index}>
             {hod.hod ? (
               <>
-                {/* <img src={hod.hod.photo} width="60" height="60" /> */}
-                <div>{hod.department.name}</div>
+                <div className="w-25">{hod.department.name}</div>
                 <div className="small-fonts">
                   HOD: {hod.hod.first_name} {hod.hod.last_name}
                 </div>

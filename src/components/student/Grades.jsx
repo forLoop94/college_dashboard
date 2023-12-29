@@ -32,7 +32,7 @@ export const Grades = () => {
   return (
     <section className="technical-pages-bg-v2">
       <h1 className="tech-header-v2">Grade Information</h1>
-      <article className="d-flex flex-column align-items-center tech-card-container">
+      <article className="d-flex flex-column align-items-center tech-card-container-v2">
         <small className="small-note-light mb-2">
           {`Grades available for ${gradesInfo.length} of ${recCourses.length} recommended courses`}
         </small>

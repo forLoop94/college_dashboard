@@ -22,7 +22,7 @@ export const DepartmentCourses = () => {
           </small>
           {courses.map((course) => (
             <article
-              className="tech-card-v3 d-flex mb-5 justify-content-between align-items-center"
+              className="tech-card-v3 d-flex mb-5 align-items-center"
               key={course.id}
             >
               <h5>{course.title}</h5>
