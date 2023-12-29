@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGraduationCap, FaChevronRight } from "react-icons/fa";
 import "../../styles/auth_pages.css";
+import { toast } from "react-toastify";
 
 export const Signup = () => {
   const navigate = useNavigate();
@@ -18,7 +19,22 @@ export const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    if (
+      !data.username ||
+      !data.role ||
+      !data.email ||
+      !data.password ||
+      !data.password_confirmation
+    ) {
+      toast.error('At least one required field is empty');
+      return;
+    }
+
+    if (data.password !== data.password_confirmation) {
+      toast.error("password mismatch");
+      return;
+    }
+
     try {
       const response = await fetch(`${baseURL}/signup`, {
         method: "POST",
@@ -34,6 +50,9 @@ export const Signup = () => {
         console.log(responseData);
         const authorization = response.headers.get("authorization");
         localStorage.setItem("token", authorization);
+        toast.success(
+          `Welcome ${data.username}! Log in with the same credentials`
+        );
         navigate("/login");
       }
     } catch (error) {

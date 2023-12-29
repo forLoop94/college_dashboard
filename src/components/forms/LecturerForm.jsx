@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addLecturer } from "../../redux/lecturer/lecturerSlice";
 import "../../styles/forms.css";
@@ -33,7 +34,14 @@ export const LecturerForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    const emptyField = Object.keys(formData).find(
+      (key) => !formData[key].trim()
+    );
+
+    if (emptyField) {
+      toast.error(`The field ${emptyField.replace(/_/g, ' ')} is empty`);
+      return;
+    }
     dispatch(addLecturer(formData));
     navigate("/");
   };

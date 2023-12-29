@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth_pages.css";
 import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +16,10 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!data.email || !data.password) {
+      toast.error("At least one required field is empty");
+      return;
+    }
     try {
       const response = await fetch(`${baseURL}/login`, {
         method: "POST",
@@ -30,12 +35,11 @@ export const Login = () => {
         console.log(resData);
         const authorization = response.headers.get("authorization");
         localStorage.setItem("token", authorization);
-        console.log(authorization);
-        console.log(resData.status.message);
         navigate("/");
+        toast.success("Log in successful")
       }
     } catch (error) {
-      return error;
+      toast.error("You could not be logged in")
     }
   };
 
