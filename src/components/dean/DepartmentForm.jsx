@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { FaChevronRight, FaReadme } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getSchools } from "../../redux/dean/deanSlice";
 import { addDepartments } from "../../redux/department/departmentSlice";
 
@@ -22,8 +23,14 @@ export const DepartmentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(!data.name || !data.school_id) {
+      toast.warn("Supply all fields!");
+      return;
+    }
     dispatch(addDepartments(data));
     navigate("/departments");
+    toast.success(`${data.name} department added succesfully!`);
   };
 
   const handleChange = (e) => {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { FaChevronRight, FaReadme } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import {
   addAllotmentData,
   deleteAllotment,
@@ -33,8 +34,18 @@ export const AllotmentData = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!data.lecturer_id || !data.course_id) {
+      toast.warn('Supply all fields!');
+      return;
+    }
     dispatch(addAllotmentData(data)).then(() => {
       dispatch(getAllotmentData(profile_id));
+      toast.success('Course alloted successfully');
+      setData({
+        lecturer_id: "",
+        course_id: "",
+      })
     });
   };
 
@@ -48,7 +59,8 @@ export const AllotmentData = () => {
 
   const cancelAllotment = (id) => {
     dispatch(deleteAllotment(id)).then(() => {
-      dispatch(getAllotmentData(profile_id))
+      dispatch(getAllotmentData(profile_id));
+      toast.success("Allotment successfully cancelled!");
     })
   }
 
