@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { addGrades, getTargetGrade } from '../../redux/grade/gradeSlice';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 export const NewGrade = ({ studentId, onClose }) => {
   const { courseId, courseTitle } = useParams();
@@ -25,6 +26,7 @@ export const NewGrade = ({ studentId, onClose }) => {
     }
     dispatch(addGrades(formData)).then(() => {
       dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
+      toast.success(`${formData.value } added as student's grade`)
     })
     navigate(`/assigned_courses/${courseId}/${courseTitle}`);
     setFormData({
@@ -45,9 +47,10 @@ export const NewGrade = ({ studentId, onClose }) => {
   return (
     <section>
       <small>{warning}</small>
-      <form onSubmit={handleSubmit}>
+      <form className='d-flex justify-content-between' onSubmit={handleSubmit}>
         <input
           type='number'
+          className='form-control'
           placeholder='Enter score'
           name='value'
           value={formData.value}

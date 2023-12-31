@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getTargetGrade, updateGrade } from '../../redux/grade/gradeSlice';
-import { Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 export const UpdateGrade = ({ studentId, targetGrade, onClose }) => {
   const { courseId, courseTitle } = useParams();
@@ -12,7 +12,7 @@ export const UpdateGrade = ({ studentId, targetGrade, onClose }) => {
   const [warning, setWarning] = useState('');
 
   const [formData, setFormData] = useState({
-    value: '',
+    value: targetGrade.value,
     student_id: studentId,
     course_id: courseId
   })
@@ -25,6 +25,7 @@ export const UpdateGrade = ({ studentId, targetGrade, onClose }) => {
     }
     dispatch(updateGrade({ body: formData, id: targetGrade.id  })).then(() => {
       dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
+      toast.success(`Grade upgraded to ${ formData.value}`)
     })
     navigate(`/assigned_courses/${courseId}/${courseTitle}`);
     setFormData({
@@ -45,9 +46,10 @@ export const UpdateGrade = ({ studentId, targetGrade, onClose }) => {
   return (
     <section>
       <small>{warning}</small>
-      <form onSubmit={handleSubmit}>
+      <form className='d-flex justify-content-between mt-3' onSubmit={handleSubmit}>
         <input
           type='number'
+          className='form-control w-50'
           placeholder={targetGrade.value}
           name='value'
           value={formData.value}
@@ -65,7 +67,7 @@ export const UpdateGrade = ({ studentId, targetGrade, onClose }) => {
           value={formData.course_id}
           onChange={handleChange}
         />
-        <Button variant='primary' type='submit'>Update</Button>
+        <button className='btn btn-primary h-25' type='submit'>Update</button>
       </form>
     </section>
   )
