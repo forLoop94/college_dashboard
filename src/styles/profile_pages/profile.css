@@ -13,7 +13,7 @@
 }
 
 .headline-dean, .card-dean {
-  background: linear-gradient(90deg, rgb(83, 9, 110, 0.7),rgba(0, 0, 0, 0.917));
+  background: linear-gradient(90deg, rgb(180,131,149),rgba(0, 0, 0, 0.917));
 }
 
 .profile-photo {
@@ -37,7 +37,7 @@
   font-size: 13px;
 }
 
-.card-student, .card-lecturer, .card-hod {
+.card-student, .card-lecturer, .card-hod, .card-dean{
   height: 5%;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(230, 10, 10,  0.7));
 }
@@ -51,7 +51,7 @@
 }
 
 .card-dean {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(83, 9, 110, 0.7));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgb(180,131,149));
 }
 
 @media (min-width: 768px) {

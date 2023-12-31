@@ -23,17 +23,17 @@ export const StudentDetails = ({ studentId }) => {
   };
 
   const hidePen = {
-    display: studentId ? "none" : "block"
-  }
+    display: studentId ? "none" : "block",
+  };
 
   const AdjustImageSize = {
     width: studentId ? "120px" : "",
     height: studentId ? "120px" : "",
-    top: studentId ? "60%" : ""
-  }
+    top: studentId ? "60%" : "",
+  };
 
   const showProfile = (toogle) => {
-    if(toogle) {
+    if (toogle) {
       setUpdateForm(false);
     }
   };
@@ -41,7 +41,10 @@ export const StudentDetails = ({ studentId }) => {
   return (
     <section className="position-relative">
       <article style={hideProfile}>
-        <div className="headline-student d-flex flex-column align-items-center p-3">
+        <div
+          id="headline"
+          className={studentId ? 'headline-student d-flex flex-column align-items-center p-3' : 'headline-dean d-flex flex-column align-items-center p-3'}
+        >
           <h1 className="text-white">
             {studentDetails.first_name} {studentDetails.last_name}
           </h1>
@@ -54,7 +57,7 @@ export const StudentDetails = ({ studentId }) => {
             Email: {email} | Phone: {studentDetails.phone_number}
           </small>
           <img
-          style={AdjustImageSize}
+            style={AdjustImageSize}
             className="profile-photo rounded-circle"
             src={studentDetails.photo}
             alt={studentDetails.first_name}
@@ -67,7 +70,7 @@ export const StudentDetails = ({ studentId }) => {
             </p>
           </div>
           <div></div>
-          <div className="d-flex m-5 card-student flex-column text-white p-3">
+          <div className={studentId ? 'd-flex m-5 card-student flex-column text-white p-3' : 'd-flex m-5 card-dean flex-column text-white p-3'}>
             <div>Gender: {studentDetails.gender}</div>
             <div>Age: {studentDetails.age}</div>
             <div>Level: {studentDetails.level}</div>
@@ -76,7 +79,9 @@ export const StudentDetails = ({ studentId }) => {
           </div>
         </div>
       </article>
-      <article>{updateForm && <StudentProfileUpdate showProfile={showProfile} />}</article>
+      <article>
+        {updateForm && <StudentProfileUpdate showProfile={showProfile} />}
+      </article>
     </section>
   );
 };

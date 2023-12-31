@@ -40,7 +40,7 @@ export const LecturerDetails = ({ lecturerId }) => {
   return (
     <section className="position-relative">
       <article style={hideProfile}>
-        <div className="headline-lecturer d-flex flex-column align-items-center p-3">
+        <div className={lecturerId ? 'headline-lecturer d-flex flex-column align-items-center p-3' : 'headline-dean d-flex flex-column align-items-center p-3'}>
           <h1 className="text-white">
             {lecturerDetails.first_name} {lecturerDetails.last_name}
           </h1>
@@ -66,7 +66,7 @@ export const LecturerDetails = ({ lecturerId }) => {
             </p>
           </div>
           <div></div>
-          <div className="d-flex m-5 card-lecturer flex-column text-white p-3">
+          <div className={lecturerId ? 'd-flex m-5 card-lecturer flex-column text-white p-3' : 'd-flex m-5 card-dean flex-column text-white p-3'}>
             <div>Gender: {lecturerDetails.gender}</div>
             <div>Age: {lecturerDetails.age}</div>
             <div>Major: {lecturerDetails.core_discipline}</div>
