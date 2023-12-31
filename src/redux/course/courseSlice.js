@@ -59,6 +59,19 @@ export const getCourseLecturers = createAsyncThunk('courses/getCourseLecturers',
   }
 })
 
+export const deleteCourse = createAsyncThunk("courses/deleteCourse", async (id) => {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`${baseURL}/courses/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: token
+    }
+  })
+  if (response.ok) {
+    return id;
+  }
+})
+
 const initialState = {
   courses: [],
   students: [],

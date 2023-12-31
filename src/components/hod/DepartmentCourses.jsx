@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { deleteCourse } from "../../redux/course/courseSlice";
 import { getDepartmentCourses } from "../../redux/department/departmentSlice";
 
 export const DepartmentCourses = () => {
@@ -9,6 +11,13 @@ export const DepartmentCourses = () => {
   useEffect(() => {
     dispatch(getDepartmentCourses());
   }, [dispatch]);
+
+  const removeCourse = (id) => {
+    dispatch(deleteCourse(id)).then(() => {
+      dispatch(getDepartmentCourses());
+      toast.success('Course deleted successfully');
+    })
+  }
 
   if (courses.length === 0) {
     return "No courses yet!";
@@ -28,8 +37,20 @@ export const DepartmentCourses = () => {
               <h5>{course.title}</h5>
               <div className="small-fonts">Code: {course.code}</div>
               <div className="small-fonts">Level: {course.level}</div>
-              <div className="small-fonts">Credit Hours: {course.credit_load}</div>
-              <div className="small-fonts">Department: {course.department.name}</div>
+              <div className="small-fonts">
+                Credit Hours: {course.credit_load}
+              </div>
+              <div className="small-fonts">
+                Department: {course.department.name}
+              </div>
+              <div className="d-flex justify-content-center mt-1 mb-1">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => removeCourse(course.id)}
+                >
+                  Delete
+                </button>
+              </div>
             </article>
           ))}
         </div>
