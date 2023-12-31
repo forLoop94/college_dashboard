@@ -223,6 +223,10 @@ body {
     align-items: center;
   }
 
+  .details-v2 {
+    justify-content: space-between;
+  }
+
   .card-links {
     justify-content: start;
   }

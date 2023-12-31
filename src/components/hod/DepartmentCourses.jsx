@@ -12,10 +12,10 @@ export const DepartmentCourses = () => {
     dispatch(getDepartmentCourses());
   }, [dispatch]);
 
-  const removeCourse = (id) => {
+  const removeCourse = (id, title) => {
     dispatch(deleteCourse(id)).then(() => {
       dispatch(getDepartmentCourses());
-      toast.success('Course deleted successfully');
+      toast.success(`Course ${title} deleted successfully`);
     })
   }
 
@@ -46,7 +46,7 @@ export const DepartmentCourses = () => {
               <div className="d-flex justify-content-center mt-1 mb-1">
                 <button
                   className="btn btn-danger"
-                  onClick={() => removeCourse(course.id)}
+                  onClick={() => removeCourse(course.id, course.title)}
                 >
                   Delete
                 </button>
