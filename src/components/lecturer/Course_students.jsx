@@ -3,12 +3,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCourseStudents } from "../../redux/course/courseSlice";
 import { Grade } from "./Grade";
-import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
-import { propTypes } from "prop-types";
+import PropTypes from 'prop-types';
 import { useNavigate, useParams } from "react-router-dom";
 import { StudentDetails } from "../student/StudentDetails";
-import { FaAngleLeft, FaX } from "react-icons/fa6";
+import { FaAngleLeft } from "react-icons/fa6";
 
 export const CourseStudents = () => {
   const { courseId, courseTitle } = useParams();

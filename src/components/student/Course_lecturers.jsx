@@ -16,7 +16,7 @@ export const CourseLecturers = () => {
 
   useEffect(() => {
     dispatch(getCourseLecturers(courseId));
-  }, [dispatch]);
+  }, [courseId, dispatch]);
 
   const showLecturerProfile = (id) => {
     setLecturerId(id);

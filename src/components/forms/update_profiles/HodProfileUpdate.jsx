@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { FaArrowLeft, FaChevronRight, FaGraduationCap } from 'react-icons/fa';
+import { useEffect, useState } from 'react'
+import { FaChevronRight, FaGraduationCap } from 'react-icons/fa';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDepartments } from '../../../redux/department/departmentSlice';
 import { getHodDetails, updateHod } from '../../../redux/hod/hodSlice';
+import PropTypes from 'prop-types';
 
 export const HodProfileUpdate = ({ showProfile }) => {
   const dispatch = useDispatch();
@@ -215,3 +216,7 @@ export const HodProfileUpdate = ({ showProfile }) => {
     </section>
   );
 }
+
+HodProfileUpdate.propTypes = {
+  showProfile: PropTypes.func
+};

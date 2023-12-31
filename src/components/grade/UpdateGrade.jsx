@@ -76,6 +76,7 @@ export const UpdateGrade = ({ studentId, targetGrade, onClose }) => {
 UpdateGrade.propTypes = {
   studentId: PropTypes.number.isRequired,
   courseId: PropTypes.number.isRequired,
+  onClose: PropTypes.func,
   targetGrade: PropTypes.shape({
     id: PropTypes.number,
     value: PropTypes.number,

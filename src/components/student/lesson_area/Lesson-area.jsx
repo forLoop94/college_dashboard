@@ -42,51 +42,78 @@ export const LessonArea = () => {
     return data;
   };
 
-  if (role && role === "student") {
-    useEffect(() => {
-      const fetchData = async () => {
-        const data = await getLessonArea(
-          profile_id,
-          courseId,
-          lecturerId
-        );
-        if (!data) {
-          setShowForm(true);
-        }
-        setArea(data);
-        setStudentCourseInfo({
-          id: lecturerId,
-          first_name: firstName,
-          last_name: lastName,
-          course_id: courseId,
-          course_title: courseTitle,
-        });
-      };
+  // if (role && role === "student") {
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       const data = await getLessonArea(
+  //         profile_id,
+  //         courseId,
+  //         lecturerId
+  //       );
+  //       if (!data) {
+  //         setShowForm(true);
+  //       }
+  //       setArea(data);
+  //       setStudentCourseInfo({
+  //         id: lecturerId,
+  //         first_name: firstName,
+  //         last_name: lastName,
+  //         course_id: courseId,
+  //         course_title: courseTitle,
+  //       });
+  //     };
 
-      fetchData();
-    }, [profile_id, courseId, lecturerId]);
-  } else if (role === "lecturer") {
-    useEffect(() => {
-      const fetchData = async () => {
-        const data = await getLessonArea(studentId, courseId, profile_id);
-        if (!data) {
-          setShowForm(true);
-        }
-        setArea(data);
-        setStudentCourseInfo({
-          id: studentId,
-          first_name: firstName,
-          last_name: lastName,
-          course_id: courseId,
-          course_title: courseTitle,
-        });
-      };
+  //     fetchData();
+  //   }, [profile_id, courseId, lecturerId]);
+  // } else if (role === "lecturer") {
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       const data = await getLessonArea(studentId, courseId, profile_id);
+  //       if (!data) {
+  //         setShowForm(true);
+  //       }
+  //       setArea(data);
+  //       setStudentCourseInfo({
+  //         id: studentId,
+  //         first_name: firstName,
+  //         last_name: lastName,
+  //         course_id: courseId,
+  //         course_title: courseTitle,
+  //       });
+  //     };
 
-      fetchData();
-    }, [profile_id, courseId, studentId]);
-  } else {
-    return;
-  }
+  //     fetchData();
+  //   }, [profile_id, courseId, studentId]);
+  // } else {
+  //   return;
+  // }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data;
+
+      if (role === "student") {
+        data = await getLessonArea(profile_id, courseId, lecturerId);
+      } else if (role === "lecturer") {
+        data = await getLessonArea(studentId, courseId, profile_id);
+      }
+
+      if (!data) {
+        setShowForm(true);
+      }
+
+      setArea(data);
+      setStudentCourseInfo({
+        id: role === "student" ? lecturerId : studentId,
+        first_name: firstName,
+        last_name: lastName,
+        course_id: courseId,
+        course_title: courseTitle,
+      });
+    };
+
+    fetchData();
+  }, [profile_id, courseId, lecturerId, studentId, role, firstName, lastName, courseTitle]);
 
   const showSubmissionPage = () => {
     setLinkPages({
@@ -180,12 +207,17 @@ export const LessonArea = () => {
         )}
         <p>
           Note: If the student, lecturer or course information above is
-          incorrect, make a complain at <a className="razzma-text" href="#">studentSuport@rails.org</a>
+          incorrect, make a complain at{" "}
+          <a className="razzma-text" href="#">
+            studentSuport@rails.org
+          </a>
         </p>
         {role === "student" ? (
           <button
             className="inner-page-return"
-            onClick={() => navigate(`/recommended_courses/${courseId}/${courseTitle}`)}
+            onClick={() =>
+              navigate(`/recommended_courses/${courseId}/${courseTitle}`)
+            }
           >
             <FaAngleLeft />
           </button>

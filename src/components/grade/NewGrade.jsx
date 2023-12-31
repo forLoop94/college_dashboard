@@ -76,5 +76,6 @@ export const NewGrade = ({ studentId, onClose }) => {
 
 NewGrade.propTypes = {
   studentId: PropTypes.number.isRequired,
-  courseId: PropTypes.number.isRequired
+  courseId: PropTypes.number.isRequired,
+  onClose: PropTypes.func
 }

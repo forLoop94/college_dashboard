@@ -4,6 +4,7 @@ import { getlecturerDetails } from "../../redux/lecturer/lecturerSlice";
 import "../../styles/profile_pages/profile.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { LecturerProfileUpdate } from "../forms/update_profiles/LecturerProfileUpdate";
+import PropTypes from 'prop-types';
 
 export const LecturerDetails = ({ lecturerId }) => {
   const dispatch = useDispatch();
@@ -86,4 +87,8 @@ export const LecturerDetails = ({ lecturerId }) => {
       </article>
     </section>
   );
+};
+
+LecturerDetails.propTypes = {
+  lecturerId: PropTypes.number
 };

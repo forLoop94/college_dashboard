@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../styles/lesson_area_form.css";
+import PropTypes from 'prop-types';
 
 export const LessonAreaForm = ({
   studentCourseInfo,
@@ -50,7 +51,7 @@ export const LessonAreaForm = ({
       <div>
         <small className="text-white text-sm">
           Create a private chat room for you and your lecturer
-          <br/> You'll never be asked to do this again
+          <br/> You&apos;ll never be asked to do this again
         </small>
       </div>
       <button
@@ -61,4 +62,16 @@ export const LessonAreaForm = ({
       </button>
     </div>
   );
+};
+
+LessonAreaForm.propTypes = {
+  studentCourseInfo: PropTypes.shape({
+    id: PropTypes.number,
+    course_id: PropTypes.number,
+    course_title: PropTypes.number,
+  }),
+  lecturerId: PropTypes.number,
+  studentId: PropTypes.number,
+  setShowForm: PropTypes.func,
+  setArea: PropTypes.func
 };

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLessonChats } from "../../../redux/student/studentSlice";
 import "../../../styles/lesson_area.css";
 import { ChatsForm } from "../../forms/ChatsForm";
+import PropTypes from "prop-types";
 
 export const Chats = ({ otherUserInfo, lessonAreaId, setLinkPages }) => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export const Chats = ({ otherUserInfo, lessonAreaId, setLinkPages }) => {
         })
       );
     }
-  }, [dispatch, profile_id, otherUserInfo]);
+  }, [dispatch, role, profile_id, otherUserInfo]);
 
   return (
     <section className="chats-page">
@@ -73,4 +74,13 @@ export const Chats = ({ otherUserInfo, lessonAreaId, setLinkPages }) => {
       </button>
     </section>
   );
+};
+
+Chats.propTypes = {
+  otherUserInfo: PropTypes.shape({
+    id: PropTypes.number,
+    course_id: PropTypes.number,
+  }),
+  lessonAreaId: PropTypes.number,
+  setLinkPages: PropTypes.func
 };

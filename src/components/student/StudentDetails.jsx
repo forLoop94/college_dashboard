@@ -5,6 +5,7 @@ import "../../styles/profile_pages/profile.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { StudentProfileUpdate } from "../forms/update_profiles/StudentProfileUpdate";
+import PropTypes from 'prop-types';
 
 export const StudentDetails = ({ studentId }) => {
   const dispatch = useDispatch();
@@ -84,4 +85,8 @@ export const StudentDetails = ({ studentId }) => {
       </article>
     </section>
   );
+};
+
+StudentDetails.propTypes = {
+  studentId: PropTypes.number
 };

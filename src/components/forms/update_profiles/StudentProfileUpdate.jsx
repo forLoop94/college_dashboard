@@ -1,7 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { FaChevronRight, FaGraduationCap, FaArrowLeft } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaChevronRight, FaGraduationCap} from "react-icons/fa";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { getDepartments } from "../../../redux/department/departmentSlice";
@@ -9,6 +7,7 @@ import {
   getStudentDetails,
   updateStudent,
 } from "../../../redux/student/studentSlice";
+import PropTypes from 'prop-types';
 
 export const StudentProfileUpdate = ({ showProfile }) => {
   const dispatch = useDispatch();
@@ -184,4 +183,8 @@ export const StudentProfileUpdate = ({ showProfile }) => {
       </form>
     </section>
   );
+};
+
+StudentProfileUpdate.propTypes = {
+  showProfile: PropTypes.func
 };

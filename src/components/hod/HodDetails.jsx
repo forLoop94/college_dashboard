@@ -5,6 +5,7 @@ import "../../styles/profile_pages/profile.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { HodProfileUpdate } from "../forms/update_profiles/HodProfileUpdate";
+import PropTypes from 'prop-types';
 
 export const HodDetails = ({ hodId }) => {
   const dispatch = useDispatch();
@@ -85,3 +86,7 @@ export const HodDetails = ({ hodId }) => {
     </section>
   )
 }
+
+HodDetails.propTypes = {
+  hodId: PropTypes.number
+};

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLessonChats } from "../../redux/student/studentSlice";
 import { FaCircleRight } from "react-icons/fa6";
+import PropTypes from 'prop-types';
 
 export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
   const dispatch = useDispatch();
@@ -89,4 +90,10 @@ export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
       </div>
     </form>
   );
+};
+
+ChatsForm.propTypes = {
+  lessonAreaId: PropTypes.number,
+  otherUserId: PropTypes.number,
+  courseId: PropTypes.number,
 };

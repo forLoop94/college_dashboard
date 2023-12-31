@@ -3,6 +3,7 @@ import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { getDeanDetails, getSchools, updateDean } from "../../../redux/dean/deanSlice";
+import PropTypes from 'prop-types';
 
 export const DeanProfileUpdate = ({ showProfile }) => {
   const dispatch = useDispatch();
@@ -214,3 +215,8 @@ export const DeanProfileUpdate = ({ showProfile }) => {
     </section>
   );
 }
+
+DeanProfileUpdate.propTypes = {
+  showProfile: PropTypes.func
+};
+

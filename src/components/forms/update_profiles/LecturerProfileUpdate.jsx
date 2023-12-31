@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { FaArrowLeft, FaChevronRight, FaGraduationCap } from "react-icons/fa";
+import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { getDepartments } from "../../../redux/department/departmentSlice";
 import { getlecturerDetails, updateLecturer } from "../../../redux/lecturer/lecturerSlice";
+import PropTypes from 'prop-types';
 
 export const LecturerProfileUpdate = ({ showProfile }) => {
   const dispatch = useDispatch();
@@ -214,4 +215,8 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
       </form>
     </section>
   );
+};
+
+LecturerProfileUpdate.propTypes = {
+  showProfile: PropTypes.func
 };

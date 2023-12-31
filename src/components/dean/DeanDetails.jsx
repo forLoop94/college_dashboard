@@ -4,6 +4,7 @@ import { getDeanDetails } from "../../redux/dean/deanSlice";
 import "../../styles/profile_pages/profile.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import { DeanProfileUpdate } from "../forms/update_profiles/DeanProfileUpdate";
 
 export const DeanDetails = ({ deanId }) => {
@@ -79,4 +80,8 @@ export const DeanDetails = ({ deanId }) => {
       </article>
     </section>
   );
+};
+
+DeanDetails.propTypes = {
+  deanId: PropTypes.number
 };
