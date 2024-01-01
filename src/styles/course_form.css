@@ -1,0 +1,59 @@
+.course-form-wrapper {
+  background-color: var(--lavendar-light-text);
+}
+
+.select-placeholder {
+  color: grey;
+}
+
+.course-form-button {
+  background-color: var(--razzma-light);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: var(--lavendar-light-text);
+}
+
+.course-form-button:hover {
+  background-color: var(--razzma-light);
+}
+
+.allotment-form {
+  z-index: 2;
+  margin-top: 6rem;
+  flex-direction: column;
+  width: 80%;
+}
+
+.alotment-card {
+  height: auto;
+  align-items: center;
+}
+
+.alotted-course {
+  text-align: center;
+}
+
+.mobile-header {
+  background-color: var(--dark-byzantium);
+  width: 100vw;
+  height: 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 1000px) {
+  .mobile-header {
+    display: none;
+  }
+
+  .alotment-card {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .alotted-course {
+    text-align: left;
+  }
+}

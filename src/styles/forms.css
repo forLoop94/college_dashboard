@@ -1,0 +1,25 @@
+.profile-form-wrapper {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), url('../assets/profile-pages-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 220vh;
+}
+
+.form-row {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .profile-form-wrapper {
+    height: 100vh;
+  }
+
+  .profile-form {
+    width: 70%;
+  }
+
+  .form-row {
+    flex-direction: row;
+  }
+}
