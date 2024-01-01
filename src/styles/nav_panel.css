@@ -1,5 +1,5 @@
 :root {
-  --dark-byzantium: rgb(93,57,84);
+  --dark-byzantium: rgb(93, 57, 84);
   --lavendar: rgba(255, 240, 245, 0.6);
   --lavendar-light: rgba(255, 240, 245, 0.8);
 }
@@ -22,6 +22,7 @@
   top: 0;
   backdrop-filter: blur(50px);
   z-index: 999;
+
   /* background-color: transparent; */
   background-color: var(--dark-byzantium);
 }
@@ -113,7 +114,8 @@
   left: 2rem;
 }
 
-.copyright-text, .copyright-text p {
+.copyright-text,
+.copyright-text p {
   color: var(--lavendar-light);
   font-size: 12px;
 }
@@ -130,7 +132,7 @@
     height: 100%;
     padding: 2rem 0;
     box-shadow: 0 0 10px 0 rgb(200, 200, 200);
-    background-color: rgb(93,57,84);
+    background-color: rgb(93, 57, 84);
     z-index: 1001;
   }
 
@@ -168,7 +170,8 @@
     height: 120px;
   }
 
-  .mobile-close, .mobile-nav {
+  .mobile-close,
+  .mobile-nav {
     display: none;
   }
 }
