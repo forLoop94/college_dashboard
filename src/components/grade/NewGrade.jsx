@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { addGrades, getTargetGrade } from '../../redux/grade/gradeSlice';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
-export const NewGrade = ({ studentId, courseId }) => {
+export const NewGrade = ({ studentId, onClose }) => {
+  const { courseId, courseTitle } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [warning, setWarning] = useState('');
@@ -23,12 +26,14 @@ export const NewGrade = ({ studentId, courseId }) => {
     }
     dispatch(addGrades(formData)).then(() => {
       dispatch(getTargetGrade({ student_id: studentId, id: courseId }));
+      toast.success(`${formData.value } added as student's grade`)
     })
-    navigate("/assigned_courses");
+    navigate(`/assigned_courses/${courseId}/${courseTitle}`);
     setFormData({
       value: ''
     })
     setWarning("");
+    onClose();
   }
 
   const handleChange = (e) => {
@@ -41,11 +46,11 @@ export const NewGrade = ({ studentId, courseId }) => {
 
   return (
     <section>
-      <h1>New Grade</h1>
       <small>{warning}</small>
-      <form onSubmit={handleSubmit}>
+      <form className='d-flex justify-content-between' onSubmit={handleSubmit}>
         <input
           type='number'
+          className='form-control'
           placeholder='Enter score'
           name='value'
           value={formData.value}
@@ -63,7 +68,7 @@ export const NewGrade = ({ studentId, courseId }) => {
           value={formData.course_id}
           onChange={handleChange}
         />
-        <button type='submit'>Add</button>
+        <Button variant='primary' type='submit'>Add</Button>
       </form>
     </section>
   )
@@ -71,5 +76,6 @@ export const NewGrade = ({ studentId, courseId }) => {
 
 NewGrade.propTypes = {
   studentId: PropTypes.number.isRequired,
-  courseId: PropTypes.number.isRequired
+  courseId: PropTypes.number.isRequired,
+  onClose: PropTypes.func
 }

@@ -1,30 +1,51 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import {
+  FaCriticalRole,
+  FaToolbox,
+  FaUserTie,
+  FaUserLarge,
+} from "react-icons/fa6";
 
 export const LecturerUser = ({ setNavPanelBackground }) => {
   return (
     <ul>
-      <li style={setNavPanelBackground("/lecturers")}>
-        <Link to="lecturers">Lecturer</Link>
+      <li>
+        <Link
+          style={setNavPanelBackground("/lecturer_details")}
+          to="lecturer_details"
+        >
+          <FaUserTie className="mb-1 me-1" />
+          Personal Profile
+        </Link>
       </li>
-      <li style={setNavPanelBackground("/assigned_courses")}>
-        <Link to="assigned_courses">Assigned Courses</Link>
+      <li>
+        <Link style={setNavPanelBackground("/lecturers")} to="lecturers">
+          <FaUserLarge className="mb-1 me-1" />
+          Lecturers
+        </Link>
       </li>
-      <li style={setNavPanelBackground("/lecturer_eligible")}>
-        <Link to="lecturer_eligible">Lecturer Eligible</Link>
+      <li>
+        <Link
+          style={setNavPanelBackground("/assigned_courses")}
+          to="assigned_courses"
+        >
+          <FaCriticalRole className="mb-1 me-1" />
+          Assigned Courses
+        </Link>
       </li>
-      {/* <li style={setNavPanelBackground("/lecturers")}>
-        <Link to="/lecturer_user/lecturers">Lecturer</Link>
+      <li>
+        <Link
+          style={setNavPanelBackground("/lecturer_eligible")}
+          to="lecturer_eligible"
+        >
+          <FaToolbox className="mb-1 me-1" />
+          Proficiences
+        </Link>
       </li>
-      <li style={setNavPanelBackground("/lecturer_eligible")}>
-        <Link to="/lecturer_user/lecturer_eligible">Lecturer Eligible</Link>
-      </li>
-      <li style={setNavPanelBackground("/add_lecturer")}>
-        <Link to="lecturer_user/add_student">Lecturer Profile</Link>
-      </li> */}
     </ul>
-  )
-}
+  );
+};
 
 LecturerUser.propTypes = {
   setNavPanelBackground: PropTypes.func.isRequired,

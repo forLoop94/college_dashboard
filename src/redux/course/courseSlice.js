@@ -44,9 +44,38 @@ export const getCourseStudents = createAsyncThunk('courses/getCourseStudents', a
   }
 })
 
+export const getCourseLecturers = createAsyncThunk('courses/getCourseLecturers', async(id) => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(`${baseURL}/course_lecturers/${id}`, {
+    headers: {
+      Authorization: `${token}`
+    }
+  })
+  if(response.ok) {
+    const lecturers = await response.json();
+    return lecturers;
+  } else {
+    console.log("couldnt find it");
+  }
+})
+
+export const deleteCourse = createAsyncThunk("courses/deleteCourse", async (id) => {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`${baseURL}/courses/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: token
+    }
+  })
+  if (response.ok) {
+    return id;
+  }
+})
+
 const initialState = {
   courses: [],
   students: [],
+  lecturers: [],
 }
 
 const courseSlice = createSlice({
@@ -58,6 +87,9 @@ const courseSlice = createSlice({
     })
     builder.addCase(getCourseStudents.fulfilled, (state, action) => {
       state.students = action.payload;
+    })
+    builder.addCase(getCourseLecturers.fulfilled, (state, action) => {
+      state.lecturers = action.payload;
     })
   }
 })

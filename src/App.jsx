@@ -22,6 +22,14 @@ import { CourseForm } from './components/hod/CourseForm';
 import { AllotmentData } from './components/hod/AllotmentData';
 import { DeanForm } from './components/forms/DeanForm';
 import { DeanList } from './components/dean/DeanList';
+import { Hods } from './components/dean/Hods';
+import { HodDetails } from './components/hod/HodDetails';
+import { CourseStudents } from './components/lecturer/Course_students';
+import { LessonArea } from './components/student/lesson_area/Lesson-area';
+import { CourseLecturers } from './components/student/Course_lecturers';
+import { LecturerDetails } from './components/lecturer/LecturerDetails';
+import { StudentDetails } from './components/student/StudentDetails';
+import { DeanDetails } from './components/dean/DeanDetails';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,11 +39,20 @@ const router = createBrowserRouter(
         <Route path='/students' element={<Students />} />
         <Route path='/recommended_courses' element={<Recommended_courses />} />
         <Route path='/assigned_courses' element={<Assigned_courses />} />
+        <Route path='/assigned_courses/:courseId/:courseTitle' element={<CourseStudents />} />
+        <Route path='/recommended_courses/:courseId/:courseTitle' element={<CourseLecturers />} />
+        <Route path='lesson_area/:courseId/:courseTitle/:studentId/:firstName/:lastName' element={<LessonArea />}></Route>
+        <Route path='lesson_area_lecturer/:courseId/:courseTitle/:lecturerId/:firstName/:lastName' element={<LessonArea />}></Route>
         <Route path='/lecturer_eligible' element={<LecturerEligibleCourses /> } />
         <Route path='/course_grades' element={<Grades /> } />
         <Route path='/add_department' element={<DepartmentForm /> } />
         <Route path='/departments' element={<Departments /> } />
         <Route path='/dean_list' element={<DeanList /> } />
+        <Route path='/hods_list' element={<Hods /> } />
+        <Route path='/hod_details' element={<HodDetails /> } />
+        <Route path='/lecturer_details' element={<LecturerDetails /> } />
+        <Route path='/student_details' element={<StudentDetails /> } />
+        <Route path='/dean_details' element={<DeanDetails /> } />
         <Route path='/add_course' element={<CourseForm /> } />
         <Route path='/allotment_data' element={<AllotmentData /> } />
         <Route path='/department_students' element={<DepartmentStudents /> } />

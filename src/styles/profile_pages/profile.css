@@ -1,0 +1,77 @@
+.headline-student,
+.card-student,
+.headline-lecturer,
+.card-lecturer,
+.headline-hod,
+.card-hod,
+.headline-dean,
+.card-dean {
+  background: linear-gradient(90deg, rgba(230, 10, 10, 0.7), rgba(0, 0, 0, 0.917));
+  height: 30vh;
+  position: relative;
+}
+
+.headline-lecturer,
+.card-lecturer {
+  background: linear-gradient(90deg, rgba(11, 129, 7, 0.7), rgba(0, 0, 0, 0.917));
+}
+
+.headline-hod,
+.card-hod {
+  background: linear-gradient(90deg, rgba(13, 110, 253), rgba(0, 0, 0, 0.917));
+}
+
+.headline-dean,
+.card-dean {
+  background: linear-gradient(90deg, rgb(180, 131, 149), rgba(0, 0, 0, 0.917));
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+}
+
+.pencil {
+  color: white;
+  font-size: 25px;
+}
+
+.pencil:hover {
+  font-size: 27px;
+}
+
+.bio {
+  font-size: 13px;
+}
+
+.card-student,
+.card-lecturer,
+.card-hod,
+.card-dean {
+  height: 5%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(230, 10, 10, 0.7));
+}
+
+.card-lecturer {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(11, 129, 7, 0.7));
+}
+
+.card-hod {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(13, 110, 253));
+}
+
+.card-dean {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgb(180, 131, 149));
+}
+
+@media (min-width: 768px) {
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    left: 2%;
+  }
+}

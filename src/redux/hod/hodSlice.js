@@ -14,12 +14,7 @@ export const addHod = createAsyncThunk('hods/addHods', async(body) => {
   })
   if(response.ok) {
     const data = await response.json()
-    console.log(data);
-    console.log(data.message)
     return data;
-  } else {
-    const data = await response.json()
-    console.log(data.message)
   }
 })
 
@@ -36,8 +31,39 @@ export const getHods = createAsyncThunk('hods/getHods', async() => {
   }
 })
 
+export const getHodDetails = createAsyncThunk('hods/getHodDetails', async(id) => {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${baseURL}/hods/${id}`, {
+    headers: {
+      authorization: token
+    }
+  })
+  if(response.ok) {
+    const data = await response.json()
+    return data;
+  }
+})
+
+export const updateHod = createAsyncThunk('hods/updateHod', async({ body, id }) => {
+  const token = localStorage.getItem('token')
+  const response = await fetch(`${baseURL}/hods/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: token,
+    },
+    body: JSON.stringify(body)
+  })
+  if(response.ok) {
+    const data = await response.json();
+    console.log("update succesful")
+    return data;
+  }
+})
+
 const initialState = {
-  hods: []
+  hods: [],
+  details: '',
 }
 
 const hodSlice = createSlice({
@@ -46,6 +72,9 @@ const hodSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getHods.fulfilled, (state, action) => {
       state.hods = action.payload
+    })
+    builder.addCase(getHodDetails.fulfilled, (state, action) => {
+      state.details = action.payload
     })
   }
 })

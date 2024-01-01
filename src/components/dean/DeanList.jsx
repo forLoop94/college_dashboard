@@ -11,6 +11,9 @@ export const DeanList = () => {
 
 
   return (
-    <div>DeanList</div>
+    <section className='d-flex justify-content-center align-items-center h-100 technical-pages-bg-v2'>
+      <h1 className='tech-header'>Dean&apos;s List</h1>
+      <h2 className='p-5 text-light'>The Dean List feature will be available soon!</h2>
+    </section>
   )
 }

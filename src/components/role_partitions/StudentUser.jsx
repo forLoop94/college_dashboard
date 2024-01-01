@@ -1,21 +1,37 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { FaToolbox, FaUserTie, FaTrophy } from "react-icons/fa6";
 
 export const StudentUser = ({ setNavPanelBackground }) => {
   return (
     <ul>
-      <li style={setNavPanelBackground("/recommended_courses")}>
-        <Link to="/recommended_courses">Recommended Courses</Link>
+      <li>
+        <Link
+          style={setNavPanelBackground("/student_details")}
+          to="student_details"
+        >
+          <FaUserTie className="mb-1 me-1" />
+          Personal profile
+        </Link>
       </li>
-      <li style={setNavPanelBackground("/course_grades")}>
-        <Link to="/course_grades">Grades</Link>
+      <li>
+        <Link
+          style={setNavPanelBackground("/recommended_courses")}
+          to="/recommended_courses"
+        >
+          <FaToolbox className="mb-1 me-1" />
+          Recommended Courses
+        </Link>
       </li>
-      {/* <li style={setNavPanelBackground("/students")}>
-        <Link to="/student_user/students">Students</Link>
+      <li>
+        <Link
+          style={setNavPanelBackground("/course_grades")}
+          to="/course_grades"
+        >
+          <FaTrophy className="mb-1 me-1" />
+          Grades
+        </Link>
       </li>
-      <li style={setNavPanelBackground("/add_student")}>
-        <Link to="/student_user/add_student">Student Profile</Link>
-      </li> */}
     </ul>
   );
 };
