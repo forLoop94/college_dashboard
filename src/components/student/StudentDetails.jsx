@@ -55,7 +55,7 @@ export const StudentDetails = ({ studentId }) => {
             onClick={() => setUpdateForm(true)}
           />
           <small className="text-white">
-            Email: {email} | Phone: {studentDetails.phone_number}
+            Email: {studentDetails.email} | Phone: {studentDetails.phone_number}
           </small>
           <img
             style={AdjustImageSize}
@@ -76,7 +76,7 @@ export const StudentDetails = ({ studentId }) => {
             <div>Age: {studentDetails.age}</div>
             <div>Level: {studentDetails.level}</div>
             <div>Date Admitted: {created_date}</div>
-            <div>LGA: {studentDetails.lga_of_origin}</div>
+            <div>Country: {studentDetails.nationality}</div>
           </div>
         </div>
       </article>
