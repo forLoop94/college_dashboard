@@ -6,6 +6,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { StudentProfileUpdate } from "../forms/update_profiles/StudentProfileUpdate";
 import PropTypes from 'prop-types';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
 
 export const StudentDetails = ({ studentId }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export const StudentDetails = ({ studentId }) => {
   const { profile_id, created_date } = useSelector(
     (state) => state.user.currentUser
   );
-  
+
   const studentDetails = useSelector((state) => state.Students.studentDetails);
 
   useEffect(() => {
@@ -58,6 +59,23 @@ export const StudentDetails = ({ studentId }) => {
           <small className="text-white">
             Email: {studentDetails.email} | Phone: {studentDetails.phone_number}
           </small>
+          <div className="headline-socials d-flex justify-content-between">
+            <a target={studentDetails.facebook ? "_blank" : ""} href={studentDetails.facebook ? studentDetails.facebook : "#"}>
+              <FaFacebookF className="social-icons" />
+            </a>
+            <a target={studentDetails.instagram ? "_blank" : ""} href={studentDetails.instagram ? studentDetails.instagram : "#"}>
+              <FaInstagram className="social-icons" />
+            </a>
+            <a target={studentDetails.linkedIn ? "_blank" : ""} href={studentDetails.linkedIn ? studentDetails.linkedIn : "#"}>
+              <FaLinkedinIn className="social-icons" />
+            </a>
+            <a target={studentDetails.medium ? "_blank" : ""} href={studentDetails.medium ? studentDetails.medium : "#"}>
+              <FaMedium className="social-icons" />
+            </a>
+            <a target={studentDetails.twitter ? "_blank" : ""} href={studentDetails.twitter ? studentDetails.twitter : "#"}>
+              <FaTwitter className="social-icons" />
+            </a>
+          </div>
           <img
             style={AdjustImageSize}
             className="profile-photo rounded-circle"

@@ -61,7 +61,7 @@ export const StudentProfileUpdate = ({ showProfile }) => {
           <h1 className="p-4 text-light">Update Student Profile</h1>
         </header>
         <FaArrowLeftLong
-          className="position-absolute top-0 start-0 mt-4 ms-5 pencil"
+          className="position-absolute text-white top-0 start-0 mt-4 ms-5 pencil"
           onClick={() => showProfile(true)}
         />
         <div className="form-row d-flex justify-content-between">

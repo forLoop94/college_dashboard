@@ -6,7 +6,12 @@ import { FaPencilAlt, FaFacebookF } from "react-icons/fa";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { DeanProfileUpdate } from "../forms/update_profiles/DeanProfileUpdate";
-import { FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaMedium,
+  FaTwitter,
+} from "react-icons/fa6";
 
 export const DeanDetails = ({ deanId }) => {
   const dispatch = useDispatch();
@@ -49,12 +54,22 @@ export const DeanDetails = ({ deanId }) => {
           <small>
             Email: {email} | Phone: {deanDetails.phone_number}
           </small>
-          <div className="headline-socials d-flex justify-content-between mt-2">
-            <FaFacebookF className="social-icons"/>
-            <FaInstagram className="social-icons"/>
-            <FaLinkedinIn className="social-icons"/>
-            <FaMedium className="social-icons"/>
-            <FaTwitter className="social-icons"/>
+          <div className="headline-socials d-flex justify-content-between">
+            <a target={deanDetails.facebook ? "_blank" : ""} href={deanDetails.facebook ? deanDetails.facebook : "#"}>
+              <FaFacebookF className="social-icons" />
+            </a>
+            <a target={deanDetails.instagram ? "_blank" : ""} href={deanDetails.instagram ? deanDetails.instagram : "#"}>
+              <FaInstagram className="social-icons" />
+            </a>
+            <a target={deanDetails.linkedIn ? "_blank" : ""} href={deanDetails.linkedIn ? deanDetails.linkedIn : "#"}>
+              <FaLinkedinIn className="social-icons" />
+            </a>
+            <a target={deanDetails.medium ? "_blank" : ""} href={deanDetails.medium ? deanDetails.medium : "#"}>
+              <FaMedium className="social-icons" />
+            </a>
+            <a target={deanDetails.twitter ? "_blank" : ""} href={deanDetails.twitter ? deanDetails.twitter : "#"}>
+              <FaTwitter className="social-icons" />
+            </a>
           </div>
           <img
             className="profile-photo rounded-circle"

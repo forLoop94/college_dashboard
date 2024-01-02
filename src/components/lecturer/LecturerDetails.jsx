@@ -5,11 +5,12 @@ import "../../styles/profile_pages/profile.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { LecturerProfileUpdate } from "../forms/update_profiles/LecturerProfileUpdate";
 import PropTypes from 'prop-types';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
 
 export const LecturerDetails = ({ lecturerId }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
-  const { profile_id, email, created_date } = useSelector(
+  const { profile_id, created_date } = useSelector(
     (state) => state.user.currentUser
   );
   const lecturerDetails = useSelector((state) => state.Lecturers.details);
@@ -53,6 +54,23 @@ export const LecturerDetails = ({ lecturerId }) => {
           <small className="text-white">
             Email: {lecturerDetails.email} | Phone: {lecturerDetails.phone_number}
           </small>
+          <div className="headline-socials d-flex justify-content-between">
+            <a target={lecturerDetails.facebook ? "_blank" : ""} href={lecturerDetails.facebook ? lecturerDetails.facebook : "#"}>
+              <FaFacebookF className="social-icons" />
+            </a>
+            <a target={lecturerDetails.instagram ? "_blank" : ""} href={lecturerDetails.instagram ? lecturerDetails.instagram : "#"}>
+              <FaInstagram className="social-icons" />
+            </a>
+            <a target={lecturerDetails.linkedIn ? "_blank" : ""} href={lecturerDetails.linkedIn ? lecturerDetails.linkedIn : "#"}>
+              <FaLinkedinIn className="social-icons" />
+            </a>
+            <a target={lecturerDetails.medium ? "_blank" : ""} href={lecturerDetails.medium ? lecturerDetails.medium : "#"}>
+              <FaMedium className="social-icons" />
+            </a>
+            <a target={lecturerDetails.twitter ? "_blank" : ""} href={lecturerDetails.twitter ? lecturerDetails.twitter : "#"}>
+              <FaTwitter className="social-icons" />
+            </a>
+          </div>
           <img
           style={AdjustImageSize}
             className="profile-photo rounded-circle"

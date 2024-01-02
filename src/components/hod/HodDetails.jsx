@@ -6,6 +6,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { HodProfileUpdate } from "../forms/update_profiles/HodProfileUpdate";
 import PropTypes from 'prop-types';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
 
 export const HodDetails = ({ hodId }) => {
   const dispatch = useDispatch();
@@ -51,8 +52,25 @@ export const HodDetails = ({ hodId }) => {
             onClick={() => setUpdateForm(true)}
           />
           <small className="text-white">
-            Email: {email} | Phone: {hodDetails.phone_number}
+            Email: {hodDetails.email} | Phone: {hodDetails.phone_number}
           </small>
+          <div className="headline-socials d-flex justify-content-between">
+            <a target={hodDetails.facebook ? "_blank" : ""} href={hodDetails.facebook ? hodDetails.facebook : "#"}>
+              <FaFacebookF className="social-icons" />
+            </a>
+            <a target={hodDetails.instagram ? "_blank" : ""} href={hodDetails.instagram ? hodDetails.instagram : "#"}>
+              <FaInstagram className="social-icons" />
+            </a>
+            <a target={hodDetails.linkedIn ? "_blank" : ""} href={hodDetails.linkedIn ? hodDetails.linkedIn : "#"}>
+              <FaLinkedinIn className="social-icons" />
+            </a>
+            <a target={hodDetails.medium ? "_blank" : ""} href={hodDetails.medium ? hodDetails.medium : "#"}>
+              <FaMedium className="social-icons" />
+            </a>
+            <a target={hodDetails.twitter ? "_blank" : ""} href={hodDetails.twitter ? hodDetails.twitter : "#"}>
+              <FaTwitter className="social-icons" />
+            </a>
+          </div>
           <img
             style={AdjustImageSize}
             className="profile-photo rounded-circle"
