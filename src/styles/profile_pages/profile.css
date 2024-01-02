@@ -30,7 +30,7 @@
   width: 120px;
   height: 120px;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 2%;
 }
 
@@ -69,9 +69,9 @@
 
 @media (min-width: 768px) {
   .profile-photo {
-    width: 200px;
-    height: 200px;
-    top: 20%;
-    left: 2%;
+    width: 150px;
+    height: 150px;
+    top: 40%;
+    left: 5%;
   }
 }

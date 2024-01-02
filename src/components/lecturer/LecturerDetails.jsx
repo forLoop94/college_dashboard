@@ -51,7 +51,7 @@ export const LecturerDetails = ({ lecturerId }) => {
             onClick={() => setUpdateForm(true)}
           />
           <small className="text-white">
-            Email: {email} | Phone: {lecturerDetails.phone_number}
+            Email: {lecturerDetails.email} | Phone: {lecturerDetails.phone_number}
           </small>
           <img
           style={AdjustImageSize}
@@ -78,7 +78,7 @@ export const LecturerDetails = ({ lecturerId }) => {
               Qualification: {lecturerDetails.highest_academic_qualification}
             </div>
             <div>Date recriuted: {created_date}</div>
-            <div>LGA: {lecturerDetails.lga_of_origin}</div>
+            <div>Country: {lecturerDetails.nationality}</div>
           </div>
         </div>
       </article>

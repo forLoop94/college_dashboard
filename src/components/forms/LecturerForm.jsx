@@ -19,6 +19,8 @@ export const LecturerForm = () => {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
+    email: "",
+    nationality: "",
     gender: "",
     core_discipline: "",
     number_of_publications: "",
@@ -29,19 +31,24 @@ export const LecturerForm = () => {
     department_id: "",
     age: "",
     phone_number: "",
-    lga_of_origin: "",
+    linkedIn: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    wellfound: "",
+    medium: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const emptyField = Object.keys(formData).find(
-      (key) => !formData[key].trim()
-    );
+    // const emptyField = Object.keys(formData).find(
+    //   (key) => !formData[key].trim()
+    // );
 
-    if (emptyField) {
-      toast.error(`The field ${emptyField.replace(/_/g, ' ')} is empty`);
-      return;
-    }
+    // if (emptyField) {
+    //   toast.error(`The field ${emptyField.replace(/_/g, ' ')} is empty`);
+    //   return;
+    // }
     dispatch(addLecturer(formData));
     navigate("/");
   };
@@ -83,11 +90,11 @@ export const LecturerForm = () => {
           </div>
           <div className="form-group col-md-2">
             <input
-              type="text"
+              type="email"
               className="form-control"
-              placeholder="Gender"
-              name="gender"
-              value={formData.gender}
+              placeholder="Email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
@@ -103,27 +110,37 @@ export const LecturerForm = () => {
           </div>
         </div>
         <div className="form-row d-flex justify-content-between">
-          <div className="form-group col-md-3">
+          <div className="form-group col-md-2">
             <input
               type="number"
               className="form-control"
-              placeholder="Number of Publications"
+              placeholder="Publications"
               name="number_of_publications"
               value={formData.number_of_publications}
               onChange={handleChange}
             />
           </div>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
-              placeholder="Highest Academic Qualification"
+              placeholder="Gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Highest Qualification"
               name="highest_academic_qualification"
               value={formData.highest_academic_qualification}
               onChange={handleChange}
             />
           </div>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
@@ -187,6 +204,48 @@ export const LecturerForm = () => {
           </div>
         </div>
         <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Facebook (optional)"
+              name="facebook"
+              value={formData.facebook}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Instagram (optional)"
+              name="instagram"
+              value={formData.instagram}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Twitter (optional)"
+              name="twitter"
+              value={formData.twitter}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="linkedIn (optional)"
+              name="linkedIn"
+              value={formData.linkedIn}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
           <div className="form-group col-md-8">
             <textarea
               name="bio"
@@ -197,13 +256,13 @@ export const LecturerForm = () => {
               onChange={handleChange}
             ></textarea>
           </div>
-          <div className="form-group col-md-3">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
-              placeholder="L.G.A"
-              name="lga_of_origin"
-              value={formData.lga_of_origin}
+              placeholder="Country"
+              name="nationality"
+              value={formData.nationality}
               onChange={handleChange}
             />
           </div>
