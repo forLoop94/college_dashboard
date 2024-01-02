@@ -10,9 +10,10 @@ import PropTypes from 'prop-types';
 export const StudentDetails = ({ studentId }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
-  const { profile_id, email, created_date } = useSelector(
+  const { profile_id, created_date } = useSelector(
     (state) => state.user.currentUser
   );
+  
   const studentDetails = useSelector((state) => state.Students.studentDetails);
 
   useEffect(() => {

@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDeanDetails } from "../../redux/dean/deanSlice";
 import "../../styles/profile_pages/profile.css";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaPencilAlt, FaFacebookF } from "react-icons/fa";
 import { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { DeanProfileUpdate } from "../forms/update_profiles/DeanProfileUpdate";
+import { FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
 
 export const DeanDetails = ({ deanId }) => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export const DeanDetails = ({ deanId }) => {
     <section className="position-relative">
       <article style={hideProfile}>
         <div className="headline-dean d-flex flex-column align-items-center p-3">
-          <h1 className="text-white">
+          <h1>
             {deanDetails.first_name} {deanDetails.last_name}
           </h1>
           <FaPencilAlt
@@ -45,9 +46,16 @@ export const DeanDetails = ({ deanId }) => {
             style={hidePen}
             onClick={() => setUpdateForm(true)}
           />
-          <small className="text-white">
+          <small>
             Email: {email} | Phone: {deanDetails.phone_number}
           </small>
+          <div className="headline-socials d-flex justify-content-between mt-2">
+            <FaFacebookF className="social-icons"/>
+            <FaInstagram className="social-icons"/>
+            <FaLinkedinIn className="social-icons"/>
+            <FaMedium className="social-icons"/>
+            <FaTwitter className="social-icons"/>
+          </div>
           <img
             className="profile-photo rounded-circle"
             src={deanDetails.photo}
@@ -59,7 +67,7 @@ export const DeanDetails = ({ deanId }) => {
             <p className="bio text-center ms-5 me-5 mt-5">{deanDetails.bio}</p>
           </div>
           <div></div>
-          <div className="d-flex m-5 card-dean flex-column text-white p-3">
+          <div className="d-flex m-5 card-dean flex-column p-3">
             <div>Cadre: {deanDetails.rank}</div>
             <div>Gender: {deanDetails.gender}</div>
             <div>Age: {deanDetails.age}</div>
@@ -71,7 +79,7 @@ export const DeanDetails = ({ deanId }) => {
               Qualification: {deanDetails.highest_academic_qualification}
             </div>
             <div>Date Appointed: {created_date}</div>
-            <div>LGA: {deanDetails.lga_of_origin}</div>
+            <div>Country: {deanDetails.nationality}</div>
           </div>
         </div>
       </article>
@@ -83,5 +91,5 @@ export const DeanDetails = ({ deanId }) => {
 };
 
 DeanDetails.propTypes = {
-  deanId: PropTypes.number
+  deanId: PropTypes.number,
 };

@@ -18,6 +18,8 @@ export const DeanForm = () => {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
+    email: "",
+    nationality: "",
     gender: "",
     years_of_admin_exp: "",
     number_of_publications: "",
@@ -28,13 +30,19 @@ export const DeanForm = () => {
     school_id: "",
     age: "",
     phone_number: "",
-    lga_of_origin: "",
+    linkedIn: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    wellfound: "",
+    medium: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addDean(formData));
-    navigate("/");
+    dispatch(addDean(formData)).then(() => {
+      navigate("/");
+    });
   };
 
   const handleChange = (e) => {
@@ -74,6 +82,38 @@ export const DeanForm = () => {
           </div>
           <div className="form-group col-md-2">
             <input
+              type="email"
+              className="form-control"
+              placeholder="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-3">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Years of Admin Exp"
+              name="years_of_admin_exp"
+              value={formData.years_of_admin_exp}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-2">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Publications"
+              name="number_of_publications"
+              value={formData.number_of_publications}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
               type="text"
               className="form-control"
               placeholder="Gender"
@@ -84,37 +124,15 @@ export const DeanForm = () => {
           </div>
           <div className="form-group col-md-3">
             <input
-              type="number"
-              className="form-control"
-              placeholder="Years of Administrative Experience"
-              name="years_of_admin_exp"
-              value={formData.years_of_admin_exp}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="form-row d-flex justify-content-between">
-          <div className="form-group col-md-3">
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Number of Publications"
-              name="number_of_publications"
-              value={formData.number_of_publications}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group col-md-4">
-            <input
               type="text"
               className="form-control"
-              placeholder="Highest Academic Qualification"
+              placeholder="Highest Qualification"
               name="highest_academic_qualification"
               value={formData.highest_academic_qualification}
               onChange={handleChange}
             />
           </div>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
@@ -178,6 +196,48 @@ export const DeanForm = () => {
           </div>
         </div>
         <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Facebook (optional)"
+              name="facebook"
+              value={formData.facebook}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Instagram (optional)"
+              name="instagram"
+              value={formData.instagram}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Twitter (optional)"
+              name="twitter"
+              value={formData.twitter}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2.5">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="linkedIn (optional)"
+              name="linkedIn"
+              value={formData.linkedIn}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
           <div className="form-group col-md-8">
             <textarea
               name="bio"
@@ -188,13 +248,13 @@ export const DeanForm = () => {
               onChange={handleChange}
             ></textarea>
           </div>
-          <div className="form-group col-md-3">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
-              placeholder="L.G.A"
-              name="lga_of_origin"
-              value={formData.lga_of_origin}
+              placeholder="Country"
+              name="nationality"
+              value={formData.nationality}
               onChange={handleChange}
             />
           </div>

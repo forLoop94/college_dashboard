@@ -99,7 +99,7 @@ export const HodProfileUpdate = ({ showProfile }) => {
             <input
               type="number"
               className="form-control"
-              placeholder="Years of Administrative Experience"
+              placeholder="Years of Admin Exp"
               name="years_of_admin_exp"
               value={values.years_of_admin_exp}
               onChange={handleChange}
@@ -137,7 +137,7 @@ export const HodProfileUpdate = ({ showProfile }) => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
