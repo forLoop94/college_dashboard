@@ -78,7 +78,7 @@ export const HodDetails = ({ hodId }) => {
               Qualification: {hodDetails.highest_academic_qualification}
             </div>
             <div>Date Appointed: {created_date}</div>
-            <div>LGA: {hodDetails.lga_of_origin}</div>
+            <div>Country: {hodDetails.nationality}</div>
           </div>
         </div>
       </article>
