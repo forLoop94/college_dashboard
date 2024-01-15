@@ -69,31 +69,31 @@ export const DeanDetails = ({ deanId }) => {
           <div className="headline-socials d-flex justify-content-between">
             <a
               target={deanDetails.facebook ? "_blank" : ""}
-              href={deanDetails.facebook ? deanDetails.facebook : "#"}
+              href={deanDetails.facebook ? deanDetails.facebook : "#"} rel="noreferrer"
             >
               <FaFacebookF className="social-icons" />
             </a>
             <a
               target={deanDetails.instagram ? "_blank" : ""}
-              href={deanDetails.instagram ? deanDetails.instagram : "#"}
+              href={deanDetails.instagram ? deanDetails.instagram : "#"} rel="noreferrer"
             >
               <FaInstagram className="social-icons" />
             </a>
             <a
               target={deanDetails.linkedIn ? "_blank" : ""}
-              href={deanDetails.linkedIn ? deanDetails.linkedIn : "#"}
+              href={deanDetails.linkedIn ? deanDetails.linkedIn : "#"} rel="noreferrer"
             >
               <FaLinkedinIn className="social-icons" />
             </a>
             <a
               target={deanDetails.medium ? "_blank" : ""}
-              href={deanDetails.medium ? deanDetails.medium : "#"}
+              href={deanDetails.medium ? deanDetails.medium : "#"} rel="noreferrer"
             >
               <FaMedium className="social-icons" />
             </a>
             <a
               target={deanDetails.twitter ? "_blank" : ""}
-              href={deanDetails.twitter ? deanDetails.twitter : "#"}
+              href={deanDetails.twitter ? deanDetails.twitter : "#"} rel="noreferrer"
             >
               <FaTwitter className="social-icons" />
             </a>

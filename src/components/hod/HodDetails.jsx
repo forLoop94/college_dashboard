@@ -11,7 +11,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "rea
 export const HodDetails = ({ hodId }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
-  const { profile_id, email, created_date } = useSelector(state => state.user.currentUser);
+  const { profile_id, created_date } = useSelector(state => state.user.currentUser);
   const hodDetails = useSelector(state => state.Hods.details);
 
   useEffect(() => {
@@ -63,19 +63,19 @@ export const HodDetails = ({ hodId }) => {
             Email: {hodDetails.email} | Phone: {hodDetails.phone_number}
           </small>
           <div className="headline-socials d-flex justify-content-between">
-            <a target={hodDetails.facebook ? "_blank" : ""} href={hodDetails.facebook ? hodDetails.facebook : "#"}>
+            <a target={hodDetails.facebook ? "_blank" : ""} href={hodDetails.facebook ? hodDetails.facebook : "#"} rel="noreferrer">
               <FaFacebookF className="social-icons" />
             </a>
-            <a target={hodDetails.instagram ? "_blank" : ""} href={hodDetails.instagram ? hodDetails.instagram : "#"}>
+            <a target={hodDetails.instagram ? "_blank" : ""} href={hodDetails.instagram ? hodDetails.instagram : "#"} rel="noreferrer">
               <FaInstagram className="social-icons" />
             </a>
-            <a target={hodDetails.linkedIn ? "_blank" : ""} href={hodDetails.linkedIn ? hodDetails.linkedIn : "#"}>
+            <a target={hodDetails.linkedIn ? "_blank" : ""} href={hodDetails.linkedIn ? hodDetails.linkedIn : "#"} rel="noreferrer">
               <FaLinkedinIn className="social-icons" />
             </a>
-            <a target={hodDetails.medium ? "_blank" : ""} href={hodDetails.medium ? hodDetails.medium : "#"}>
+            <a target={hodDetails.medium ? "_blank" : ""} href={hodDetails.medium ? hodDetails.medium : "#"} rel="noreferrer">
               <FaMedium className="social-icons" />
             </a>
-            <a target={hodDetails.twitter ? "_blank" : ""} href={hodDetails.twitter ? hodDetails.twitter : "#"}>
+            <a target={hodDetails.twitter ? "_blank" : ""} href={hodDetails.twitter ? hodDetails.twitter : "#"} rel="noreferrer">
               <FaTwitter className="social-icons" />
             </a>
           </div>

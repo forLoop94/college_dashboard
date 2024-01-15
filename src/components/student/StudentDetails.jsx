@@ -68,19 +68,19 @@ export const StudentDetails = ({ studentId }) => {
             Email: {studentDetails.email} | Phone: {studentDetails.phone_number}
           </small>
           <div className="headline-socials d-flex justify-content-between">
-            <a target={studentDetails.facebook ? "_blank" : ""} href={studentDetails.facebook ? studentDetails.facebook : "#"}>
+            <a target={studentDetails.facebook ? "_blank" : ""} href={studentDetails.facebook ? studentDetails.facebook : "#"} rel="noreferrer">
               <FaFacebookF className="social-icons" />
             </a>
-            <a target={studentDetails.instagram ? "_blank" : ""} href={studentDetails.instagram ? studentDetails.instagram : "#"}>
+            <a target={studentDetails.instagram ? "_blank" : ""} href={studentDetails.instagram ? studentDetails.instagram : "#"} rel="noreferrer">
               <FaInstagram className="social-icons" />
             </a>
-            <a target={studentDetails.linkedIn ? "_blank" : ""} href={studentDetails.linkedIn ? studentDetails.linkedIn : "#"}>
+            <a target={studentDetails.linkedIn ? "_blank" : ""} href={studentDetails.linkedIn ? studentDetails.linkedIn : "#"} rel="noreferrer">
               <FaLinkedinIn className="social-icons" />
             </a>
-            <a target={studentDetails.medium ? "_blank" : ""} href={studentDetails.medium ? studentDetails.medium : "#"}>
+            <a target={studentDetails.medium ? "_blank" : ""} href={studentDetails.medium ? studentDetails.medium : "#"} rel="noreferrer">
               <FaMedium className="social-icons" />
             </a>
-            <a target={studentDetails.twitter ? "_blank" : ""} href={studentDetails.twitter ? studentDetails.twitter : "#"}>
+            <a target={studentDetails.twitter ? "_blank" : ""} href={studentDetails.twitter ? studentDetails.twitter : "#"} rel="noreferrer">
               <FaTwitter className="social-icons" />
             </a>
           </div>

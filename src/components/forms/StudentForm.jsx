@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addStudents } from "../../redux/student/studentSlice";
 import { getCurrentUser } from "../../redux/user/userSlice";

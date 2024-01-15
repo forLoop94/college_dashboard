@@ -6,7 +6,6 @@ import { FaPencilAlt } from "react-icons/fa";
 import { LecturerProfileUpdate } from "../forms/update_profiles/LecturerProfileUpdate";
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
-import { getCurrentUser } from "../../redux/user/userSlice";
 
 export const LecturerDetails = ({ lecturerId }) => {
   const dispatch = useDispatch();
@@ -64,19 +63,19 @@ export const LecturerDetails = ({ lecturerId }) => {
             Email: {lecturerDetails.email} | Phone: {lecturerDetails.phone_number}
           </small>
           <div className="headline-socials d-flex justify-content-between">
-            <a target={lecturerDetails.facebook ? "_blank" : ""} href={lecturerDetails.facebook ? lecturerDetails.facebook : "#"}>
+            <a target={lecturerDetails.facebook ? "_blank" : ""} href={lecturerDetails.facebook ? lecturerDetails.facebook : "#"} rel="noreferrer">
               <FaFacebookF className="social-icons" />
             </a>
-            <a target={lecturerDetails.instagram ? "_blank" : ""} href={lecturerDetails.instagram ? lecturerDetails.instagram : "#"}>
+            <a target={lecturerDetails.instagram ? "_blank" : ""} href={lecturerDetails.instagram ? lecturerDetails.instagram : "#"} rel="noreferrer">
               <FaInstagram className="social-icons" />
             </a>
-            <a target={lecturerDetails.linkedIn ? "_blank" : ""} href={lecturerDetails.linkedIn ? lecturerDetails.linkedIn : "#"}>
+            <a target={lecturerDetails.linkedIn ? "_blank" : ""} href={lecturerDetails.linkedIn ? lecturerDetails.linkedIn : "#"} rel="noreferrer">
               <FaLinkedinIn className="social-icons" />
             </a>
-            <a target={lecturerDetails.medium ? "_blank" : ""} href={lecturerDetails.medium ? lecturerDetails.medium : "#"}>
+            <a target={lecturerDetails.medium ? "_blank" : ""} href={lecturerDetails.medium ? lecturerDetails.medium : "#"} rel="noreferrer">
               <FaMedium className="social-icons" />
             </a>
-            <a target={lecturerDetails.twitter ? "_blank" : ""} href={lecturerDetails.twitter ? lecturerDetails.twitter : "#"}>
+            <a target={lecturerDetails.twitter ? "_blank" : ""} href={lecturerDetails.twitter ? lecturerDetails.twitter : "#"} rel="noreferrer">
               <FaTwitter className="social-icons" />
             </a>
           </div>

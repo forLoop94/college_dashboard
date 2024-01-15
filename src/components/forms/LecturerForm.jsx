@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addLecturer } from "../../redux/lecturer/lecturerSlice";
 import { getCurrentUser } from "../../redux/user/userSlice";
