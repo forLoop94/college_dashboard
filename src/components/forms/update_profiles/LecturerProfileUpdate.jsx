@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDepartments } from "../../../redux/department/departmentSlice";
 import { getlecturerDetails, updateLecturer } from "../../../redux/lecturer/lecturerSlice";
 import PropTypes from 'prop-types';
+import { toast } from "react-toastify";
 
 export const LecturerProfileUpdate = ({ showProfile }) => {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
   const [values, setValues] = useState({
     first_name: lecturer.first_name,
     last_name: lecturer.last_name,
+    email: lecturer.email,
+    nationality: lecturer.nationality,
     gender: lecturer.gender,
     core_discipline: lecturer.core_discipline,
     number_of_publications: lecturer.number_of_publications,
@@ -22,7 +25,12 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
     department_id: lecturer.department_id,
     age: lecturer.age,
     phone_number: lecturer.phone_number,
-    lga_of_origin: lecturer.lga_of_origin,
+    linkedIn: lecturer.linkedIn,
+    facebook: lecturer.facebook,
+    twitter: lecturer.twitter,
+    instagram: lecturer.instagram,
+    wellfound: lecturer.wellfound,
+    medium: lecturer.medium
   });
 
   const departments = useSelector((state) => state.Departments.departments);
@@ -35,6 +43,7 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
     e.preventDefault();
     dispatch(updateLecturer({ body: values, id: lecturer.id })).then(() => {
       dispatch(getlecturerDetails(lecturer.id));
+      toast.success('Profile update is successful');
     });
     showProfile(true);
   };
@@ -54,7 +63,7 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
           <h1 className="p-4 text-light">Update Lecturer Profile</h1>
         </header>
         <FaArrowLeftLong
-          className="position-absolute top-0 start-0 mt-4 ms-5 pencil"
+          className="position-absolute text-white top-0 start-0 mt-4 ms-5 pencil"
           onClick={() => showProfile(true)}
         />
         <div className="form-row d-flex justify-content-between">
@@ -80,11 +89,11 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
           </div>
           <div className="form-group col-md-2">
             <input
-              type="text"
+              type="email"
               className="form-control"
-              placeholder="Gender"
-              name="gender"
-              value={values.gender}
+              placeholder="Email"
+              name="email"
+              value={values.email}
               onChange={handleChange}
             />
           </div>
@@ -100,27 +109,37 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
           </div>
         </div>
         <div className="form-row d-flex justify-content-between">
-          <div className="form-group col-md-3">
+          <div className="form-group col-md-2">
             <input
               type="number"
               className="form-control"
-              placeholder="Number of Publications"
+              placeholder="Publications"
               name="number_of_publications"
               value={values.number_of_publications}
               onChange={handleChange}
             />
           </div>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
-              placeholder="Highest Academic Qualification"
+              placeholder="Gender"
+              name="gender"
+              value={values.gender}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Highest Qualification"
               name="highest_academic_qualification"
               value={values.highest_academic_qualification}
               onChange={handleChange}
             />
           </div>
-          <div className="form-group col-md-4">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
@@ -184,6 +203,48 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
           </div>
         </div>
         <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-2.3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Facebook (optional)"
+              name="facebook"
+              value={values.facebook}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2.3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Instagram (optional)"
+              name="instagram"
+              value={values.instagram}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Twitter (optional)"
+              name="twitter"
+              value={values.twitter}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="linkedIn (optional)"
+              name="linkedIn"
+              value={values.linkedIn}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
           <div className="form-group col-md-8">
             <textarea
               name="bio"
@@ -194,13 +255,13 @@ export const LecturerProfileUpdate = ({ showProfile }) => {
               onChange={handleChange}
             ></textarea>
           </div>
-          <div className="form-group col-md-3">
+          <div className="form-group col-md-2">
             <input
               type="text"
               className="form-control"
-              placeholder="L.G.A"
-              name="lga_of_origin"
-              value={values.lga_of_origin}
+              placeholder="Country"
+              name="nationality"
+              value={values.nationality}
               onChange={handleChange}
             />
           </div>

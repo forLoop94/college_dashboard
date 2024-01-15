@@ -6,15 +6,20 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { HodProfileUpdate } from "../forms/update_profiles/HodProfileUpdate";
 import PropTypes from 'prop-types';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
 
 export const HodDetails = ({ hodId }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
-  const { profile_id, email, created_date } = useSelector(state => state.user.currentUser);
+  const { profile_id, created_date } = useSelector(state => state.user.currentUser);
   const hodDetails = useSelector(state => state.Hods.details);
 
   useEffect(() => {
-    dispatch(getHodDetails(hodId || profile_id));
+    if(hodId) {
+      dispatch(getHodDetails(hodId));
+    } else {
+      dispatch(getHodDetails(profile_id));
+    }
   }, [dispatch, profile_id, hodId]);
 
   const hideProfile = {
@@ -38,6 +43,10 @@ export const HodDetails = ({ hodId }) => {
   };
 
 
+  if (!hodDetails) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
+
   return (
     <section className="position-relative">
       <article style={hideProfile}>
@@ -51,8 +60,25 @@ export const HodDetails = ({ hodId }) => {
             onClick={() => setUpdateForm(true)}
           />
           <small className="text-white">
-            Email: {email} | Phone: {hodDetails.phone_number}
+            Email: {hodDetails.email} | Phone: {hodDetails.phone_number}
           </small>
+          <div className="headline-socials d-flex justify-content-between">
+            <a target={hodDetails.facebook ? "_blank" : ""} href={hodDetails.facebook ? hodDetails.facebook : "#"} rel="noreferrer">
+              <FaFacebookF className="social-icons" />
+            </a>
+            <a target={hodDetails.instagram ? "_blank" : ""} href={hodDetails.instagram ? hodDetails.instagram : "#"} rel="noreferrer">
+              <FaInstagram className="social-icons" />
+            </a>
+            <a target={hodDetails.linkedIn ? "_blank" : ""} href={hodDetails.linkedIn ? hodDetails.linkedIn : "#"} rel="noreferrer">
+              <FaLinkedinIn className="social-icons" />
+            </a>
+            <a target={hodDetails.medium ? "_blank" : ""} href={hodDetails.medium ? hodDetails.medium : "#"} rel="noreferrer">
+              <FaMedium className="social-icons" />
+            </a>
+            <a target={hodDetails.twitter ? "_blank" : ""} href={hodDetails.twitter ? hodDetails.twitter : "#"} rel="noreferrer">
+              <FaTwitter className="social-icons" />
+            </a>
+          </div>
           <img
             style={AdjustImageSize}
             className="profile-photo rounded-circle"
@@ -78,7 +104,7 @@ export const HodDetails = ({ hodId }) => {
               Qualification: {hodDetails.highest_academic_qualification}
             </div>
             <div>Date Appointed: {created_date}</div>
-            <div>LGA: {hodDetails.lga_of_origin}</div>
+            <div>Country: {hodDetails.nationality}</div>
           </div>
         </div>
       </article>

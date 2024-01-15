@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addStudents } from "../../redux/student/studentSlice";
+import { getCurrentUser } from "../../redux/user/userSlice";
 import "../../styles/forms.css";
 
 export const StudentForm = () => {
@@ -18,19 +19,31 @@ export const StudentForm = () => {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
+    email: "",
     photo: "",
+    nationality: "",
     phone_number: "",
     level: "",
     gender: "",
     department_id: "",
     age: "",
     bio: "",
-    lga_of_origin: "",
+    linkedIn: "",
+    facebook: "",
+    twitter: "",
+    instagram: "",
+    wellfound: "",
+    medium: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addStudents(formData));
+    dispatch(addStudents(formData)).then(() => {
+      dispatch(getCurrentUser()).then(() => {
+        navigate("/");
+      })
+    });
+
     navigate("/");
   };
 
@@ -81,11 +94,11 @@ export const StudentForm = () => {
           </div>
           <div className="form-group col-md-2">
             <input
-              type="number"
+              type="email"
               className="form-control"
-              placeholder="Phone number"
-              name="phone_number"
-              value={formData.phone_number}
+              placeholder="Email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
@@ -143,6 +156,58 @@ export const StudentForm = () => {
           </div>
         </div>
         <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Phone"
+              name="phone_number"
+              value={formData.phone_number}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Facebook (optional)"
+              name="facebook"
+              value={formData.facebook}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Instagram (optional)"
+              name="instagram"
+              value={formData.instagram}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Twitter (optional)"
+              name="twitter"
+              value={formData.twitter}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="linkedIn (optional)"
+              name="linkedIn"
+              value={formData.linkedIn}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
           <div className="form-group col-md-9">
             <textarea
               name="bio"
@@ -157,9 +222,9 @@ export const StudentForm = () => {
             <input
               type="text"
               className="form-control"
-              placeholder="L.G.A"
-              name="lga_of_origin"
-              value={formData.lga_of_origin}
+              placeholder="Country"
+              name="nationality"
+              value={formData.nationality}
               onChange={handleChange}
             />
           </div>
@@ -171,7 +236,6 @@ export const StudentForm = () => {
             <FaChevronRight className="ms-2" />
           </button>
         </div>
-        <Link to="/students">Home</Link>
       </form>
     </section>
   );

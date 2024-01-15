@@ -6,17 +6,23 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { StudentProfileUpdate } from "../forms/update_profiles/StudentProfileUpdate";
 import PropTypes from 'prop-types';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
 
 export const StudentDetails = ({ studentId }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
-  const { profile_id, email, created_date } = useSelector(
+  const { profile_id, created_date } = useSelector(
     (state) => state.user.currentUser
   );
+
   const studentDetails = useSelector((state) => state.Students.studentDetails);
 
   useEffect(() => {
-    dispatch(getStudentDetails(studentId || profile_id));
+    if(studentId) {
+      dispatch(getStudentDetails(studentId));
+    } else {
+      dispatch(getStudentDetails(profile_id));
+    }
   }, [dispatch, profile_id, studentId]);
 
   const hideProfile = {
@@ -39,6 +45,10 @@ export const StudentDetails = ({ studentId }) => {
     }
   };
 
+  if (!studentDetails) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
+
   return (
     <section className="position-relative">
       <article style={hideProfile}>
@@ -55,8 +65,25 @@ export const StudentDetails = ({ studentId }) => {
             onClick={() => setUpdateForm(true)}
           />
           <small className="text-white">
-            Email: {email} | Phone: {studentDetails.phone_number}
+            Email: {studentDetails.email} | Phone: {studentDetails.phone_number}
           </small>
+          <div className="headline-socials d-flex justify-content-between">
+            <a target={studentDetails.facebook ? "_blank" : ""} href={studentDetails.facebook ? studentDetails.facebook : "#"} rel="noreferrer">
+              <FaFacebookF className="social-icons" />
+            </a>
+            <a target={studentDetails.instagram ? "_blank" : ""} href={studentDetails.instagram ? studentDetails.instagram : "#"} rel="noreferrer">
+              <FaInstagram className="social-icons" />
+            </a>
+            <a target={studentDetails.linkedIn ? "_blank" : ""} href={studentDetails.linkedIn ? studentDetails.linkedIn : "#"} rel="noreferrer">
+              <FaLinkedinIn className="social-icons" />
+            </a>
+            <a target={studentDetails.medium ? "_blank" : ""} href={studentDetails.medium ? studentDetails.medium : "#"} rel="noreferrer">
+              <FaMedium className="social-icons" />
+            </a>
+            <a target={studentDetails.twitter ? "_blank" : ""} href={studentDetails.twitter ? studentDetails.twitter : "#"} rel="noreferrer">
+              <FaTwitter className="social-icons" />
+            </a>
+          </div>
           <img
             style={AdjustImageSize}
             className="profile-photo rounded-circle"
@@ -76,7 +103,7 @@ export const StudentDetails = ({ studentId }) => {
             <div>Age: {studentDetails.age}</div>
             <div>Level: {studentDetails.level}</div>
             <div>Date Admitted: {created_date}</div>
-            <div>LGA: {studentDetails.lga_of_origin}</div>
+            <div>Country: {studentDetails.nationality}</div>
           </div>
         </div>
       </article>

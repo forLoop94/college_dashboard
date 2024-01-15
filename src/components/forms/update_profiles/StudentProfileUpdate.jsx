@@ -15,14 +15,21 @@ export const StudentProfileUpdate = ({ showProfile }) => {
   const [values, setValues] = useState({
     first_name: student.first_name,
     last_name: student.last_name,
+    email: student.email,
     photo: student.photo,
+    nationality: student.nationality,
     phone_number: student.phone_number,
     level: student.level,
     gender: student.gender,
     department_id: student.department_id,
     age: student.age,
     bio: student.bio,
-    lga_of_origin: student.lga_of_origin,
+    linkedIn: student.linkedIn,
+    facebook: student.facebook,
+    twitter: student.twitter,
+    instagram: student.instagram,
+    wellfound: student.wellfound,
+    medium: student.medium,
   });
 
   const departments = useSelector((state) => state.Departments.departments);
@@ -54,7 +61,7 @@ export const StudentProfileUpdate = ({ showProfile }) => {
           <h1 className="p-4 text-light">Update Student Profile</h1>
         </header>
         <FaArrowLeftLong
-          className="position-absolute top-0 start-0 mt-4 ms-5 pencil"
+          className="position-absolute text-white top-0 start-0 mt-4 ms-5 pencil"
           onClick={() => showProfile(true)}
         />
         <div className="form-row d-flex justify-content-between">
@@ -90,11 +97,11 @@ export const StudentProfileUpdate = ({ showProfile }) => {
           </div>
           <div className="form-group col-md-2">
             <input
-              type="number"
+              type="email"
               className="form-control"
-              placeholder="Phone number"
-              name="phone_number"
-              value={values.phone_number}
+              placeholder="Email"
+              name="email"
+              value={values.email}
               onChange={handleChange}
             />
           </div>
@@ -152,6 +159,58 @@ export const StudentProfileUpdate = ({ showProfile }) => {
           </div>
         </div>
         <div className="form-row d-flex justify-content-between">
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Phone"
+              name="phone_number"
+              value={values.phone_number}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Facebook (optional)"
+              name="facebook"
+              value={values.facebook}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Instagram (optional)"
+              name="instagram"
+              value={values.instagram}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Twitter (optional)"
+              name="twitter"
+              value={values.twitter}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group col-md-2">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="linkedIn (optional)"
+              name="linkedIn"
+              value={values.linkedIn}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-row d-flex justify-content-between">
           <div className="form-group col-md-9">
             <textarea
               name="bio"
@@ -166,9 +225,9 @@ export const StudentProfileUpdate = ({ showProfile }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="L.G.A"
-              name="lga_of_origin"
-              value={values.lga_of_origin}
+              placeholder="Country"
+              name="nationality"
+              value={values.nationality}
               onChange={handleChange}
             />
           </div>

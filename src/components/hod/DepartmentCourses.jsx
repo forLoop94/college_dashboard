@@ -20,7 +20,7 @@ export const DepartmentCourses = () => {
   }
 
   if (courses.length === 0) {
-    return "No courses yet!";
+    return <h1 className="technical-pages-bg-v2 text-white d-flex justify-content-center p-5 h-100">No Courses yet!</h1>
   } else {
     return (
       <section className="technical-pages-bg">
