@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addStudents } from "../../redux/student/studentSlice";
+import { getCurrentUser } from "../../redux/user/userSlice";
 import "../../styles/forms.css";
 
 export const StudentForm = () => {
@@ -37,8 +38,12 @@ export const StudentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
-    dispatch(addStudents(formData));
+    dispatch(addStudents(formData)).then(() => {
+      dispatch(getCurrentUser()).then(() => {
+        navigate("/");
+      })
+    });
+
     navigate("/");
   };
 

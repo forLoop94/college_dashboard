@@ -4,6 +4,7 @@ import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addDean, getSchools } from "../../redux/dean/deanSlice";
+import { getCurrentUser } from "../../redux/user/userSlice";
 import "../../styles/forms.css";
 
 export const DeanForm = () => {
@@ -41,7 +42,9 @@ export const DeanForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addDean(formData)).then(() => {
-      navigate("/");
+      dispatch(getCurrentUser()).then(() => {
+        navigate("/");
+      })
     });
   };
 

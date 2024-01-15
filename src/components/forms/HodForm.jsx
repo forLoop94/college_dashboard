@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addHod } from "../../redux/hod/hodSlice";
+import { getCurrentUser } from "../../redux/user/userSlice";
 import "../../styles/forms.css";
 
 export const HodForm = () => {
@@ -42,7 +43,9 @@ export const HodForm = () => {
     e.preventDefault();
     console.log(formData);
     dispatch(addHod(formData)).then(() => {
-      navigate("/");
+      dispatch(getCurrentUser()).then(() => {
+        navigate("/");
+      })
     });
   };
 

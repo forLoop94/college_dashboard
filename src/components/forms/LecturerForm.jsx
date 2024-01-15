@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getDepartments } from "../../redux/department/departmentSlice";
 import { addLecturer } from "../../redux/lecturer/lecturerSlice";
+import { getCurrentUser } from "../../redux/user/userSlice";
 import "../../styles/forms.css";
 
 export const LecturerForm = () => {
@@ -49,8 +50,11 @@ export const LecturerForm = () => {
     //   toast.error(`The field ${emptyField.replace(/_/g, ' ')} is empty`);
     //   return;
     // }
-    dispatch(addLecturer(formData));
-    navigate("/");
+    dispatch(addLecturer(formData)).then(() => {
+      dispatch(getCurrentUser()).then(() => {
+        navigate("/");
+      })
+    });
   };
 
   const handleChange = (e) => {
