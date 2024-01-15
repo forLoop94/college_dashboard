@@ -18,7 +18,11 @@ export const StudentDetails = ({ studentId }) => {
   const studentDetails = useSelector((state) => state.Students.studentDetails);
 
   useEffect(() => {
-    dispatch(getStudentDetails(studentId || profile_id));
+    if(studentId) {
+      dispatch(getStudentDetails(studentId));
+    } else {
+      dispatch(getStudentDetails(profile_id));
+    }
   }, [dispatch, profile_id, studentId]);
 
   const hideProfile = {
@@ -40,6 +44,10 @@ export const StudentDetails = ({ studentId }) => {
       setUpdateForm(false);
     }
   };
+
+  if (!studentDetails) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
 
   return (
     <section className="position-relative">

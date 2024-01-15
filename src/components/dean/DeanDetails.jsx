@@ -22,7 +22,11 @@ export const DeanDetails = ({ deanId }) => {
   const deanDetails = useSelector((state) => state.Deans.details);
 
   useEffect(() => {
-    dispatch(getDeanDetails(deanId || profile_id));
+    if (deanId) {
+      dispatch(getDeanDetails(deanId));
+    } else {
+      dispatch(getDeanDetails(profile_id));
+    }
   }, [dispatch, profile_id, deanId]);
 
   const hideProfile = {
@@ -38,6 +42,14 @@ export const DeanDetails = ({ deanId }) => {
       setUpdateForm(false);
     }
   };
+
+  if (!deanDetails) {
+    return (
+      <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <section className="position-relative">
@@ -55,19 +67,34 @@ export const DeanDetails = ({ deanId }) => {
             Email: {email} | Phone: {deanDetails.phone_number}
           </small>
           <div className="headline-socials d-flex justify-content-between">
-            <a target={deanDetails.facebook ? "_blank" : ""} href={deanDetails.facebook ? deanDetails.facebook : "#"}>
+            <a
+              target={deanDetails.facebook ? "_blank" : ""}
+              href={deanDetails.facebook ? deanDetails.facebook : "#"}
+            >
               <FaFacebookF className="social-icons" />
             </a>
-            <a target={deanDetails.instagram ? "_blank" : ""} href={deanDetails.instagram ? deanDetails.instagram : "#"}>
+            <a
+              target={deanDetails.instagram ? "_blank" : ""}
+              href={deanDetails.instagram ? deanDetails.instagram : "#"}
+            >
               <FaInstagram className="social-icons" />
             </a>
-            <a target={deanDetails.linkedIn ? "_blank" : ""} href={deanDetails.linkedIn ? deanDetails.linkedIn : "#"}>
+            <a
+              target={deanDetails.linkedIn ? "_blank" : ""}
+              href={deanDetails.linkedIn ? deanDetails.linkedIn : "#"}
+            >
               <FaLinkedinIn className="social-icons" />
             </a>
-            <a target={deanDetails.medium ? "_blank" : ""} href={deanDetails.medium ? deanDetails.medium : "#"}>
+            <a
+              target={deanDetails.medium ? "_blank" : ""}
+              href={deanDetails.medium ? deanDetails.medium : "#"}
+            >
               <FaMedium className="social-icons" />
             </a>
-            <a target={deanDetails.twitter ? "_blank" : ""} href={deanDetails.twitter ? deanDetails.twitter : "#"}>
+            <a
+              target={deanDetails.twitter ? "_blank" : ""}
+              href={deanDetails.twitter ? deanDetails.twitter : "#"}
+            >
               <FaTwitter className="social-icons" />
             </a>
           </div>

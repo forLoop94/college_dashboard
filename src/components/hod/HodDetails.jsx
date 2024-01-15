@@ -15,7 +15,11 @@ export const HodDetails = ({ hodId }) => {
   const hodDetails = useSelector(state => state.Hods.details);
 
   useEffect(() => {
-    dispatch(getHodDetails(hodId || profile_id));
+    if(hodId) {
+      dispatch(getHodDetails(hodId));
+    } else {
+      dispatch(getHodDetails(profile_id));
+    }
   }, [dispatch, profile_id, hodId]);
 
   const hideProfile = {
@@ -38,6 +42,10 @@ export const HodDetails = ({ hodId }) => {
     }
   };
 
+
+  if (!hodDetails) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
 
   return (
     <section className="position-relative">

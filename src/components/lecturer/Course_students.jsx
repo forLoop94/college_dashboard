@@ -33,10 +33,6 @@ export const CourseStudents = () => {
     navigate(`/lesson_area/${courseId}/${courseTitle}/${id}/${fName}/${lName}`);
   };
 
-  const showStudentProfile = (id) => {
-    setStudentId(id);
-  };
-
   const closeProfileModal = () => {
     setStudentId(null);
   };
@@ -94,7 +90,7 @@ export const CourseStudents = () => {
                     </div>
                     <div
                       className="false-links"
-                      onClick={() => showStudentProfile(student.id)}
+                      onClick={() => setStudentId(student.id)}
                     >
                       Profile
                     </div>

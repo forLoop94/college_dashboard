@@ -6,6 +6,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { LecturerProfileUpdate } from "../forms/update_profiles/LecturerProfileUpdate";
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
+import { getCurrentUser } from "../../redux/user/userSlice";
 
 export const LecturerDetails = ({ lecturerId }) => {
   const dispatch = useDispatch();
@@ -16,7 +17,11 @@ export const LecturerDetails = ({ lecturerId }) => {
   const lecturerDetails = useSelector((state) => state.Lecturers.details);
 
   useEffect(() => {
-    dispatch(getlecturerDetails(lecturerId || profile_id));
+    if(lecturerId) {
+      dispatch(getlecturerDetails(lecturerId));
+    } else {
+      dispatch(getlecturerDetails(profile_id));
+    }
   }, [dispatch, profile_id, lecturerId]);
 
   const hideProfile = {
@@ -38,6 +43,10 @@ export const LecturerDetails = ({ lecturerId }) => {
       setUpdateForm(false);
     }
   };
+
+  if (!lecturerDetails) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
 
   return (
     <section className="position-relative">

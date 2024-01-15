@@ -18,10 +18,6 @@ export const CourseLecturers = () => {
     dispatch(getCourseLecturers(courseId));
   }, [courseId, dispatch]);
 
-  const showLecturerProfile = (id) => {
-    setLecturerId(id);
-  };
-
   const closeProfileModal = () => {
     setLecturerId(null);
   };
@@ -66,7 +62,7 @@ export const CourseLecturers = () => {
                 <div className="d-flex">
                   <div
                     className="false-links"
-                    onClick={() => showLecturerProfile(lecturer.id)}
+                    onClick={() => setLecturerId(lecturer.id)}
                   >
                     Profile
                     <span className="ms-2 me-2">|</span>
