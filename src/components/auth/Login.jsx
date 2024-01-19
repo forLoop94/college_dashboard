@@ -12,7 +12,6 @@ export const Login = () => {
     password: "",
   });
 
-  // const baseURL = "http://localhost:4000";
   const baseURL = "https://online-school-93yp.onrender.com";
 
   const handleSubmit = async (e) => {
