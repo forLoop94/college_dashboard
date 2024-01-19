@@ -14,7 +14,8 @@ export const NavPanel = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [panel, setPanel] = useState(true);
-  const baseURL = "http://localhost:4000";
+  // const baseURL = "http://localhost:4000";
+  const baseURL = "https://online-school-93yp.onrender.com";
   const { role } = useSelector((state) => state.user.currentUser);
 
   const setNavPanelBackground = (targetLocation) => {
