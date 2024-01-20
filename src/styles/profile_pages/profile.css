@@ -1,0 +1,108 @@
+:root {
+  --english-lavendar: rgb(180, 131, 149);
+  --lavendar-light-text: rgba(255, 249, 251, 0.9);
+  --lavendar-light: rgba(255, 240, 245, 0.8);
+  --lavendar-dark: rgba(253, 231, 239, 0.4);
+  --dark-mauve: rgb(17, 0, 13);
+  --carton: rgba(255, 219, 99, 0.9);
+  --carton-light: rgba(253, 225, 133, 0.9);
+  --razzmatazz: #d90077;
+  --razzma-light: #d84696;
+  --dark-byzantium: rgb(93, 57, 84);
+}
+
+.headline-student,
+.card-student,
+.headline-lecturer,
+.card-lecturer,
+.headline-hod,
+.card-hod,
+.headline-dean,
+.card-dean {
+  background: linear-gradient(90deg, rgba(230, 10, 10, 0.7), rgba(0, 0, 0, 0.917));
+  height: 30vh;
+  position: relative;
+  color: var(--lavendar-light);
+}
+
+.headline-lecturer,
+.card-lecturer {
+  background: linear-gradient(90deg, rgba(11, 129, 7, 0.7), rgba(0, 0, 0, 0.917));
+}
+
+.headline-hod,
+.card-hod {
+  background: linear-gradient(90deg, rgba(13, 110, 253), rgba(0, 0, 0, 0.917));
+}
+
+.headline-dean,
+.card-dean {
+  background: linear-gradient(90deg, rgb(180, 131, 149), rgba(0, 0, 0, 0.917));
+}
+
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 60%;
+  left: 2%;
+}
+
+.pencil {
+  font-size: 25px;
+}
+
+.pencil:hover {
+  color: white;
+  font-size: 27px;
+}
+
+.bio {
+  font-size: 13px;
+}
+
+.card-student,
+.card-lecturer,
+.card-hod,
+.card-dean {
+  height: 5%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(230, 10, 10, 0.7));
+}
+
+.card-lecturer {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(11, 129, 7, 0.7));
+}
+
+.card-hod {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgba(13, 110, 253));
+}
+
+.card-dean {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.917), rgb(180, 131, 149));
+}
+
+.headline-socials {
+  width: 35%;
+  color: var(--lavendar-light);
+}
+
+.social-icons {
+  color: var(--lavendar-light);
+}
+
+.social-icons:hover {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    top: 40%;
+    left: 5%;
+  }
+
+  .headline-socials {
+    width: 20%;
+  }
+}
