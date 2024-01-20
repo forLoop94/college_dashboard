@@ -35,6 +35,7 @@ export const Login = () => {
         localStorage.setItem("token", authorization);
         navigate("/");
         toast.success("Log in successful")
+        return resData;
       }
     } catch (error) {
       toast.error("You could not be logged in")
