@@ -1,4 +1,3 @@
-// import React from 'react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth_pages.css";
@@ -12,7 +11,7 @@ export const Login = () => {
     password: "",
   });
 
-  const baseURL = "http://localhost:4000";
+  const baseURL = "https://online-school-93yp.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,11 +31,11 @@ export const Login = () => {
       });
       if (response.ok) {
         const resData = await response.json();
-        console.log(resData);
         const authorization = response.headers.get("authorization");
         localStorage.setItem("token", authorization);
         navigate("/");
         toast.success("Log in successful")
+        return resData;
       }
     } catch (error) {
       toast.error("You could not be logged in")

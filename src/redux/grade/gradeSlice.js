@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const baseURL = 'http://localhost:4000/api/v1';
+const baseURL = "https://online-school-93yp.onrender.com/api/v1";
 
 export const addGrades = createAsyncThunk('grades/addGrades', async(data) => {
   const token = localStorage.getItem('token');
