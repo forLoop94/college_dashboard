@@ -95,6 +95,10 @@ body {
   flex-direction: column;
 }
 
+.lecturers {
+  flex-direction: row;
+}
+
 .tech-card-v2 {
   background-color: var(--lavendar-light-text);
   border-left: 5px solid var(--razzmatazz);

@@ -31,7 +31,7 @@ export const LessonArea = () => {
   const getLessonArea = async (studentId, courseId, lecturerId) => {
     const token = localStorage.getItem("token");
     const response = await fetch(
-      `http://localhost:4000/api/v1/student_lesson/${studentId}/${courseId}/${lecturerId}`,
+      `https://online-school-93yp.onrender.com/api/v1/student_lesson/${studentId}/${courseId}/${lecturerId}`,
       {
         headers: {
           authorization: token,
@@ -41,52 +41,6 @@ export const LessonArea = () => {
     const data = await response.json();
     return data;
   };
-
-  // if (role && role === "student") {
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const data = await getLessonArea(
-  //         profile_id,
-  //         courseId,
-  //         lecturerId
-  //       );
-  //       if (!data) {
-  //         setShowForm(true);
-  //       }
-  //       setArea(data);
-  //       setStudentCourseInfo({
-  //         id: lecturerId,
-  //         first_name: firstName,
-  //         last_name: lastName,
-  //         course_id: courseId,
-  //         course_title: courseTitle,
-  //       });
-  //     };
-
-  //     fetchData();
-  //   }, [profile_id, courseId, lecturerId]);
-  // } else if (role === "lecturer") {
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const data = await getLessonArea(studentId, courseId, profile_id);
-  //       if (!data) {
-  //         setShowForm(true);
-  //       }
-  //       setArea(data);
-  //       setStudentCourseInfo({
-  //         id: studentId,
-  //         first_name: firstName,
-  //         last_name: lastName,
-  //         course_id: courseId,
-  //         course_title: courseTitle,
-  //       });
-  //     };
-
-  //     fetchData();
-  //   }, [profile_id, courseId, studentId]);
-  // } else {
-  //   return;
-  // }
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,4 +1,3 @@
-// import React from 'react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth_pages.css";
@@ -32,7 +31,6 @@ export const Login = () => {
       });
       if (response.ok) {
         const resData = await response.json();
-        console.log(resData);
         const authorization = response.headers.get("authorization");
         localStorage.setItem("token", authorization);
         navigate("/");

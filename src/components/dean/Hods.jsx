@@ -53,7 +53,7 @@ export const Hods = () => {
               </>
             ) : !hod.hod && hod.department ? (
               <>
-                <h2>Department: {hod.department.name}</h2>
+                <div className="w-25">{hod.department.name}</div>
                 <div>HOD: No HOD yet!</div>
               </>
             ) : (

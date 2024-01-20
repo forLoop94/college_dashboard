@@ -15,7 +15,7 @@ export const ChatsForm = ({ lessonAreaId, otherUserId, courseId }) => {
 
   const CreateMessage = async (body) => {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://localhost:4000/api/v1/chats", {
+    const response = await fetch("https://online-school-93yp.onrender.com/api/v1/chats", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

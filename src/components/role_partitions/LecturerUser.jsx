@@ -22,7 +22,7 @@ export const LecturerUser = ({ setNavPanelBackground }) => {
       <li>
         <Link style={setNavPanelBackground("/lecturers")} to="lecturers">
           <FaUserLarge className="mb-1 me-1" />
-          Lecturers
+          Colleagues
         </Link>
       </li>
       <li>

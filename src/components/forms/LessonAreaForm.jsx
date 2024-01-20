@@ -20,7 +20,7 @@ export const LessonAreaForm = ({
 
   const createlessonArea = async (body) => {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://localhost:4000/api/v1/lesson_area", {
+    const response = await fetch("https://online-school-93yp.onrender.com/api/v1/lesson_area", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

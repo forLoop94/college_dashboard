@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// const baseURL = "http://localhost:4000/api/v1";
 const baseURL = "https://online-school-93yp.onrender.com/api/v1";
 
 
