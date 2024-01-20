@@ -28,7 +28,7 @@ export const Lecturers = () => {
   };
 
   if (lecturers.length === 0) {
-    return "No lecturers yet!";
+    return <h1 className="technical-pages-bg-v2 text-white d-flex justify-content-center p-5 h-100">No Lecturers yet!</h1>
   } else {
     return (
       <div className="technical-pages-bg-v2">
