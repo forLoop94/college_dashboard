@@ -4,7 +4,6 @@ import "../../styles/auth_pages.css";
 import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Modal } from "react-bootstrap";
-import { useEffect } from "react";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -15,13 +14,6 @@ export const Login = () => {
   const [demoUserModal, setDemoUserModal] = useState(false);
 
   const baseURL = "https://online-school-93yp.onrender.com";
-
-  useEffect(() => {
-    setData({
-      email: data.email,
-      password: data.password
-    })
-  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();

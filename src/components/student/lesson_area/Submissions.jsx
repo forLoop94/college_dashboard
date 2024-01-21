@@ -1,4 +1,5 @@
-import { FaAngleLeft } from "react-icons/fa"
+import { FaAngleLeft } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 export const Submissions = ({ setLinkPages }) => {
   return (
@@ -18,3 +19,7 @@ export const Submissions = ({ setLinkPages }) => {
     </div>
   )
 }
+
+Submissions.propTypes = {
+  setLinkPages: PropTypes.func,
+};
