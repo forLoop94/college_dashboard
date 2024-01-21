@@ -65,14 +65,20 @@ export const CourseForm = () => {
             value={data.code}
             onChange={handleChange}
           />
-          <input
-            type="number"
+          <select
             className="form-control"
             placeholder="level"
             name="level"
             value={data.level}
             onChange={handleChange}
-          />
+          >
+            <option className="select-placeholder">Level</option>
+            <option className="select-placeholder">100</option>
+            <option className="select-placeholder">200</option>
+            <option className="select-placeholder">300</option>
+            <option className="select-placeholder">400</option>
+            <option className="select-placeholder">500</option>
+          </select>
           <select
             className="form-control"
             value={data.department_id}
