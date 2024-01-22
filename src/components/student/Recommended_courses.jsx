@@ -13,6 +13,10 @@ export const Recommended_courses = () => {
     dispatch(getRecommendedCourses());
   }, [dispatch]);
 
+  if (!recCourses) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
+
   return (
     <main className="technical-pages-bg">
       <h1 className="tech-header">Recommended Courses</h1>

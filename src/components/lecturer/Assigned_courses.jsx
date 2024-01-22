@@ -19,6 +19,10 @@ export const Assigned_courses = () => {
     navigate(`/assigned_courses/${courseId}/${courseTitle}`);
   };
 
+  if (!assignedCourses) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
+
   return (
     <main className="technical-pages-bg">
       <h1 className="tech-header">Assigned Courses</h1>

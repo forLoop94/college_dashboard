@@ -4,3 +4,15 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.primary {
+  color: rgb(13 110 253);
+}
+
+.primary:hover {
+  color: white;
+}

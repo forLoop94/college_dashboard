@@ -37,6 +37,10 @@ export const CourseStudents = () => {
     setStudentId(null);
   };
 
+  if (!students) {
+    return <div className="technical-pages-bg-v2 text-white d-flex justify-content-center align-items-center h-100">Loading...</div>
+  }
+
   return (
     <>
       <div className="technical-pages-bg-v2">
