@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth_pages.css";
 import { FaChevronRight, FaGraduationCap } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { Modal } from "react-bootstrap";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -10,12 +11,13 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [demoUserModal, setDemoUserModal] = useState(false);
 
   const baseURL = "https://online-school-93yp.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!data.email || !data.password) {
+    if (!data.email || !data.password) {
       toast.error("At least one required field is empty");
       return;
     }
@@ -34,11 +36,11 @@ export const Login = () => {
         const authorization = response.headers.get("authorization");
         localStorage.setItem("token", authorization);
         navigate("/");
-        toast.success("Log in successful")
+        toast.success("Log in successful");
         return resData;
       }
     } catch (error) {
-      toast.error("You could not be logged in")
+      toast.error("You could not be logged in");
     }
   };
 
@@ -48,6 +50,14 @@ export const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const demoUser = () => {
+    setDemoUserModal(true)
+  }
+
+  const closeDemoUserModal = () => {
+    setDemoUserModal(false);
+  }
 
   return (
     <section className="vh-100 vw-100 d-flex justify-content-center align-items-center auth-forms">
@@ -75,6 +85,12 @@ export const Login = () => {
             <FaGraduationCap className="ms-2" />
           </button>
         </div>
+        <div className="text-white mt-3">
+          Quick tour? sign in as{" "}
+          <span className="pointer primary" onClick={() => demoUser()}>
+            Demo User
+          </span>
+        </div>
         <div className="text-white position-absolute top-0 end-0 m-5">
           Not registered?
           <Link className="ms-2 text-white text-decoration-none" to="/signup">
@@ -85,6 +101,31 @@ export const Login = () => {
             </button>
           </Link>
         </div>
+        {demoUserModal && (
+          <Modal show={true} onHide={closeDemoUserModal}>
+            <Modal.Body>
+              <h2>
+                Log in as...
+              </h2>
+              <div className="pointer text-primary" onClick={() => {setData({
+                email: "ds@mail.com",
+                password: 123456
+              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo Student</div>
+              <div className="pointer text-primary" onClick={() => {setData({
+                email: "dl@mail.com",
+                password: 123456
+              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo Lecturer</div>
+              <div className="pointer text-primary" onClick={() => {setData({
+                email: "dh@mail.com",
+                password: 123456
+              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo HOD</div>
+              <div className="pointer text-primary" onClick={() => {setData({
+                email: "dd@mail.com",
+                password: 123456
+              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo Dean</div>
+            </Modal.Body>
+          </Modal>
+        )}
       </form>
     </section>
   );

@@ -33,10 +33,10 @@ export const Lecturers = () => {
     return (
       <div className="technical-pages-bg-v2">
         <h1 className="tech-header-v2">Lecturers</h1>
-        <section className="tech-card-container-v2 d-flex justify-content-center">
+        <section className="tech-card-container-v2 d-flex flex-column align-items-center">
           {lecturers.map((lecturer) => (
             <div
-              className="tech-card-v2 h-25 mt-5 d-flex lecturers justify-content-between"
+              className="tech-card-v2 h-25 mt-3 d-flex lecturers justify-content-between"
               key={lecturer.id}
             >
               <div>

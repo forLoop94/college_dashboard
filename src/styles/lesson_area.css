@@ -16,14 +16,17 @@
 
 .chats-page {
   background-color: var(--lavendar-light);
-  height: auto;
+  height: 100vh;
   padding: 7rem 10% 3rem 10%;
-
-  /* background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), url('../assets/profile-pages-bg.jpg'); */
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.chats {
+  height: auto;
+  background-color: var(--lavendar-light);
 }
 
 .old-message {

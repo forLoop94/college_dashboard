@@ -23,7 +23,7 @@ export const CourseLecturers = () => {
   };
 
   if (lecturers.length === 0) {
-    return "This course has not been assigned a lecturer";
+    return <h1 className="technical-pages-bg-v2 text-white d-flex justify-content-center p-5 h-100">Course yet to be assigned a lecturer</h1>
   }
 
   return (

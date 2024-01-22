@@ -192,6 +192,7 @@ export const LessonArea = () => {
             otherUserInfo={studentCourseInfo}
             lessonAreaId={area.id}
             showLessonArea={showLessonArea}
+            setLinkPages={setLinkPages}
           />
         )}
         {linkPages.chats && (
