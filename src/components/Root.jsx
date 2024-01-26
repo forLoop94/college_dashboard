@@ -13,7 +13,18 @@ export const Root = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(getCurrentUser());
+      try {
+        await dispatch(getCurrentUser());
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          console.log(error.response)
+          navigate("/login");
+          return;
+        }
+        console.error("Error fetching current user:", error);
+        navigate("/login");
+        return;
+      }
 
       if (!token) {
         navigate("/login");
