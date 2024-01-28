@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../redux/user/userSlice";
+import { LoadingScreen } from "./auth/LoadingScreen";
 import { NavPanel } from "./NavPanel";
 
 export const Root = () => {
@@ -55,6 +56,10 @@ export const Root = () => {
 
     fetchData();
   }, [token, profile_exists, role, navigate, dispatch]);
+
+  if(!role) {
+    return <LoadingScreen />
+  }
 
   return (
     <div id="root">
