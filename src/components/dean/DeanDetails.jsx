@@ -11,9 +11,10 @@ import {
   FaLinkedinIn,
   FaMedium,
   FaTwitter,
+  FaX,
 } from "react-icons/fa6";
 
-export const DeanDetails = ({ deanId }) => {
+export const DeanDetails = ({ deanId, closeProfileModal }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
   const { profile_id, email, created_date } = useSelector(
@@ -35,6 +36,10 @@ export const DeanDetails = ({ deanId }) => {
 
   const hidePen = {
     display: deanId ? "none" : "block",
+  };
+
+  const hideClose = {
+    display: deanId ? "block" : "none",
   };
 
   const showProfile = (toogle) => {
@@ -62,6 +67,11 @@ export const DeanDetails = ({ deanId }) => {
             className="position-absolute top-0 end-0 mt-4 me-5 pencil"
             style={hidePen}
             onClick={() => setUpdateForm(true)}
+          />
+          <FaX
+            className="position-absolute top-0 end-0 mt-2 me-3 pencil"
+            style={hideClose}
+            onClick={() => closeProfileModal()}
           />
           <small>
             Email: {email} | Phone: {deanDetails.phone_number}
@@ -134,4 +144,5 @@ export const DeanDetails = ({ deanId }) => {
 
 DeanDetails.propTypes = {
   deanId: PropTypes.number,
+  closeProfileModal: PropTypes.func
 };

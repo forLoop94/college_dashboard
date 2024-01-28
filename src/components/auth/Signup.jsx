@@ -69,7 +69,7 @@ export const Signup = () => {
   };
 
   return (
-    <section className="auth-forms d-flex justify-content-center align-items-center vh-100 vw-100">
+    <section className="auth-forms d-flex justify-content-center align-items-center vw-100">
       <form onSubmit={handleSubmit}>
         <header className="d-flex d-flex justify-content-center align-items-center">
           <h3 className="p-4 text-light">Sign up</h3>

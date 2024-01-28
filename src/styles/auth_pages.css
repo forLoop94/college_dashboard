@@ -3,6 +3,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 2rem;
+  height: 130vh;
 }
 
 .pointer {
@@ -10,9 +12,16 @@
 }
 
 .primary {
-  color: rgb(13 110 253);
+  text-decoration: underline;
+  color: white;
 }
 
 .primary:hover {
-  color: white;
+  color: rgb(13 110 253);
+}
+
+@media screen and (min-width: 1000px) {
+  .auth-forms {
+    height: 100vh;
+  }
 }

@@ -85,8 +85,8 @@ export const Login = () => {
             <FaGraduationCap className="ms-2" />
           </button>
         </div>
-        <div className="text-white mt-3">
-          Quick tour? sign in as{" "}
+        <div className="text-white mt-3 text-center">
+          Quick tour without having to register?<br></br> sign in as{" "}
           <span className="pointer primary" onClick={() => demoUser()}>
             Demo User
           </span>
@@ -110,19 +110,19 @@ export const Login = () => {
               <div className="pointer text-primary" onClick={() => {setData({
                 email: "ds@mail.com",
                 password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo Student</div>
+              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo Student</div>
               <div className="pointer text-primary" onClick={() => {setData({
                 email: "dl@mail.com",
                 password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo Lecturer</div>
+              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo Lecturer</div>
               <div className="pointer text-primary" onClick={() => {setData({
                 email: "dh@mail.com",
                 password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo HOD</div>
+              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo HOD</div>
               <div className="pointer text-primary" onClick={() => {setData({
                 email: "dd@mail.com",
                 password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button")}}>Demo Dean</div>
+              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo Dean</div>
             </Modal.Body>
           </Modal>
         )}

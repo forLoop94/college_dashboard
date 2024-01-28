@@ -113,7 +113,6 @@ export const CourseStudents = () => {
         {selectedStudentId && (
           <Modal show={true} onHide={closeGradeModal}>
             <Modal.Body>
-              {/* <FaX className="text-white menu-btn" /> */}
               <Grade
                 studentId={selectedStudentId}
                 courseId={courseId}
@@ -125,7 +124,7 @@ export const CourseStudents = () => {
         {studentId && (
           <Modal show={true} onHide={closeProfileModal}>
             <Modal.Body>
-              {<StudentDetails key={studentId} studentId={studentId} />}
+              {<StudentDetails key={studentId} studentId={studentId} closeProfileModal={closeProfileModal} />}
             </Modal.Body>
           </Modal>
         )}
