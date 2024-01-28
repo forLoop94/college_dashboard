@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getlecturerDetails } from "../../redux/lecturer/lecturerSlice";
 import "../../styles/profile_pages/profile.css";
-import { FaPencilAlt, FaWindowClose } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
 import { LecturerProfileUpdate } from "../forms/update_profiles/LecturerProfileUpdate";
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter, FaX } from "react-icons/fa6";
