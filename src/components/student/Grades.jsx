@@ -1,17 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCourseGrades } from "../../redux/grade/gradeSlice";
+import { getCourseGrades, getStudentGrades } from "../../redux/grade/gradeSlice";
 import { getRecommendedCourses } from "../../redux/student/studentSlice";
 import { gradeAlphabet, symbolColor } from "../../utils/gradeAlphabet";
 import { gradePoint } from "../../utils/gradePoint";
 
 export const Grades = () => {
   const dispatch = useDispatch();
-  const gradesInfo = useSelector((state) => state.Grades.courseGrades);
+  // const gradesInfo = useSelector((state) => state.Grades.courseGrades);
+  const gradesInfo = useSelector((state) => state.Grades.studentGrades);
   const recCourses = useSelector((state) => state.Students.recommended);
+  const { profile_id } = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
-    dispatch(getCourseGrades());
+    // dispatch(getCourseGrades());
+    dispatch(getStudentGrades({ id:profile_id }));
     dispatch(getRecommendedCourses());
   }, [dispatch]);
 
