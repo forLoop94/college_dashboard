@@ -21,11 +21,11 @@ export const Grades = () => {
   const gradePointCalculator = () => {
     const totalQualityPoints = gradesInfo.reduce(
       (total, num) =>
-        total + gradePoint(gradeAlphabet(num.grade)) * num.credit_load,
+        total + gradePoint(gradeAlphabet(num.value)) * num.course.credit_load,
       0
     );
     const totalCredit = gradesInfo.reduce(
-      (total, num) => total + num.credit_load,
+      (total, num) => total + num.course.credit_load,
       0
     );
     const gpa = totalQualityPoints / totalCredit;
@@ -51,18 +51,18 @@ export const Grades = () => {
           >
             <div className="tech-grade-info">
               <p className="text-center">
-                Title <p className="text-center">{course.title}</p>
+                Title <p className="text-center">{course.course.title}</p>
               </p>
               <p className="text-center">
-                Code <p className="text-center">{course.code}</p>
+                Code <p className="text-center">{course.course.code}</p>
               </p>
             </div>
             <div className="tech-grade-info">
               <p className="text-center">
-                Credit Hours <p className="text-center">{course.credit_load}</p>
+                Credit Hours <p className="text-center">{course.course.credit_load}</p>
               </p>
               <p className="text-center">
-                Score <p className="text-center">{course.grade}</p>
+                Score <p className="text-center">{course.value}</p>
               </p>
             </div>
             <div className="tech-grade-info">
@@ -70,17 +70,17 @@ export const Grades = () => {
                 Symbol
                 <p
                   style={{
-                    color: symbolColor(gradeAlphabet(course.grade)),
+                    color: symbolColor(gradeAlphabet(course.value)),
                   }}
                   className="text-center"
                 >
-                  {gradeAlphabet(course.grade)}
+                  {gradeAlphabet(course.value)}
                 </p>
               </p>
               <p className="text-center">
                 Points
                 <p className="text-center">
-                  {gradePoint(gradeAlphabet(course.grade))}
+                  {gradePoint(gradeAlphabet(course.value))}
                 </p>
               </p>
             </div>
