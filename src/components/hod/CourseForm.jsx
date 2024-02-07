@@ -4,8 +4,11 @@ import { FaChevronRight, FaReadme } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addCourses } from "../../redux/course/courseSlice";
-import { getDepartments } from "../../redux/department/departmentSlice";
-import '../../styles/course_form.css';
+import {
+  getDepartmentCourses,
+  getDepartments,
+} from "../../redux/department/departmentSlice";
+import "../../styles/course_form.css";
 
 export const CourseForm = () => {
   const dispatch = useDispatch();
@@ -27,11 +30,14 @@ export const CourseForm = () => {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    dispatch(addCourses(data));
-    navigate("/department_courses");
-    setSuccess(
-      `The course ${data.title.toUpperCase()} has been added successfully!`
-    );
+    dispatch(addCourses(data)).then(() => {
+      dispatch(getDepartmentCourses()).then(() => {
+        navigate("/department_courses");
+        setSuccess(
+          `The course ${data.title.toUpperCase()} has been added successfully!`
+        );
+      });
+    });
   };
 
   const handleChange = (e) => {
