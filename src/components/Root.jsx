@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../redux/user/userSlice";
+import { LoadingScreen } from "./auth/LoadingScreen";
 import { NavPanel } from "./NavPanel";
 
 export const Root = () => {
@@ -13,7 +14,18 @@ export const Root = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(getCurrentUser());
+      try {
+        await dispatch(getCurrentUser());
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          console.log(error.response)
+          navigate("/login");
+          return;
+        }
+        console.error("Error fetching current user:", error);
+        navigate("/login");
+        return;
+      }
 
       if (!token) {
         navigate("/login");
@@ -44,6 +56,10 @@ export const Root = () => {
 
     fetchData();
   }, [token, profile_exists, role, navigate, dispatch]);
+
+  if(!role) {
+    return <LoadingScreen />
+  }
 
   return (
     <div id="root">

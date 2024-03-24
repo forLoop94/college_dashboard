@@ -30,6 +30,7 @@ import { CourseLecturers } from './components/student/Course_lecturers';
 import { LecturerDetails } from './components/lecturer/LecturerDetails';
 import { StudentDetails } from './components/student/StudentDetails';
 import { DeanDetails } from './components/dean/DeanDetails';
+import { LoadingScreen } from './components/auth/LoadingScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -59,18 +60,6 @@ const router = createBrowserRouter(
         <Route path='/department_lecturers' element={<DepartmentLecturers /> } />
         <Route path='/department_courses' element={<DepartmentCourses /> } />
       </Route>
-      {/* <Route path='/' element={<Root />}>
-        <Route path='student_user' element={<StudentUser />}>
-          <Route index element={<Students />} />
-          <Route path='add_student' element={<StudentForm /> } />
-        </Route>
-        <Route path='lecturer_user' element={<LecturerUser />}>
-          <Route index element={<Lecturers />} />
-          <Route path='add_lecturer' element={<LecturerForm /> } />
-          <Route path='lecturer_eligible' element={<LecturerEligibleCourses /> } />
-        </Route>
-      </Route> */}
-      {/* <Route path='/course_students' element={<Course_students />} /> */}
       <Route path='/add_grade' element={<NewGrade /> } />
       <Route path='/add_hod' element={<HodForm /> } />
       <Route path='/add_dean' element={<DeanForm /> } />
@@ -78,6 +67,7 @@ const router = createBrowserRouter(
       <Route path='/add_lecturer' element={<LecturerForm /> } />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
+      <Route path='/loading_screen' element={<LoadingScreen />} />
     </Route>
   )
 )

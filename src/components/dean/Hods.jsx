@@ -64,7 +64,7 @@ export const Hods = () => {
       </div>
       {hodId && (
         <Modal show={true} onHide={closeProfileModal}>
-          <Modal.Body>{<HodDetails key={hodId} hodId={hodId} />}</Modal.Body>
+          <Modal.Body>{<HodDetails key={hodId} hodId={hodId} closeProfileModal={closeProfileModal} />}</Modal.Body>
         </Modal>
       )}
     </section>

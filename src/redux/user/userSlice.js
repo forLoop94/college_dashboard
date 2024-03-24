@@ -7,13 +7,23 @@ export const getCurrentUser = createAsyncThunk(
   async () => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(`${baseURL}/current_user`, {
-      headers: {
-        authorization: `${token}`,
-      },
-    });
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch(`${baseURL}/current_user`, {
+        headers: {
+          authorization: `${token}`,
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.error("Error fetching current user:", error);
+        throw error;
+      } else {
+        console.error("Error fetching current user:", error);
+        throw error;
+      }
+    }
   }
 );
 

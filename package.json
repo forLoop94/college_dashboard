@@ -1,5 +1,6 @@
 {
   "name": "college_dashboard",
+  "homepage": "https://study-247.netlify.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",

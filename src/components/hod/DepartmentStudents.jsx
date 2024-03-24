@@ -72,7 +72,7 @@ export const DepartmentStudents = () => {
         {studentId && (
           <Modal show={true} onHide={closeProfileModal}>
             <Modal.Body>
-              {<StudentDetails key={studentId} studentId={studentId} />}
+              {<StudentDetails key={studentId} studentId={studentId} closeProfileModal={closeProfileModal} />}
             </Modal.Body>
           </Modal>
         )}

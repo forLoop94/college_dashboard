@@ -6,9 +6,9 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { HodProfileUpdate } from "../forms/update_profiles/HodProfileUpdate";
 import PropTypes from 'prop-types';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter, FaX } from "react-icons/fa6";
 
-export const HodDetails = ({ hodId }) => {
+export const HodDetails = ({ hodId, closeProfileModal }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
   const { profile_id, created_date } = useSelector(state => state.user.currentUser);
@@ -29,6 +29,10 @@ export const HodDetails = ({ hodId }) => {
   const hidePen = {
     display: hodId ? "none" : "block",
   }
+
+  const hideClose = {
+    display: hodId ? "block" : "none",
+  };
 
   const AdjustImageSize = {
     width: hodId ? "120px" : "",
@@ -58,6 +62,11 @@ export const HodDetails = ({ hodId }) => {
             className="position-absolute top-0 end-0 mt-4 me-5 pencil"
             style={hidePen}
             onClick={() => setUpdateForm(true)}
+          />
+          <FaX
+            className="position-absolute top-0 end-0 mt-2 me-3 pencil"
+            style={hideClose}
+            onClick={() => closeProfileModal()}
           />
           <small className="text-white">
             Email: {hodDetails.email} | Phone: {hodDetails.phone_number}
@@ -114,5 +123,6 @@ export const HodDetails = ({ hodId }) => {
 }
 
 HodDetails.propTypes = {
-  hodId: PropTypes.number
+  hodId: PropTypes.number,
+  closeProfileModal: PropTypes.func
 };

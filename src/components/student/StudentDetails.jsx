@@ -6,9 +6,9 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { StudentProfileUpdate } from "../forms/update_profiles/StudentProfileUpdate";
 import PropTypes from 'prop-types';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter, FaX } from "react-icons/fa6";
 
-export const StudentDetails = ({ studentId }) => {
+export const StudentDetails = ({ studentId, closeProfileModal }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
   const { profile_id, created_date } = useSelector(
@@ -31,6 +31,10 @@ export const StudentDetails = ({ studentId }) => {
 
   const hidePen = {
     display: studentId ? "none" : "block",
+  };
+
+  const hideClose = {
+    display: studentId ? "block" : "none",
   };
 
   const AdjustImageSize = {
@@ -63,6 +67,11 @@ export const StudentDetails = ({ studentId }) => {
             className="position-absolute top-0 end-0 mt-4 me-5 pencil"
             style={hidePen}
             onClick={() => setUpdateForm(true)}
+          />
+          <FaX
+            className="position-absolute top-0 end-0 mt-2 me-3 pencil"
+            style={hideClose}
+            onClick={() => closeProfileModal()}
           />
           <small className="text-white">
             Email: {studentDetails.email} | Phone: {studentDetails.phone_number}
@@ -115,5 +124,6 @@ export const StudentDetails = ({ studentId }) => {
 };
 
 StudentDetails.propTypes = {
-  studentId: PropTypes.number
+  studentId: PropTypes.number,
+  closeProfileModal: PropTypes.func
 };
