@@ -28,7 +28,6 @@ export const getCourseGrades = createAsyncThunk('grades/getCourseGrades', async(
   })
   if(response.ok) {
     const data = await response.json()
-    // console.log(data.message);
     return data;
   }
 })
@@ -88,7 +87,7 @@ export const getStudentGrades = createAsyncThunk('grades/getStudentGrades', asyn
     const data = await response.json();
     return data;
   } else {
-    console.log(`${baseURL}/target_grade/${student_id}/${id}`)
+    throw new Error("student grade not found!")
   }
 })
 
