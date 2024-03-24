@@ -138,12 +138,16 @@ body {
 }
 
 .false-links {
-  color: var(--dark-mauve);
+  color: var(--razzma-light);
   cursor: pointer;
 }
 
 .false-links:hover {
-  color: var(--razzma-light);
+  color: var(--dark-mauve);
+}
+
+.divider {
+  color: var(--dark-mauve);
 }
 
 .inner-page-return {

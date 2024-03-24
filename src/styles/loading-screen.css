@@ -1,0 +1,41 @@
+:root {
+  --english-lavendar: rgb(180, 131, 149);
+  --lavendar-light: rgba(255, 240, 245, 0.8);
+  --lavendar-dark: rgba(253, 231, 239, 0.4);
+  --dark-mauve: rgb(17, 0, 13);
+  --dark-byzantium: rgb(93, 57, 84);
+}
+
+.load-screen-container {
+  background: linear-gradient(180deg, var(--lavendar-light), var(--english-lavendar));
+}
+
+.load-statement {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  color: var(--dark-mauve);
+  font-size: 12px;
+}
+
+.load-screen-photo {
+  width: 100px;
+  height: 100px;
+}
+
+.spinner-container {
+  position: relative;
+}
+
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid var(--dark-byzantium);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

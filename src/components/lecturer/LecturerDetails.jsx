@@ -5,9 +5,9 @@ import "../../styles/profile_pages/profile.css";
 import { FaPencilAlt } from "react-icons/fa";
 import { LecturerProfileUpdate } from "../forms/update_profiles/LecturerProfileUpdate";
 import PropTypes from 'prop-types';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaMedium, FaTwitter, FaX } from "react-icons/fa6";
 
-export const LecturerDetails = ({ lecturerId }) => {
+export const LecturerDetails = ({ lecturerId, closeProfileModal }) => {
   const dispatch = useDispatch();
   const [updateForm, setUpdateForm] = useState(false);
   const { profile_id, created_date } = useSelector(
@@ -29,6 +29,10 @@ export const LecturerDetails = ({ lecturerId }) => {
 
   const hidePen = {
     display: lecturerId ? "none" : "block",
+  };
+
+  const hideClose = {
+    display: lecturerId ? "block" : "none",
   };
 
   const AdjustImageSize = {
@@ -58,6 +62,11 @@ export const LecturerDetails = ({ lecturerId }) => {
             className="position-absolute top-0 end-0 mt-4 me-5 pencil"
             style={hidePen}
             onClick={() => setUpdateForm(true)}
+          />
+          <FaX
+            className="position-absolute top-0 end-0 mt-2 me-3 pencil"
+            style={hideClose}
+            onClick={() => closeProfileModal()}
           />
           <small className="text-white">
             Email: {lecturerDetails.email} | Phone: {lecturerDetails.phone_number}
@@ -116,5 +125,6 @@ export const LecturerDetails = ({ lecturerId }) => {
 };
 
 LecturerDetails.propTypes = {
-  lecturerId: PropTypes.number
+  lecturerId: PropTypes.number,
+  closeProfileModal: PropTypes.func
 };
