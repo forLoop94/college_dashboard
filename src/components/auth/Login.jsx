@@ -13,7 +13,7 @@ export const Login = () => {
   });
   const [demoUserModal, setDemoUserModal] = useState(false);
 
-  const baseURL = "https://online-school-93yp.onrender.com";
+  const baseURL = "http://localhost:4000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,12 +52,12 @@ export const Login = () => {
   };
 
   const demoUser = () => {
-    setDemoUserModal(true)
-  }
+    setDemoUserModal(true);
+  };
 
   const closeDemoUserModal = () => {
     setDemoUserModal(false);
-  }
+  };
 
   return (
     <section className="vh-100 vw-100 d-flex justify-content-center align-items-center auth-forms">
@@ -104,25 +104,67 @@ export const Login = () => {
         {demoUserModal && (
           <Modal show={true} onHide={closeDemoUserModal}>
             <Modal.Body>
-              <h2>
-                Log in as...
-              </h2>
-              <div className="pointer text-primary" onClick={() => {setData({
-                email: "ds@mail.com",
-                password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo Student</div>
-              <div className="pointer text-primary" onClick={() => {setData({
-                email: "dl@mail.com",
-                password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo Lecturer</div>
-              <div className="pointer text-primary" onClick={() => {setData({
-                email: "dh@mail.com",
-                password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo HOD</div>
-              <div className="pointer text-primary" onClick={() => {setData({
-                email: "dd@mail.com",
-                password: 123456
-              }); setDemoUserModal(false); toast.success("Now click the Log in button, don't bother about completing the fields")}}>Demo Dean</div>
+              <h2>Log in as...</h2>
+              <div
+                className="pointer text-primary"
+                onClick={() => {
+                  setData({
+                    email: "ds@mail.com",
+                    password: 123456,
+                  });
+                  setDemoUserModal(false);
+                  toast.success(
+                    "Now click the Log in button, don't bother about completing the fields"
+                  );
+                }}
+              >
+                Demo Student
+              </div>
+              <div
+                className="pointer text-primary"
+                onClick={() => {
+                  setData({
+                    email: "dl@mail.com",
+                    password: 123456,
+                  });
+                  setDemoUserModal(false);
+                  toast.success(
+                    "Now click the Log in button, don't bother about completing the fields"
+                  );
+                }}
+              >
+                Demo Lecturer
+              </div>
+              <div
+                className="pointer text-primary"
+                onClick={() => {
+                  setData({
+                    email: "dh@mail.com",
+                    password: 123456,
+                  });
+                  setDemoUserModal(false);
+                  toast.success(
+                    "Now click the Log in button, don't bother about completing the fields"
+                  );
+                }}
+              >
+                Demo HOD
+              </div>
+              <div
+                className="pointer text-primary"
+                onClick={() => {
+                  setData({
+                    email: "dd@mail.com",
+                    password: 123456,
+                  });
+                  setDemoUserModal(false);
+                  toast.success(
+                    "Now click the Log in button, don't bother about completing the fields"
+                  );
+                }}
+              >
+                Demo Dean
+              </div>
             </Modal.Body>
           </Modal>
         )}

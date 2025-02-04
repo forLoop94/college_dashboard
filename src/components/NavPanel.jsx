@@ -7,14 +7,14 @@ import { HodUser } from "./role_partitions/HodUser";
 import { LecturerUser } from "./role_partitions/LecturerUser";
 import { StudentUser } from "./role_partitions/StudentUser";
 import { FaBars, FaUserLock, FaX } from "react-icons/fa6";
-import logo from '../assets/logo.png';
+import logo from "../assets/logo.png";
 import { Footer } from "./Footer";
 
 export const NavPanel = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [panel, setPanel] = useState(true);
-  const baseURL = "https://online-school-93yp.onrender.com";
+  const baseURL = "http://localhost:4000";
   const { role } = useSelector((state) => state.user.currentUser);
 
   const setNavPanelBackground = (targetLocation) => {
@@ -49,8 +49,8 @@ export const NavPanel = () => {
   };
 
   const hideBars = {
-    display: !panel ? "none" : "block"
-  }
+    display: !panel ? "none" : "block",
+  };
 
   return (
     <>
@@ -74,11 +74,7 @@ export const NavPanel = () => {
         tabIndex={0}
       >
         <div className="logo-container">
-          <img
-            src={logo}
-            alt="logo"
-            className="logo"
-          />
+          <img src={logo} alt="logo" className="logo" />
         </div>
         <div className="nav-panel">
           {role === "student" ? (

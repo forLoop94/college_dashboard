@@ -15,7 +15,7 @@ export const Signup = () => {
     password_confirmation: "",
   });
 
-  const baseURL = "https://online-school-93yp.onrender.com";
+  const baseURL = "http://localhost:4000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ export const Signup = () => {
       !data.password ||
       !data.password_confirmation
     ) {
-      toast.error('At least one required field is empty');
+      toast.error("At least one required field is empty");
       return;
     }
 
