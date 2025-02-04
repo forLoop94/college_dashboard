@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const baseURL = "https://online-school-93yp.onrender.com/api/v1";
+const baseURL = "http://localhost:4000/api/v1";
 
 export const addLecturer = createAsyncThunk(
   "lecturer/addlecturer",
@@ -86,26 +86,29 @@ export const getAssignedCourses = createAsyncThunk(
   }
 );
 
-export const updateLecturer = createAsyncThunk('lecturers/updateLecturer', async({ body, id }) => {
-  const token = localStorage.getItem('token')
-  const response = await fetch(`${baseURL}/lecturers/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: token,
-    },
-    body: JSON.stringify(body)
-  })
-  if(response.ok) {
-    const data = await response.json();
-    console.log("update succesful")
-    return data;
+export const updateLecturer = createAsyncThunk(
+  "lecturers/updateLecturer",
+  async ({ body, id }) => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(`${baseURL}/lecturers/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+      body: JSON.stringify(body),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log("update succesful");
+      return data;
+    }
   }
-})
+);
 
 const initialState = {
   lecturers: [],
-  details: '',
+  details: "",
   eligibleCourses: [],
   assignedCourses: [],
 };
