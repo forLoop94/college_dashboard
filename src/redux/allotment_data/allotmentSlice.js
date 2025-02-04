@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const baseURL = "https://online-school-93yp.onrender.com/api/v1";
+const baseURL = "http://localhost:4000/api/v1";
 
 export const addAllotmentData = createAsyncThunk(
   "lecturerCourses/addAllotmentData",
@@ -33,18 +33,21 @@ export const getAllotmentData = createAsyncThunk(
   }
 );
 
-export const deleteAllotment = createAsyncThunk("lecturerCourses/deleteAllotment", async (id) => {
-  const token = localStorage.getItem("token");
-  const response = await fetch(`${baseURL}/lecturer_courses/${id}`, {
-    method: 'DELETE',
-    headers: {
-      authorization: token
+export const deleteAllotment = createAsyncThunk(
+  "lecturerCourses/deleteAllotment",
+  async (id) => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(`${baseURL}/lecturer_courses/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: token,
+      },
+    });
+    if (response.ok) {
+      return id;
     }
-  })
-  if (response.ok) {
-    return id;
   }
-})
+);
 
 const initialState = {
   allotmentData: [],

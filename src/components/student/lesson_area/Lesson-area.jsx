@@ -31,7 +31,7 @@ export const LessonArea = () => {
   const getLessonArea = async (studentId, courseId, lecturerId) => {
     const token = localStorage.getItem("token");
     const response = await fetch(
-      `https://online-school-93yp.onrender.com/api/v1/student_lesson/${studentId}/${courseId}/${lecturerId}`,
+      `http://localhost:4000/api/v1/student_lesson/${studentId}/${courseId}/${lecturerId}`,
       {
         headers: {
           authorization: token,
@@ -67,7 +67,16 @@ export const LessonArea = () => {
     };
 
     fetchData();
-  }, [profile_id, courseId, lecturerId, studentId, role, firstName, lastName, courseTitle]);
+  }, [
+    profile_id,
+    courseId,
+    lecturerId,
+    studentId,
+    role,
+    firstName,
+    lastName,
+    courseTitle,
+  ]);
 
   const showSubmissionPage = () => {
     setLinkPages({
