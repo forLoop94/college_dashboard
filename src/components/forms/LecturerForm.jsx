@@ -41,14 +41,6 @@ export const LecturerForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const emptyField = Object.keys(formData).find(
-    //   (key) => !formData[key].trim()
-    // );
-
-    // if (emptyField) {
-    //   toast.error(`The field ${emptyField.replace(/_/g, ' ')} is empty`);
-    //   return;
-    // }
     dispatch(addLecturer(formData)).then(() => {
       dispatch(getCurrentUser()).then(() => {
         navigate("/");
