@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const baseURL = "https://online-school-93yp.onrender.com";
+const baseURL = "http://localhost:4000";
 
 export const getCurrentUser = createAsyncThunk(
   "users/getCurrentUser",
